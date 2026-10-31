@@ -8,22 +8,21 @@ Maintained by the Barati Farimani Lab, Carnegie Mellon University.
 
 ```bash
 # Install every skill in this repo
-npx skills add <owner>/me-design-skills --all
+npx skills add BaratiLab/me-design-skills --all
 
 # Pick skills interactively
-npx skills add <owner>/me-design-skills
+npx skills add BaratiLab/me-design-skills
 
 # Install one skill
-npx skills add <owner>/me-design-skills --skill machine-element-sizing
+npx skills add BaratiLab/me-design-skills --skill machine-element-sizing
 
 # Install globally for Claude Code only
-npx skills add <owner>/me-design-skills --all -g -a claude-code
+npx skills add BaratiLab/me-design-skills --all -g -a claude-code
 
 # See what's inside without installing
-npx skills add <owner>/me-design-skills --list
+npx skills add BaratiLab/me-design-skills --list
 ```
 
-Replace `<owner>` with the GitHub account hosting this repo.
 
 ## The skills
 
