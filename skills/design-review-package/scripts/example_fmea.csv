@@ -1,0 +1,5 @@
+item,function,failure_mode,effect,S,cause,O,current_controls,D,action
+Output shaft,Transmit torque,Fatigue crack at shoulder,Loss of drive,9,Sharp fillet r/d<0.05,4,Design calc,5,Increase fillet to r/d=0.1; shot peen
+Bearing,Support shaft,Premature spalling,Noise then seizure,7,Contamination,5,2RS seals,6,Add labyrinth
+Housing,Contain oil,Leak at parting line,Oil loss,5,Porosity in casting,4,Leak test 100%,2,
+Fasteners,Clamp cover,Loosening,Leak / rattle,6,Vibration,3,Torque spec,7,Add threadlocker; torque audit

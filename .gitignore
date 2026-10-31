@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+out/
+*.step
+*.stl
+*_preview.png
+.DS_Store

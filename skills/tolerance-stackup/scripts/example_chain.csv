@@ -1,0 +1,5 @@
+name,nominal,plus,minus,direction,dist,cpk
+Housing bore depth,50.00,0.10,0.10,1,normal,1.33
+Bearing width,15.00,0.00,0.12,-1,normal,1.0
+Spacer length,20.00,0.05,0.05,-1,normal,1.33
+Gear hub width,14.50,0.08,0.08,-1,uniform,

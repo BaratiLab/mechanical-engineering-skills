@@ -1,0 +1,9 @@
+level,part_no,description,qty_per,unit_cost,make_buy,lead_time_wk
+1,ASM-100,Gearbox assembly,1,12.00,make,1
+2,PRT-101,Housing (die cast Al),1,18.50,make,10
+2,PRT-102,Output shaft 4140,1,9.20,make,4
+2,PUR-201,6204-2RS bearing,2,2.10,buy,2
+2,PUR-202,M6x16 SHCS 10.9,8,0.06,buy,1
+2,ASM-110,Gear set,1,0.00,make,0
+3,PRT-111,Pinion 20T m2,1,6.40,make,6
+3,PRT-112,Gear 60T m2,1,11.80,make,6
