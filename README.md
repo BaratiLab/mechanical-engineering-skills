@@ -1,6 +1,6 @@
 # Mechanical Engineering Design Skills
 
-A collection of 13 agent skills for mechanical design, analysis, manufacturing review, and engineering teaching. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
+A collection of 14 agent skills for mechanical design, analysis, manufacturing review, and engineering teaching. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
 Maintained by the Barati Farimani Lab, Carnegie Mellon University.
 
@@ -35,6 +35,7 @@ Replace `<owner>` with the GitHub account hosting this repo.
 | Analysis & sizing | [`machine-element-sizing`](skills/machine-element-sizing) | Bolts, shafts, bearings, springs, gears, welds — with shown work and safety factors |
 | | [`quick-fea`](skills/quick-fea) | Linear static / modal FEA with a mandatory hand-calc sanity check |
 | | [`tolerance-stackup`](skills/tolerance-stackup) | Worst-case, RSS, and Monte Carlo stack-ups with contributor charts |
+| | [`cfd-simulation-setup`](skills/cfd-simulation-setup) | Request → OpenFOAM case → run → diagnosis, with deterministic acceptance contracts ([CFD Forge](https://arxiv.org/abs/2610.14104)) |
 | | [`thermal-fluids-calc`](skills/thermal-fluids-calc) | Pipe pressure drop, heat exchangers (LMTD / ε-NTU), fins — CoolProp properties |
 | Process & docs | [`dfm-review`](skills/dfm-review) | Design-for-manufacture review for machining, sheet metal, molding, AM |
 | | [`material-selection`](skills/material-selection) | Ashby performance indices → ranked shortlist + charts |
@@ -51,7 +52,7 @@ Skills install Python packages on demand. The full set:
 pip install numpy scipy matplotlib pint CoolProp cadquery pypdf
 ```
 
-`quick-fea` additionally uses `gmsh` and CalculiX (`ccx`) when available, and falls back to `scikit-fem`.
+`quick-fea` uses `gmsh` and `scikit-fem`. `cfd-simulation-setup` needs OpenFOAM Foundation v11+ (v14 tested in the paper) for the solve; its validators, evidence extraction and builders run without it (`python skills/cfd-simulation-setup/tests/test_paper_cases.py`).
 
 ## Repo layout
 
