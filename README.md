@@ -160,11 +160,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 If you use this library, please cite:
 
 ```bibtex
-@misc{pak2026mechskills,
+@misc{chandrasekhar2026mechskills,
   title  = {Mechanical Engineering Skills in Claude},
-  author = {Pak, Peter and Barkley, Jesse and Chandrasekhar, Achuth and Barati Farimani, Amir},
+  author = {Chandrasekhar, Achuth and Barkley, Jesse and Pak, Peter and Barati Farimani, Amir},
   year   = {2026},
-  note   = {Peter Pak, Jesse Barkley and Achuth Chandrasekhar contributed equally},
+  note   = {Achuth Chandrasekhar, Jesse Barkley and Peter Pak contributed equally},
   url    = {https://github.com/BaratiLab/mechanical-engineering-skills}
 }
 ```
