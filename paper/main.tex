@@ -74,7 +74,7 @@ who simply has an engineering question. Second, agents left to themselves make t
 engineers cannot accept: arithmetic slips, wrong units, a correlation used outside its range, or a
 confident answer with no evidence behind it.
 
-Agent Skills~\cite{anthropic2025skills,agentskills2025spec} offer a light-weight remedy. A skill is a
+Agent Skills~\cite{anthropic2025skills,agentskills2025spec} offer a lightweight remedy. A skill is a
 directory with a \texttt{SKILL.md} file---a short description that tells the agent when to use
 it, followed by instructions---plus any scripts and reference files the instructions point to. The
 agent sees only the one-line descriptions until a task matches, then loads the instructions, and
@@ -112,6 +112,47 @@ skills (Fig.~\ref{fig:concept}, Table~\ref{tab:library}). Our contributions are:
       studies that reproduce their key results.
 \end{enumerate}
 
+
+% ------------------------------------------------------------------------------------------------
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Language-model agents and tool use.} Large language models acquire broad knowledge and
+in-context reasoning from scale~\cite{brown2020gpt3,wei2022cot}, and become agents when they
+interleave reasoning with actions and observations~\cite{yao2023react} or learn to call external
+tools~\cite{schick2023toolformer}; surveys catalogue the resulting architectures~\cite{wang2024agentsurvey}.
+Retrieval augments generation with documents the model was not trained on~\cite{lewis2020rag},
+and the Model Context Protocol standardizes connections to external systems~\cite{anthropic2024mcp}.
+Agent Skills~\cite{anthropic2025skills,agentskills2025spec} add a complementary layer: packaged
+procedural knowledge and code that an agent loads only when relevant. In science, tool-using
+agents have planned and executed chemistry experiments~\cite{boiko2023coscientist,bran2024chemcrow};
+our library brings the same pattern to mechanical engineering, with an emphasis on checks.
+
+\paragraph{Language models in mechanical design and manufacturing.} Early studies showed that
+general models can help across the design-to-manufacture pipeline but make errors that require
+verification~\cite{makatura2023llmdesign}. Subsequent work generated CAD from text with execution
+feedback~\cite{badagabettu2024query2cad,barkley2026cadsmith}, coupled models with finite-element
+analysis for structural design~\cite{jadhav2026designer}, automated CFD setup under physics
+constraints~\cite{oza2026cfdforge}, and applied agents to additive manufacturing, from literature
+question answering~\cite{chandrasekhar2024amgpt} and defect prediction~\cite{pak2025additivellm}
+to alloy evaluation~\cite{pak2026alloy}, process optimization~\cite{pak2026sls}, print monitoring
+and control~\cite{jadhav2025llm3dprint} and complete design-to-flight workflows~\cite{pak2026rocketsmith}.
+These systems are typically bespoke; this work packages them in a common, portable format.
+
+\paragraph{Learned surrogates and physics models.} Generative models, in particular denoising
+diffusion~\cite{ho2020ddpm,nichol2021improved,song2021ddim,ho2022cfg}, now produce stress
+fields~\cite{jadhav2023stressd}, lattice architectures~\cite{jadhav2024glu3d}, mechanisms~\cite{jadhav2026linkd},
+toolpaths~\cite{wang2026image2gcode} and super-resolved process images~\cite{ogoke2025superres},
+often with U-Net backbones~\cite{ronneberger2015unet}. Machine learning also predicts melt-pool
+geometry~\cite{akbari2022meltpoolnet} and porosity~\cite{pak2024thermopore} in metal additive
+manufacturing~\cite{debroy2018am,king2014keyhole}, and symbolic regression recovers interpretable
+laws from data~\cite{schmidt2009distilling,udrescu2020aifeynman,shojaee2025llmsr}. The skills pair
+such models with classical references---Rosenthal's moving-source solution~\cite{rosenthal1946},
+Barrowman's stability method~\cite{barrowman1967}, open-source solvers~\cite{weller1998openfoam,niskanen2009openrocket},
+computational thermodynamics~\cite{andersson2002thermocalc}, cellular-solid
+scaling~\cite{gibson1997cellular,alketan2019tpms}, numerical homogenization~\cite{dong2019homo3d}
+and Bayesian optimization~\cite{jones1998ego}---so that every learned prediction can be checked
+against physics.
 
 % ------------------------------------------------------------------------------------------------
 \section{Skills as a unit of engineering capability}
@@ -214,6 +255,34 @@ network for melt-pool size. In Claude.ai the scripts run in Claude's own sandbox
 environment, so nothing needs to be installed on the user's computer; in Claude Code they run in
 the user's project. Training the larger research models remains possible for users who want it,
 but it is never required to get an answer.
+
+
+Table~\ref{tab:usecases} lists representative requests, spoken or typed, with the skills the agent
+chains and what it returns. In each case the user describes the engineering goal; the choice of
+tools, their inputs and the checks are handled by the skills.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Representative requests by voice or text, the skills the agent uses, and what is returned.}
+\label{tab:usecases}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{5.2cm} >{\raggedright\arraybackslash}p{4.1cm} X@{}}
+\toprule
+\textbf{Request (voice or text)} & \textbf{Skills used} & \textbf{What comes back} \\
+\midrule
+\emph{``Size the shaft and bearings for a 2~kW gearbox output at 300~rpm.''} & \skill{machine-element-sizing} & Diameters, bearing selection and fatigue safety factors with the calculation shown \\
+\emph{``Make me a bracket for an M6 bolt pattern, 3~mm wall, printable without supports.''} & \skill{cadsmith-text-to-cad}, \skill{agentscad-fdm-dfam} & Validated STEP/STL, reoriented, with teardrop holes and an overhang report \\
+\emph{``Is this aluminium part stiff enough? Check it under a 500~N tip load.''} & \skill{quick-fea} & Deflection, peak stress and modes, compared against a beam hand calculation \\
+\emph{``Set up flow over this heat-sink fin array at 2~m/s and tell me if the result is converged.''} & \skill{cfd-simulation-setup}, \skill{thermal-fluids-calc} & OpenFOAM case, run diagnosis and an accept/rerun decision tied to physics checks \\
+\emph{``Design a lattice infill 2.5$\times$ stiffer vertically, as light as possible.''} & \skill{lattice-inverse-design} & Cell choice, full stiffness matrix, weakest-direction modulus and tiled STL \\
+\emph{``Will 280~W at 900~mm/s keyhole on Ti-6Al-4V?''} & \skill{lpbf-defect-prediction}, \skill{meltpool-geometry} & Predicted regime, melt-pool size and a process map marking the safe window \\
+\emph{``Layer 140 looks odd on the camera---what's wrong and what should I change?''} & \skill{llm-3d-print-monitor} & Diagnosis from the layer image and bounded G-code corrections for approval \\
+\emph{``Which layers of yesterday's build should go to CT first?''} & \skill{thermal-porosity} & Per-layer pore counts and maps from the pyrometry, ranked for inspection \\
+\emph{``Find a law for this stress--strain data that still works at higher strain.''} & \skill{equation-discovery} & An interpretable equation with in-domain and out-of-domain error \\
+\emph{``Give my students three Mohr's-circle problems with worked solutions.''} & \skill{worked-problem-generator}, \skill{mechanics-visuals} & Problems, code-verified solutions and figures \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \begin{figure}[t]
 \centering
@@ -403,33 +472,47 @@ RocketSmith~\cite{pak2026rocketsmith} designed four FDM-printed Class~2 rockets 
 stably; altimeter apogees were 80--84\% of predictions. The skill reconstructs two of them from the
 paper and predicts apogee and speed within a few percent of OpenRocket: 326~m and 75~m/s against
 338.8~m and 76.4~m/s for HP1, and 568~m and 113.7~m/s against 570.1~m and 115.2~m/s for HP4
-(Fig.~\ref{fig:rocket}a). Fitting the drag coefficient to the measured apogees (276~m and 479~m)
+(Fig.~\ref{fig:rocket}). Fitting the drag coefficient to the measured apogees (276~m and 479~m)
 gives $C_D \approx 0.84$ and $0.76$, much higher than the 0.4--0.5 typical of smooth commercial
 airframes---a direct, actionable explanation for the shortfall: printed surfaces and fin
 geometry. The skill's fin-sizing loop also flags that HP1's fins (95~mm span) give marginal
 stability and computes the 162~mm span needed for 1.26 calibers.
 
-\subsection{Alloy screening and the cost of unchecked units}
-The alloy-evaluation paper~\cite{pak2026alloy} asks an agent to judge whether a known or new alloy
-prints by laser powder-bed fusion, from Thermo-Calc properties and Rosenthal lack-of-fusion maps.
-The skill reproduces the paper's ranking (IN625 above SS316L, copper last;
-Fig.~\ref{fig:rocket}b). While porting the released property files we found densities about
-$1000\times$ too high and heat capacities in J\,mol$^{-1}$\,K$^{-1}$ instead of
-J\,kg$^{-1}$\,K$^{-1}$, which shifts thermal diffusivity by a factor of 50--100. The skill now
-sanitizes units on load and reports what it corrected, and its outputs are explicitly keyed, since
-the paper traced an LLM error to an unlabeled list of tuples.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.62\textwidth]{figures/rocketsmith_hp1_flight.png}
+\caption{\skill{rocketsmith}: simulated flight of the reconstructed HP1 rocket from the skill's
+Barrowman stability model and one-dimensional flight simulator; apogee is within 4\% of
+OpenRocket.}
+\label{fig:rocket}
+\end{figure}
+
+\subsection{Porosity from in-situ thermal images (ThermoPore)}
+Qualifying a laser powder-bed fusion part usually waits for X-ray computed tomography (CT).
+ThermoPore~\cite{pak2024thermopore} asks how much of that answer is already contained in the
+pyrometry recorded during the build~\cite{everton2016review}. For each 30~$\mu$m layer it pairs 200
+thermal frames with the CT pores in that layer and trains a CNN that counts pores ($R^2=0.57$,
+RMSE 7.84) and a video vision transformer~\cite{dosovitskiy2021vit,arnab2021vivit} that localizes
+them on a $16\times16$ grid (mean IoU 0.32). The skill packages the workflow around the models,
+which is where most practical effort goes: empty-frame filtering, resampling each layer to 200
+frames, alignment of CT and thermal coordinates with an explicit check image, equivalent-diameter
+thresholds for which pores count, and splits within each process step as in the paper
+(Fig.~\ref{fig:thermo}). It adds an interpretable baseline---gradient-boosted trees on per-cell
+peak temperature, dwell time above the melt threshold and thermal roughness---that every deep model
+must beat. Because the paper's pyrometry and CT data are not public, the skill ships a synthetic
+rehearsal build with the same structure; on it the baseline reaches $R^2=0.44$ for counting and IoU
+0.27 for localization, and every output from synthetic data is labelled as such so that it is never
+mistaken for a physical result. With a user's own build, the agent can simply be asked which
+layers and regions should be sent to CT first.
 
 \begin{figure}[t]
 \centering
-\begin{minipage}{0.48\textwidth}\centering
-\includegraphics[width=\textwidth]{figures/rocketsmith_hp1_flight.png}\\ \small (a)
-\end{minipage}\hfill
-\begin{minipage}{0.5\textwidth}\centering
-\includegraphics[width=\textwidth]{figures/alloy_known_maps.png}\\ \small (b)
-\end{minipage}
-\caption{(a) Simulated flight of the reconstructed HP1 rocket. (b) Lack-of-fusion process maps for
-known alloys produced by \skill{am-alloy-screening} after unit sanitation.}
-\label{fig:rocket}
+\includegraphics[width=\textwidth]{figures/thermopore_layer.png}
+\caption{\skill{thermal-porosity}: one layer of a rehearsal build. From left: a single pyrometry
+frame with the melt pool mid-raster; peak temperature over the layer, where hot and cold spots
+mark fusion anomalies; dwell time above the melt threshold pooled to the $16\times16$ label grid;
+and the CT pore map used as ground truth.}
+\label{fig:thermo}
 \end{figure}
 
 \subsection{Sequential process optimization (SLS)}

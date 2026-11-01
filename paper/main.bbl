@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -84,6 +84,82 @@ Y.~Jadhav, P.~Pak, and A.~Barati~Farimani.
 \newblock GitHub repository, 2026.
 \newblock URL \url{https://github.com/BaratiLab/mechanical-engineering-skills}.
 
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan,
+  et~al.]{brown2020gpt3}
+T.~B. Brown, B.~Mann, N.~Ryder, M.~Subbiah, J.~Kaplan, et~al.
+\newblock Language models are few-shot learners.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 1877--1901, 2020.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le,
+  and Zhou]{wei2022cot}
+J.~Wei, X.~Wang, D.~Schuurmans, M.~Bosma, B.~Ichter, F.~Xia, E.~Chi, Q.~Le, and
+  D.~Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, 2022.
+
+\bibitem[Yao et~al.(2023)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and
+  Cao]{yao2023react}
+S.~Yao, J.~Zhao, D.~Yu, N.~Du, I.~Shafran, K.~Narasimhan, and Y.~Cao.
+\newblock {ReAct}: Synergizing reasoning and acting in language models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+
+\bibitem[Schick et~al.(2023)Schick, Dwivedi-Yu, Dess{\`\i}, Raileanu, Lomeli,
+  Zettlemoyer, Cancedda, and Scialom]{schick2023toolformer}
+T.~Schick, J.~Dwivedi-Yu, R.~Dess{\`\i}, R.~Raileanu, M.~Lomeli,
+  L.~Zettlemoyer, N.~Cancedda, and T.~Scialom.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, 2023.
+
+\bibitem[Wang et~al.(2024)Wang, Ma, Feng, Zhang, Yang, Zhang,
+  et~al.]{wang2024agentsurvey}
+L.~Wang, C.~Ma, X.~Feng, Z.~Zhang, H.~Yang, J.~Zhang, et~al.
+\newblock A survey on large language model based autonomous agents.
+\newblock \emph{Frontiers of Computer Science}, 18:\penalty0 186345, 2024.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  et~al.]{lewis2020rag}
+P.~Lewis, E.~Perez, A.~Piktus, F.~Petroni, V.~Karpukhin, N.~Goyal, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 9459--9474, 2020.
+
+\bibitem[{Anthropic}(2024)]{anthropic2024mcp}
+{Anthropic}.
+\newblock Introducing the {Model Context Protocol}, November 2024.
+\newblock URL \url{https://www.anthropic.com/news/model-context-protocol}.
+
+\bibitem[Boiko et~al.(2023)Boiko, MacKnight, Kline, and
+  Gomes]{boiko2023coscientist}
+D.~A. Boiko, R.~MacKnight, B.~Kline, and G.~Gomes.
+\newblock Autonomous chemical research with large language models.
+\newblock \emph{Nature}, 624:\penalty0 570--578, 2023.
+
+\bibitem[Bran et~al.(2024)Bran, Cox, Schilter, Baldassari, White, and
+  Schwaller]{bran2024chemcrow}
+A.~M. Bran, S.~Cox, O.~Schilter, C.~Baldassari, A.~D. White, and P.~Schwaller.
+\newblock Augmenting large language models with chemistry tools.
+\newblock \emph{Nature Machine Intelligence}, 6:\penalty0 525--535, 2024.
+
+\bibitem[Makatura et~al.(2023)Makatura, Foshey, Wang,
+  et~al.]{makatura2023llmdesign}
+L.~Makatura, M.~Foshey, B.~Wang, et~al.
+\newblock How can large language models help humans in design and
+  manufacturing?
+\newblock \emph{arXiv preprint arXiv:2307.14377}, 2023.
+
+\bibitem[Chandrasekhar et~al.(2024)Chandrasekhar, Chan, Ogoke, Ajenifujah, and
+  Barati~Farimani]{chandrasekhar2024amgpt}
+A.~Chandrasekhar, J.~Chan, F.~Ogoke, O.~Ajenifujah, and A.~Barati~Farimani.
+\newblock {AMGPT}: A large language model for contextual querying in additive
+  manufacturing.
+\newblock \emph{Additive Manufacturing Letters}, 11:\penalty0 100232, 2024.
+\newblock \doi{10.1016/j.addlet.2024.100232}.
+
 \bibitem[Pak et~al.(2026{\natexlab{c}})Pak, Barkley, Loghmani, Baich, Pamal,
   and Barati~Farimani]{pak2026rocketsmith}
 P.~Pak, J.~Barkley, R.~Loghmani, D.~Baich, A.~Pamal, and A.~Barati~Farimani.
@@ -91,10 +167,28 @@ P.~Pak, J.~Barkley, R.~Loghmani, D.~Baich, A.~Pamal, and A.~Barati~Farimani.
   rockets.
 \newblock \emph{arXiv preprint arXiv:2606.00097}, 2026{\natexlab{c}}.
 
-\bibitem[Ashby(2011)]{ashby2011}
-M.~F. Ashby.
-\newblock \emph{Materials Selection in Mechanical Design}.
-\newblock Butterworth-Heinemann, 4 edition, 2011.
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020ddpm}
+J.~Ho, A.~Jain, and P.~Abbeel.
+\newblock Denoising diffusion probabilistic models.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 6840--6851, 2020.
+
+\bibitem[Nichol and Dhariwal(2021)]{nichol2021improved}
+A.~Q. Nichol and P.~Dhariwal.
+\newblock Improved denoising diffusion probabilistic models.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, pages
+  8162--8171, 2021.
+
+\bibitem[Song et~al.(2021)Song, Meng, and Ermon]{song2021ddim}
+J.~Song, C.~Meng, and S.~Ermon.
+\newblock Denoising diffusion implicit models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
+\bibitem[Ho and Salimans(2022)]{ho2022cfg}
+J.~Ho and T.~Salimans.
+\newblock Classifier-free diffusion guidance.
+\newblock \emph{arXiv preprint arXiv:2207.12598}, 2022.
 
 \bibitem[Jadhav et~al.(2023)Jadhav, Berthel, Hu, Panat, Beuth, and
   Barati~Farimani]{jadhav2023stressd}
@@ -112,22 +206,6 @@ Y.~Jadhav, J.~Berthel, C.~Hu, R.~Panat, J.~Beuth, and A.~Barati~Farimani.
 \newblock \emph{Advanced Functional Materials}, 34:\penalty0 2404165, 2024.
 \newblock \doi{10.1002/adfm.202404165}.
 
-\bibitem[Shojaee et~al.(2025)Shojaee, Meidani, Gupta, Barati~Farimani, and
-  Reddy]{shojaee2025llmsr}
-P.~Shojaee, K.~Meidani, S.~Gupta, A.~Barati~Farimani, and C.~K. Reddy.
-\newblock {LLM-SR}: Scientific equation discovery via programming with large
-  language models.
-\newblock In \emph{International Conference on Learning Representations
-  (ICLR)}, 2025.
-\newblock Oral; arXiv:2404.18400.
-
-\bibitem[George et~al.(2026)George, Keefe, Pak, and
-  Barati~Farimani]{george2026agentscad}
-E.~George, C.~Keefe, P.~Pak, and A.~Barati~Farimani.
-\newblock {AgentsCAD}: Automated design for manufacturing of {FDM} parts via
-  multi-agent {LLM} reasoning and geometric feature recognition.
-\newblock \emph{arXiv preprint arXiv:2607.02448}, 2026.
-
 \bibitem[Wang et~al.(2026)Wang, Jadhav, Pak, and
   Barati~Farimani]{wang2026image2gcode}
 Z.~Wang, Y.~Jadhav, P.~Pak, and A.~Barati~Farimani.
@@ -135,6 +213,22 @@ Z.~Wang, Y.~Jadhav, P.~Pak, and A.~Barati~Farimani.
   manufacturing using diffusion-transformer model.
 \newblock \emph{Additive Manufacturing Letters}, 17:\penalty0 100374, 2026.
 \newblock \doi{10.1016/j.addlet.2026.100374}.
+
+\bibitem[Ogoke et~al.(2025)Ogoke, Kalambettu~Suresh, Adamczyk, Bolintineanu,
+  Garland, Heiden, and Barati~Farimani]{ogoke2025superres}
+F.~Ogoke, S.~Kalambettu~Suresh, J.~Adamczyk, D.~Bolintineanu, A.~Garland,
+  M.~Heiden, and A.~Barati~Farimani.
+\newblock Deep learning based optical image super-resolution via generative
+  diffusion models for layerwise in-situ {LPBF} monitoring.
+\newblock \emph{Additive Manufacturing}, 107:\penalty0 104790, 2025.
+\newblock \doi{10.1016/j.addma.2025.104790}.
+
+\bibitem[Ronneberger et~al.(2015)Ronneberger, Fischer, and
+  Brox]{ronneberger2015unet}
+O.~Ronneberger, P.~Fischer, and T.~Brox.
+\newblock {U-Net}: Convolutional networks for biomedical image segmentation.
+\newblock In \emph{Medical Image Computing and Computer-Assisted Intervention
+  (MICCAI)}, pages 234--241, 2015.
 
 \bibitem[Akbari et~al.(2022)Akbari, Ogoke, Kao, Meidani, Yeh, Lee, and
   Barati~Farimani]{akbari2022meltpoolnet}
@@ -153,25 +247,86 @@ P.~Pak, F.~Ogoke, A.~Polonsky, A.~Garland, D.~S. Bolintineanu, D.~R. Moser,
   M.~J. Heiden, and A.~Barati~Farimani.
 \newblock {ThermoPore}: Predicting part porosity based on thermal images using
   deep learning.
-\newblock \emph{Additive Manufacturing}, page 104503, 2024.
+\newblock \emph{Additive Manufacturing}, 95:\penalty0 104503, 2024.
 \newblock \doi{10.1016/j.addma.2024.104503}.
 
-\bibitem[Ogoke et~al.(2025)Ogoke, Kalambettu~Suresh, Adamczyk, Bolintineanu,
-  Garland, Heiden, and Barati~Farimani]{ogoke2025superres}
-F.~Ogoke, S.~Kalambettu~Suresh, J.~Adamczyk, D.~Bolintineanu, A.~Garland,
-  M.~Heiden, and A.~Barati~Farimani.
-\newblock Deep learning based optical image super-resolution via generative
-  diffusion models for layerwise in-situ {LPBF} monitoring.
-\newblock \emph{Additive Manufacturing}, 107:\penalty0 104790, 2025.
-\newblock \doi{10.1016/j.addma.2025.104790}.
+\bibitem[DebRoy et~al.(2018)DebRoy, Wei, Zuback, Mukherjee, Elmer, Milewski,
+  Beese, Wilson-Heid, De, and Zhang]{debroy2018am}
+T.~DebRoy, H.~L. Wei, J.~S. Zuback, T.~Mukherjee, J.~W. Elmer, J.~O. Milewski,
+  A.~M. Beese, A.~Wilson-Heid, A.~De, and W.~Zhang.
+\newblock Additive manufacturing of metallic components -- process, structure
+  and properties.
+\newblock \emph{Progress in Materials Science}, 92:\penalty0 112--224, 2018.
 
-\bibitem[Chandrasekhar et~al.(2024)Chandrasekhar, Chan, Ogoke, Ajenifujah, and
-  Barati~Farimani]{chandrasekhar2024amgpt}
-A.~Chandrasekhar, J.~Chan, F.~Ogoke, O.~Ajenifujah, and A.~Barati~Farimani.
-\newblock {AMGPT}: A large language model for contextual querying in additive
-  manufacturing.
-\newblock \emph{Additive Manufacturing Letters}, 11:\penalty0 100232, 2024.
-\newblock \doi{10.1016/j.addlet.2024.100232}.
+\bibitem[King et~al.(2014)King, Barth, Castillo, Gallegos, Gibbs, Hahn, Kamath,
+  and Rubenchik]{king2014keyhole}
+W.~E. King, H.~D. Barth, V.~M. Castillo, G.~F. Gallegos, J.~W. Gibbs, D.~E.
+  Hahn, C.~Kamath, and A.~M. Rubenchik.
+\newblock Observation of keyhole-mode laser melting in laser powder-bed fusion
+  additive manufacturing.
+\newblock \emph{Journal of Materials Processing Technology}, 214:\penalty0
+  2915--2925, 2014.
+
+\bibitem[Schmidt and Lipson(2009)]{schmidt2009distilling}
+M.~Schmidt and H.~Lipson.
+\newblock Distilling free-form natural laws from experimental data.
+\newblock \emph{Science}, 324:\penalty0 81--85, 2009.
+
+\bibitem[Udrescu and Tegmark(2020)]{udrescu2020aifeynman}
+S.-M. Udrescu and M.~Tegmark.
+\newblock {AI Feynman}: A physics-inspired method for symbolic regression.
+\newblock \emph{Science Advances}, 6:\penalty0 eaay2631, 2020.
+
+\bibitem[Shojaee et~al.(2025)Shojaee, Meidani, Gupta, Barati~Farimani, and
+  Reddy]{shojaee2025llmsr}
+P.~Shojaee, K.~Meidani, S.~Gupta, A.~Barati~Farimani, and C.~K. Reddy.
+\newblock {LLM-SR}: Scientific equation discovery via programming with large
+  language models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2025.
+\newblock Oral; arXiv:2404.18400.
+
+\bibitem[Rosenthal(1946)]{rosenthal1946}
+D.~Rosenthal.
+\newblock The theory of moving sources of heat and its application to metal
+  treatments.
+\newblock \emph{Transactions of the American Society of Mechanical Engineers},
+  68:\penalty0 849--866, 1946.
+
+\bibitem[Barrowman(1967)]{barrowman1967}
+J.~S. Barrowman.
+\newblock The practical calculation of the aerodynamic characteristics of
+  slender finned vehicles.
+\newblock M.s. thesis, The Catholic University of America, 1967.
+
+\bibitem[Weller et~al.(1998)Weller, Tabor, Jasak, and
+  Fureby]{weller1998openfoam}
+H.~G. Weller, G.~Tabor, H.~Jasak, and C.~Fureby.
+\newblock A tensorial approach to computational continuum mechanics using
+  object-oriented techniques.
+\newblock \emph{Computers in Physics}, 12:\penalty0 620--631, 1998.
+
+\bibitem[Niskanen(2009)]{niskanen2009openrocket}
+S.~Niskanen.
+\newblock Development of an open source model rocket simulation software.
+\newblock Master's thesis, Helsinki University of Technology, 2009.
+
+\bibitem[Andersson et~al.(2002)Andersson, Helander, H{\"o}glund, Shi, and
+  Sundman]{andersson2002thermocalc}
+J.-O. Andersson, T.~Helander, L.~H{\"o}glund, P.~Shi, and B.~Sundman.
+\newblock {Thermo-Calc} \& {DICTRA}, computational tools for materials science.
+\newblock \emph{Calphad}, 26:\penalty0 273--312, 2002.
+
+\bibitem[Gibson and Ashby(1997)]{gibson1997cellular}
+L.~J. Gibson and M.~F. Ashby.
+\newblock \emph{Cellular Solids: Structure and Properties}.
+\newblock Cambridge University Press, 2 edition, 1997.
+
+\bibitem[Al-Ketan and Abu Al-Rub(2019)]{alketan2019tpms}
+O.~Al-Ketan and R.~K. Abu Al-Rub.
+\newblock Multifunctional mechanical metamaterials based on triply periodic
+  minimal surface lattices.
+\newblock \emph{Advanced Engineering Materials}, 21:\penalty0 1900524, 2019.
 
 \bibitem[Dong et~al.(2019)Dong, Tang, and Zhao]{dong2019homo3d}
 G.~Dong, Y.~Tang, and Y.~F. Zhao.
@@ -179,5 +334,44 @@ G.~Dong, Y.~Tang, and Y.~F. Zhao.
   materials written in {MATLAB}.
 \newblock \emph{Journal of Engineering Materials and Technology}, 141\penalty0
   (1):\penalty0 011005, 2019.
+
+\bibitem[Jones et~al.(1998)Jones, Schonlau, and Welch]{jones1998ego}
+D.~R. Jones, M.~Schonlau, and W.~J. Welch.
+\newblock Efficient global optimization of expensive black-box functions.
+\newblock \emph{Journal of Global Optimization}, 13:\penalty0 455--492, 1998.
+
+\bibitem[Ashby(2011)]{ashby2011}
+M.~F. Ashby.
+\newblock \emph{Materials Selection in Mechanical Design}.
+\newblock Butterworth-Heinemann, 4 edition, 2011.
+
+\bibitem[George et~al.(2026)George, Keefe, Pak, and
+  Barati~Farimani]{george2026agentscad}
+E.~George, C.~Keefe, P.~Pak, and A.~Barati~Farimani.
+\newblock {AgentsCAD}: Automated design for manufacturing of {FDM} parts via
+  multi-agent {LLM} reasoning and geometric feature recognition.
+\newblock \emph{arXiv preprint arXiv:2607.02448}, 2026.
+
+\bibitem[Everton et~al.(2016)Everton, Hirsch, Stravroulakis, Leach, and
+  Clare]{everton2016review}
+S.~K. Everton, M.~Hirsch, P.~Stravroulakis, R.~K. Leach, and A.~T. Clare.
+\newblock Review of in-situ process monitoring and in-situ metrology for metal
+  additive manufacturing.
+\newblock \emph{Materials \& Design}, 95:\penalty0 431--445, 2016.
+
+\bibitem[Dosovitskiy et~al.(2021)Dosovitskiy, Beyer, Kolesnikov,
+  et~al.]{dosovitskiy2021vit}
+A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, et~al.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2021.
+
+\bibitem[Arnab et~al.(2021)Arnab, Dehghani, Heigold, Sun, Lu{\v{c}}i{\'c}, and
+  Schmid]{arnab2021vivit}
+A.~Arnab, M.~Dehghani, G.~Heigold, C.~Sun, M.~Lu{\v{c}}i{\'c}, and C.~Schmid.
+\newblock {ViViT}: A video vision transformer.
+\newblock In \emph{IEEE/CVF International Conference on Computer Vision
+  (ICCV)}, pages 6836--6846, 2021.
 
 \end{thebibliography}
