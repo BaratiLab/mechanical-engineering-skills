@@ -147,7 +147,7 @@ skills/<skill-name>/
 └── references/       # tables, rules, formulas loaded on demand
 _template/            # starter skill (ignored by the installer)
 docs/                 # website: use cases, tutorials, icons (GitHub Pages)
-paper/                # "Mechanical Engineering Skills in Claude" (LaTeX source, PDF, Overleaf bundle)
+paper/                # "Mechanical Engineering Skills: An Open Library of Agent Skills for Design, Analysis and Manufacturing" (LaTeX source, PDF, Overleaf bundle)
 tools/make_icons.py   # regenerates the vector skill icons and banner
 ```
 
@@ -161,7 +161,7 @@ If you use this library, please cite:
 
 ```bibtex
 @misc{chandrasekhar2026mechskills,
-  title  = {Mechanical Engineering Skills in Claude},
+  title  = {Mechanical Engineering Skills: An Open Library of Agent Skills for Design, Analysis and Manufacturing},
   author = {Chandrasekhar, Achuth and Barkley, Jesse and Pak, Peter and Barati Farimani, Amir},
   year   = {2026},
   note   = {Achuth Chandrasekhar, Jesse Barkley and Peter Pak contributed equally},
