@@ -261,25 +261,36 @@ Table~\ref{tab:usecases} lists representative requests, spoken or typed, with th
 chains and what it returns. In each case the user describes the engineering goal; the choice of
 tools, their inputs and the checks are handled by the skills.
 
-\begin{table}[t]
+\begin{table}[p]
 \centering
-\footnotesize
+\small
 \caption{Representative requests by voice or text, the skills the agent uses, and what is returned.}
 \label{tab:usecases}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{5.2cm} >{\raggedright\arraybackslash}p{4.1cm} X@{}}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{7pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}m{4.9cm} >{\raggedright\arraybackslash}m{5.2cm} >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Request (voice or text)} & \textbf{Skills used} & \textbf{What comes back} \\
 \midrule
-\emph{``Size the shaft and bearings for a 2~kW gearbox output at 300~rpm.''} & \skill{machine-element-sizing} & Diameters, bearing selection and fatigue safety factors with the calculation shown \\
-\emph{``Make me a bracket for an M6 bolt pattern, 3~mm wall, printable without supports.''} & \skill{cadsmith-text-to-cad}, \skill{agentscad-fdm-dfam} & Validated STEP/STL, reoriented, with teardrop holes and an overhang report \\
-\emph{``Is this aluminium part stiff enough? Check it under a 500~N tip load.''} & \skill{quick-fea} & Deflection, peak stress and modes, compared against a beam hand calculation \\
-\emph{``Set up flow over this heat-sink fin array at 2~m/s and tell me if the result is converged.''} & \skill{cfd-simulation-setup}, \skill{thermal-fluids-calc} & OpenFOAM case, run diagnosis and an accept/rerun decision tied to physics checks \\
-\emph{``Design a lattice infill 2.5$\times$ stiffer vertically, as light as possible.''} & \skill{lattice-inverse-design} & Cell choice, full stiffness matrix, weakest-direction modulus and tiled STL \\
-\emph{``Will 280~W at 900~mm/s keyhole on Ti-6Al-4V?''} & \skill{lpbf-defect-prediction}, \skill{meltpool-geometry} & Predicted regime, melt-pool size and a process map marking the safe window \\
-\emph{``Layer 140 looks odd on the camera---what's wrong and what should I change?''} & \skill{llm-3d-print-monitor} & Diagnosis from the layer image and bounded G-code corrections for approval \\
-\emph{``Which layers of yesterday's build should go to CT first?''} & \skill{thermal-porosity} & Per-layer pore counts and maps from the pyrometry, ranked for inspection \\
-\emph{``Find a law for this stress--strain data that still works at higher strain.''} & \skill{equation-discovery} & An interpretable equation with in-domain and out-of-domain error \\
-\emph{``Give my students three Mohr's-circle problems with worked solutions.''} & \skill{worked-problem-generator}, \skill{mechanics-visuals} & Problems, code-verified solutions and figures \\
+\emph{``Size the shaft and bearings for a 2~kW gearbox output at 300~rpm.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/machine-element-sizing.pdf}}\hspace{5pt}{\footnotesize\texttt{machine-element-sizing}}\end{tabular} & Diameters, bearing selection and fatigue safety factors, with the calculation shown \\
+\addlinespace[8pt]
+\emph{``Make me a bracket for an M6 bolt pattern, 3~mm wall, printable without supports.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/cadsmith-text-to-cad.pdf}}\hspace{5pt}{\footnotesize\texttt{cadsmith-text-to-cad}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/agentscad-fdm-dfam.pdf}}\hspace{5pt}{\footnotesize\texttt{agentscad-fdm-dfam}}\end{tabular} & Validated STEP/STL, reoriented, with teardrop holes and an overhang report \\
+\addlinespace[8pt]
+\emph{``Is this aluminium part stiff enough? Check it under a 500~N tip load.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/quick-fea.pdf}}\hspace{5pt}{\footnotesize\texttt{quick-fea}}\end{tabular} & Deflection, peak stress and modes, compared against a beam hand calculation \\
+\addlinespace[8pt]
+\emph{``Set up flow over this heat-sink fin array at 2~m/s and tell me if the result is converged.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/cfd-simulation-setup.pdf}}\hspace{5pt}{\footnotesize\texttt{cfd-simulation-setup}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/thermal-fluids-calc.pdf}}\hspace{5pt}{\footnotesize\texttt{thermal-fluids-calc}}\end{tabular} & OpenFOAM case, run diagnosis and an accept-or-rerun decision tied to physics checks \\
+\addlinespace[8pt]
+\emph{``Design a lattice infill 2.5$\times$ stiffer vertically, as light as possible.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/lattice-inverse-design.pdf}}\hspace{5pt}{\footnotesize\texttt{lattice-inverse-design}}\end{tabular} & Cell choice, full stiffness matrix, weakest-direction modulus and a tiled STL \\
+\addlinespace[8pt]
+\emph{``Will 280~W at 900~mm/s keyhole on Ti-6Al-4V?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/lpbf-defect-prediction.pdf}}\hspace{5pt}{\footnotesize\texttt{lpbf-defect-prediction}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/meltpool-geometry.pdf}}\hspace{5pt}{\footnotesize\texttt{meltpool-geometry}}\end{tabular} & Predicted regime, melt-pool size and a process map marking the safe window \\
+\addlinespace[8pt]
+\emph{``Layer 140 looks odd on the camera---what is wrong and what should I change?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/llm-3d-print-monitor.pdf}}\hspace{5pt}{\footnotesize\texttt{llm-3d-print-monitor}}\end{tabular} & Diagnosis from the layer image and bounded G-code corrections for approval \\
+\addlinespace[8pt]
+\emph{``Which layers of yesterday's build should go to CT first?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/thermal-porosity.pdf}}\hspace{5pt}{\footnotesize\texttt{thermal-porosity}}\end{tabular} & Per-layer pore counts and maps from the pyrometry, ranked for inspection \\
+\addlinespace[8pt]
+\emph{``Find a law for this stress--strain data that still works at higher strain.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/equation-discovery.pdf}}\hspace{5pt}{\footnotesize\texttt{equation-discovery}}\end{tabular} & An interpretable equation with in-domain and out-of-domain error \\
+\addlinespace[8pt]
+\emph{``Give my students three Mohr's-circle problems with worked solutions.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/worked-problem-generator.pdf}}\hspace{5pt}{\footnotesize\texttt{worked-problem-generator}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/mechanics-visuals.pdf}}\hspace{5pt}{\footnotesize\texttt{mechanics-visuals}}\end{tabular} & Problems, code-verified solutions and figures \\
 \bottomrule
 \end{tabularx}
 \end{table}
