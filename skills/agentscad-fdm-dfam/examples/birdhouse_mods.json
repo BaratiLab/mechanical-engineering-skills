@@ -1,0 +1,6 @@
+{"part": "birdhouse.step",
+ "reasoning": "Two horizontal bores overhang at -90 deg. Laying end face 3 on the bed makes the Ø25 entrance bore vertical (eliminated). The Ø8 perch hole stays horizontal: teardrop it so its crown is self-supporting at 45 deg. Reorient applied last.",
+ "operations": [
+   {"op": "teardrop", "face_id": 6},
+   {"op": "reorient", "rx_deg": -90.0, "ry_deg": 180.0, "bed_face": 3}
+ ]}

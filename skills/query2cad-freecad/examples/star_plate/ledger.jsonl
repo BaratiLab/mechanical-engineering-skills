@@ -1,0 +1,3 @@
+{"kind": "error", "note": "v0: no solid produced - open 5-point outline extrudes to a shell, not a plate", "score": null, "judged_by": null}
+{"kind": "model", "note": "caption: flat regular pentagon plate ~57x54x4, five straight sides, no tips. diff: a star needs 10 vertices alternating outer tip / inner notch", "score": 0.05, "judged_by": "agent"}
+{"kind": "accept", "note": "caption: five-pointed star plate, 10 vertices, 4 mm thick", "score": 0.97, "judged_by": "agent"}

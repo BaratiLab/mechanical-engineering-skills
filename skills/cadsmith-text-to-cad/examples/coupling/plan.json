@@ -1,0 +1,9 @@
+{"components": [
+  {"name": "bottom flange", "shape": "disc", "dims_mm": {"d": 50, "t": 10}, "z_range": [0, 10]},
+  {"name": "hub", "shape": "cylinder", "dims_mm": {"d": 28, "L": 40}, "z_range": [10, 50]},
+  {"name": "top flange", "shape": "disc", "dims_mm": {"d": 50, "t": 10}, "z_range": [50, 60]}],
+ "target_bbox": [50, 50, 60],
+ "holes": [{"diameter": 6.5, "count": 6, "pattern": "PCD 38 through both flanges"}, {"diameter": 14, "count": 1, "pattern": "center bore full length"}],
+ "n_solids": 1,
+ "constraints": ["coaxial about Z, centered at origin in X/Y", "keyway 5 wide x 2.5 deep on +X bore wall, full length"],
+ "notes_for_coder": "three stacked cylinders unioned; bolt holes through flanges only; bore and keyway last"}
