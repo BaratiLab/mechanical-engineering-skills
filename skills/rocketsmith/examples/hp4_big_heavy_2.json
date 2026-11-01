@@ -1,0 +1,72 @@
+{
+ "name": "High Power 4 (Big Heavy 2), approximate reconstruction",
+ "diameter_mm": 127.0,
+ "nose": {
+  "shape": "ogive",
+  "length_mm": 350,
+  "wall_mm": 2.6,
+  "shoulder_mm": 60
+ },
+ "body": [
+  {
+   "name": "fincan",
+   "length_mm": 800,
+   "wall_mm": 5.0
+  }
+ ],
+ "fins": {
+  "count": 3,
+  "root_mm": 220,
+  "tip_mm": 64,
+  "span_mm": 149.49269198179545,
+  "sweep_mm": 198,
+  "thickness_mm": 6,
+  "from_aft_mm": 5
+ },
+ "motor": "J425R",
+ "motor_mount_mm": 38,
+ "masses": [
+  {
+   "name": "parachute 48in + kevlar shock cord",
+   "mass_g": 260,
+   "x_mm": 520
+  },
+  {
+   "name": "eyebolts x2 + baffle",
+   "mass_g": 180,
+   "x_mm": 600
+  },
+  {
+   "name": "StratoLogger CF + RunCam 5 + battery + covers",
+   "mass_g": 260,
+   "x_mm": 420
+  },
+  {
+   "name": "motor retainer, rail buttons, hardware",
+   "mass_g": 260,
+   "x_mm": 1100
+  },
+  {
+   "name": "unlisted mass to match the paper's total (position assumed)",
+   "mass_g": 1408.2,
+   "x_mm": 450
+  }
+ ],
+ "print": {
+  "material": "ABS",
+  "infill": 0.15,
+  "walls": 5,
+  "line_mm": 0.45
+ },
+ "recovery": {
+  "parachute_diameter_in": 48,
+  "cd": 1.5
+ },
+ "paper_reference": {
+  "liftoff_mass_g": 5158.8,
+  "length_mm": 1150,
+  "stability_cal": 1.52,
+  "openrocket_apogee_m": 570.1,
+  "measured_apogee_m": 479
+ }
+}

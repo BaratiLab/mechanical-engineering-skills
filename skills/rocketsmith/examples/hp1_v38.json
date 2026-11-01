@@ -1,0 +1,67 @@
+{
+ "name": "High Power 1 (v38), approximate reconstruction",
+ "diameter_mm": 101.6,
+ "nose": {
+  "shape": "ogive",
+  "length_mm": 300,
+  "wall_mm": 2.4,
+  "shoulder_mm": 50
+ },
+ "body": [
+  {
+   "name": "fincan",
+   "length_mm": 550,
+   "wall_mm": 4.0
+  }
+ ],
+ "fins": {
+  "count": 3,
+  "root_mm": 176.0,
+  "tip_mm": 48.0,
+  "span_mm": 162.39480314543104,
+  "sweep_mm": 144.0,
+  "thickness_mm": 5,
+  "from_aft_mm": 5
+ },
+ "motor": "H100W",
+ "motor_mount_mm": 38,
+ "masses": [
+  {
+   "name": "parachute 36in + kevlar shock cord",
+   "mass_g": 180,
+   "x_mm": 420
+  },
+  {
+   "name": "eyebolts 5/16in x2 + baffle",
+   "mass_g": 160,
+   "x_mm": 480
+  },
+  {
+   "name": "StratoLogger CF + RunCam 5 + battery",
+   "mass_g": 220,
+   "x_mm": 330
+  },
+  {
+   "name": "rail buttons, screws, epoxy",
+   "mass_g": 90,
+   "x_mm": 560
+  }
+ ],
+ "print": {
+  "material": "PETG",
+  "infill": 0.15,
+  "walls": 4,
+  "line_mm": 0.45
+ },
+ "recovery": {
+  "parachute_diameter_in": 36,
+  "cd": 1.5
+ },
+ "paper_reference": {
+  "liftoff_mass_g": 2249.8,
+  "length_mm": 850,
+  "stability_cal": 1.26,
+  "openrocket_apogee_m": 338.8,
+  "measured_apogee_m": 276
+ }
+}
