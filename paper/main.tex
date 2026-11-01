@@ -82,8 +82,21 @@ reads deeper files or runs scripts only when needed (\emph{progressive disclosur
 portable across Claude Code, Claude.ai and other agents that adopted the format, and they are
 installed with a single command.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/concept.pdf}
+  \caption{Mechanical Engineering Skills in Claude. An engineer states a goal by voice or text.
+  The Claude agent understands the request, selects the relevant skills from a library of 32
+  (design and CAD, analysis and simulation, manufacturing), and orchestrates them. Each skill
+  bundles instructions (\texttt{SKILL.md}), tested scripts that do the computation, and checks.
+  The results---CAD models, simulations, process plans, designs and reports---come back with the
+  evidence that supports them. Nineteen skills package research papers from our laboratory. No
+  per-tool training or locally hosted model is required.}
+  \label{fig:concept}
+\end{figure}
+
 This paper presents \emph{Mechanical Engineering Skills}~\cite{mes2026repo}, a library of 32 such
-skills (Table~\ref{tab:library}). Our contributions are:
+skills (Fig.~\ref{fig:concept}, Table~\ref{tab:library}). Our contributions are:
 \begin{enumerate}[leftmargin=*]
 \item \textbf{A library} covering design, analysis and manufacturing, in which 19 skills package
       peer-reviewed or preprint research from our laboratory and 13 cover core engineering tasks
