@@ -162,9 +162,9 @@ If you use this library, please cite:
 ```bibtex
 @misc{pak2026mechskills,
   title  = {Mechanical Engineering Skills in Claude},
-  author = {Pak, Peter and Barkley, Jay and Chandrasekhar, Ashutosh and Barati Farimani, Amir},
+  author = {Pak, Peter and Barkley, Jesse and Chandrasekhar, Achuth and Barati Farimani, Amir},
   year   = {2026},
-  note   = {Peter Pak, Jay Barkley and Ashutosh Chandrasekhar contributed equally},
+  note   = {Peter Pak, Jesse Barkley and Achuth Chandrasekhar contributed equally},
   url    = {https://github.com/BaratiLab/mechanical-engineering-skills}
 }
 ```
