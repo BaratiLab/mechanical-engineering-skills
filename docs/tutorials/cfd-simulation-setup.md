@@ -1,6 +1,6 @@
 # Tutorial: CFD Forge (physics-constrained CFD setup and acceptance)
 
-**Skill:** [`cfd-simulation-setup`](../../skills/cfd-simulation-setup) · **Paper:** A. S. Oza, R. F. Johnson, A. Barati Farimani, *CFD Forge: A Physics-Constrained Agentic Framework for Autonomous CFD*, [arXiv:2610.14104](https://arxiv.org/abs/2610.14104) · **Code:** [aakashoza31/physics-constrained-cfd-agent](https://github.com/aakashoza31/physics-constrained-cfd-agent)
+**Skill:** [`cfd-simulation-setup`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/cfd-simulation-setup) · **Paper:** A. S. Oza, R. F. Johnson, A. Barati Farimani, *CFD Forge: A Physics-Constrained Agentic Framework for Autonomous CFD*, [arXiv:2610.14104](https://arxiv.org/abs/2610.14104) · **Code:** [aakashoza31/physics-constrained-cfd-agent](https://github.com/aakashoza31/physics-constrained-cfd-agent)
 
 The agent does the open-ended work: interpreting the request, building the case, diagnosing, proposing one action from a closed list, and writing the report. **Only registered, deterministic contracts decide acceptance.** In the paper, a model judging from the evidence alone accepted 12 of 13 detectable planted faults; with the contracts deciding, it accepted none.
 
@@ -61,7 +61,7 @@ verdict: INCONCLUSIVE  UNREGISTERED_CRITERION  16/16 checks pass
 ```
 Both solutions are healthy, but nobody declared how much cross-grid change is acceptable, so the sensitivity question **can't be certified**. This matches the paper's recorded refusal. Remove the sensitivity request and the same evidence gives `ACCEPT / PASS_2D_FORWARD_STEP`.
 
-To make such requests answerable, register a cross-grid tolerance in a new contract version **before** running (see [`new_family.md`](../../skills/cfd-simulation-setup/references/new_family.md)).
+To make such requests answerable, register a cross-grid tolerance in a new contract version **before** running (see [`new_family.md`](https://github.com/BaratiLab/me-design-skills/blob/main/skills/cfd-simulation-setup/references/new_family.md)).
 
 ## More behaviours to try
 | Situation | What the gates do |

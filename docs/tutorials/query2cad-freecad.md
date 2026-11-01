@@ -1,6 +1,6 @@
 # Tutorial: Query2CAD (natural language → FreeCAD macro)
 
-**Skill:** [`query2cad-freecad`](../../skills/query2cad-freecad) · **Paper:** A. Badagabettu, S. S. Yarlagadda, A. Barati Farimani, *Query2CAD: Generating CAD models using natural language queries*, [arXiv:2406.00144](https://arxiv.org/abs/2406.00144) · **Code:** [akshay140601/Query2CAD](https://github.com/akshay140601/Query2CAD)
+**Skill:** [`query2cad-freecad`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/query2cad-freecad) · **Paper:** A. Badagabettu, S. S. Yarlagadda, A. Barati Farimani, *Query2CAD: Generating CAD models using natural language queries*, [arXiv:2406.00144](https://arxiv.org/abs/2406.00144) · **Code:** [akshay140601/Query2CAD](https://github.com/akshay140601/Query2CAD)
 
 The LLM writes the construction steps, then a FreeCAD Python macro. Execution errors get up to 3 repairs. The model is captured from an isometric view and scored with VQAScore, P("Yes" | image, "Does this figure show {query}?"). Below 0.9, a caption of what was **actually** built is compared with the query to drive up to 3 model refinements. In the paper (GPT-4 Turbo), success rose from 53.6% to 73.2% after one refinement, and most failures were macros that never executed.
 

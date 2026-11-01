@@ -1,6 +1,6 @@
 # Tutorial: LLM-3D Print (agent monitors and corrects an FDM print layer by layer)
 
-**Skill:** [`llm-3d-print-monitor`](../../skills/llm-3d-print-monitor) · **Paper:** Y. Jadhav, P. Pak, A. Barati Farimani, *LLM-3D Print: Large language models to monitor and control 3D printing*, Additive Manufacturing 114 (2025) 105027, [arXiv:2408.14307](https://arxiv.org/abs/2408.14307) · **Code:** [BaratiLab/LLM-3D-Print…](https://github.com/BaratiLab/LLM-3D-Print-Large-Language-Models-To-Monitor-and-Control-3D-Printing)
+**Skill:** [`llm-3d-print-monitor`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/llm-3d-print-monitor) · **Paper:** Y. Jadhav, P. Pak, A. Barati Farimani, *LLM-3D Print: Large language models to monitor and control 3D printing*, Additive Manufacturing 114 (2025) 105027, [arXiv:2408.14307](https://arxiv.org/abs/2408.14307) · **Code:** [BaratiLab/LLM-3D-Print…](https://github.com/BaratiLab/LLM-3D-Print-Large-Language-Models-To-Monitor-and-Control-3D-Printing)
 
 In LLM-3D Print, a Klipper printer pauses after every layer and parks the head clear of two
 cameras. A team of agents then works on that layer:
@@ -40,7 +40,7 @@ pip install numpy pillow
 cd skills/llm-3d-print-monitor
 ```
 For a real printer:
-- Follow [`klipper_setup.md`](../../skills/llm-3d-print-monitor/references/klipper_setup.md):
+- Follow [`klipper_setup.md`](https://github.com/BaratiLab/me-design-skills/blob/main/skills/llm-3d-print-monitor/references/klipper_setup.md):
   two webcams named `top` and `front`, `[pause_resume]`, `[firmware_retraction]`, and a
   `LAYER_INSPECT` macro.
 - Then post-process the sliced file:
@@ -61,7 +61,7 @@ $P wait && $P snapshot
 **Layer 2.** The agent reads `top.jpg` and `front.jpg`. The infill lines are broken into
 dashes, perimeters have missing segments, and the front view shows a discontinuous layer.
 It records this
-([`d2.json`](../../skills/llm-3d-print-monitor/examples/d2.json)):
+([`d2.json`](https://github.com/BaratiLab/me-design-skills/blob/main/skills/llm-3d-print-monitor/examples/d2.json)):
 ```bash
 $P record detect d2.json            # failures: under-extrusion, rating 4
 $P record plan p2.json              # → refused: "gather information before planning a fix"
@@ -112,6 +112,6 @@ Two more rules:
   filament) for a person to check.
 - Layer shift, spaghetti or a detached part means **stop and tell the user**.
 
-See [`playbook.md`](../../skills/llm-3d-print-monitor/references/playbook.md) for the defect → lever table.
+See [`playbook.md`](https://github.com/BaratiLab/me-design-skills/blob/main/skills/llm-3d-print-monitor/references/playbook.md) for the defect → lever table.
 
 Cite: Jadhav, Pak & Barati Farimani, *Additive Manufacturing* 114 (2025) 105027.

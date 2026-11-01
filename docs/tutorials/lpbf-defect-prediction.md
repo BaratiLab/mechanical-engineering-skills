@@ -1,6 +1,6 @@
 # Tutorial: AdditiveLLM (L-PBF parameters → defect regime)
 
-**Skill:** [`lpbf-defect-prediction`](../../skills/lpbf-defect-prediction) · **Paper:** P. Pak, A. Barati Farimani, *AdditiveLLM: Large language models predict defects in metals additive manufacturing*, Additive Manufacturing Letters 14 (2025) 100292, [doi:10.1016/j.addlet.2025.100292](https://doi.org/10.1016/j.addlet.2025.100292) · [arXiv:2501.17784](https://arxiv.org/abs/2501.17784) · **Data:** [MeltpoolNet](https://github.com/BaratiLab/MeltpoolNet) (Akbari et al., Additive Manufacturing 55 (2022) 102817)
+**Skill:** [`lpbf-defect-prediction`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/lpbf-defect-prediction) · **Paper:** P. Pak, A. Barati Farimani, *AdditiveLLM: Large language models predict defects in metals additive manufacturing*, Additive Manufacturing Letters 14 (2025) 100292, [doi:10.1016/j.addlet.2025.100292](https://doi.org/10.1016/j.addlet.2025.100292) · [arXiv:2501.17784](https://arxiv.org/abs/2501.17784) · **Data:** [MeltpoolNet](https://github.com/BaratiLab/MeltpoolNet) (Akbari et al., Additive Manufacturing 55 (2022) 102817)
 
 Laser powder bed fusion parts fail in three ways that show up in the melt pool:
 - **Keyholing:** too deep a melt pool traps vapour pores.

@@ -1,6 +1,6 @@
 # Tutorial: CADSmith (text → validated CadQuery)
 
-**Skill:** [`cadsmith-text-to-cad`](../../skills/cadsmith-text-to-cad) · **Paper:** J. Barkley, R. Loghmani, A. Barati Farimani, *CADSmith: Multi-Agent CAD Generation with Programmatic Geometric Validation*, [arXiv:2603.26512](https://arxiv.org/abs/2603.26512)
+**Skill:** [`cadsmith-text-to-cad`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/cadsmith-text-to-cad) · **Paper:** J. Barkley, R. Loghmani, A. Barati Farimani, *CADSmith: Multi-Agent CAD Generation with Programmatic Geometric Validation*, [arXiv:2603.26512](https://arxiv.org/abs/2603.26512)
 
 Five roles (Planner → Coder → Executor → Validator → Refiner) run in two nested loops: up to 3 repairs for execution errors and up to 5 refinements for wrong geometry. Validation combines exact OpenCASCADE kernel measurements with a three-view render judged by an **independent** reviewer. Results from the paper's 100-prompt benchmark: 100% execution rate, median IoU 0.963 (zero-shot 0.809), mean Chamfer distance 0.74 (zero-shot 28.4).
 

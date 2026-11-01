@@ -1,6 +1,6 @@
 # Tutorial: LinkD (target curve → planar linkage)
 
-**Skill:** [`linkage-synthesis`](../../skills/linkage-synthesis) · **Paper:** *LinkD: Autoregressive diffusion for mechanical linkage synthesis*, Barati Farimani Lab, [arXiv:2601.04054](https://arxiv.org/abs/2601.04054)
+**Skill:** [`linkage-synthesis`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/linkage-synthesis) · **Paper:** *LinkD: Autoregressive diffusion for mechanical linkage synthesis*, Barati Farimani Lab, [arXiv:2601.04054](https://arxiv.org/abs/2601.04054)
 
 LinkD designs one-degree-of-freedom planar linkages whose end-effector traces a target curve.
 
