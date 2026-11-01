@@ -1,0 +1,2 @@
+[{"gcode": "M221 S110", "why": "broken infill and perimeters = under-extrusion; +10% flow (max step)"},
+ {"gcode": "M220 S80", "why": "slow to 80% so a partly restricted nozzle can keep up"}]

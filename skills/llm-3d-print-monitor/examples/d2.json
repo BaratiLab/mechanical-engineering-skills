@@ -1,0 +1,1 @@
+{"problems": "Problems found", "observations": ["Infill lines in both letters are broken into short dashes with dark gaps between them", "Perimeters are intact in places but have missing segments", "Front view: current layer is discontinuous along both letters"], "failures": ["under-extrusion"], "rating": 4}

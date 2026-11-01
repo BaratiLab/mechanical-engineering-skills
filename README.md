@@ -1,6 +1,6 @@
 # Mechanical Engineering Design Skills
 
-A collection of 19 agent skills for mechanical design, analysis, simulation, manufacturing, and engineering teaching, including six skills that package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
+A collection of 22 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Nine of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
 Maintained by the Barati Farimani Lab, Carnegie Mellon University.
 
@@ -24,39 +24,56 @@ npx skills add BaratiLab/me-design-skills --list
 ```
 
 
-## Research skills from the lab
+## Skills by category
 
-Each one turns a published method into an agent workflow, with tested scripts, a step-by-step tutorial, and use cases. Start with **[docs/use-cases.md](docs/use-cases.md)**.
+22 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
+9 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
+step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-cases.md)**.
 
-| Skill | Paper | What it does | Tutorial |
+### Design
+
+| Area | Skill | What it does | Paper · Tutorial |
 |---|---|---|---|
-| [`cfd-simulation-setup`](skills/cfd-simulation-setup) | CFD Forge, [arXiv:2610.14104](https://arxiv.org/abs/2610.14104) | OpenFOAM request → case → diagnosis; registered contracts alone decide acceptance | [→](docs/tutorials/cfd-simulation-setup.md) |
-| [`cadsmith-text-to-cad`](skills/cadsmith-text-to-cad) | CADSmith, [arXiv:2603.26512](https://arxiv.org/abs/2603.26512) | Text → CadQuery with kernel-metric + three-view judge validation; CD / F1 / IoU benchmarking | [→](docs/tutorials/cadsmith-text-to-cad.md) |
-| [`query2cad-freecad`](skills/query2cad-freecad) | Query2CAD, [arXiv:2406.00144](https://arxiv.org/abs/2406.00144) | Text → FreeCAD macro with error repair, VQA scoring and caption-driven refinement | [→](docs/tutorials/query2cad-freecad.md) |
-| [`agentscad-fdm-dfam`](skills/agentscad-fdm-dfam) | AgentsCAD, [arXiv:2607.02448](https://arxiv.org/abs/2607.02448) | STEP → overhang analysis → grounded reorientation, teardrops, chamfers → verified STEP | [→](docs/tutorials/agentscad-fdm-dfam.md) |
-| [`image2gcode`](skills/image2gcode) | Image2Gcode, [Addit. Manuf. Lett. 2026](https://doi.org/10.1016/j.addlet.2026.100374) | Photo or sketch → printer-ready G-code for 2D/2.5D parts; Slice-100K keypoints | [→](docs/tutorials/image2gcode.md) |
-| [`llm-mechanical-designer`](skills/llm-mechanical-designer) | LLM Agent as a Mechanical Designer, [arXiv:2404.17525](https://arxiv.org/abs/2404.17525) | LLM ↔ FEM truss design loop with ranked history and optimize/constraint prompts | [→](docs/tutorials/llm-mechanical-designer.md) |
+| CAD from words, sketches, drawings | 🔬 [`cadsmith-text-to-cad`](skills/cadsmith-text-to-cad) | Text → CadQuery, validated with kernel metrics and a three-view judge; CD / F1 / IoU benchmarking | [CADSmith](https://arxiv.org/abs/2603.26512) · [tutorial](docs/tutorials/cadsmith-text-to-cad.md) |
+| | 🔬 [`query2cad-freecad`](skills/query2cad-freecad) | Text → FreeCAD macro with error repair, VQA scoring and caption-driven refinement | [Query2CAD](https://arxiv.org/abs/2406.00144) · [tutorial](docs/tutorials/query2cad-freecad.md) |
+| | [`parametric-part-cad`](skills/parametric-part-cad) | Plain-English part spec → CadQuery script → STEP/STL + preview | |
+| | [`sketch-to-cad`](skills/sketch-to-cad) | Sketch, photo or video frames → dimensioned CAD reconstruction | |
+| | [`drawing-gdt-review`](skills/drawing-gdt-review) | Audits engineering drawings for dimensioning and GD&T errors | |
+| Mechanisms & structures | 🔬 [`linkage-synthesis`](skills/linkage-synthesis) | Target curve → four-/six-bar linkage, built node by node with dyadic and kinematic validation | [LinkD](https://arxiv.org/abs/2601.04054) · [tutorial](docs/tutorials/linkage-synthesis.md) |
+| | 🔬 [`llm-mechanical-designer`](skills/llm-mechanical-designer) | LLM ↔ FEM truss design loop with ranked history | [LLM Mechanical Designer](https://arxiv.org/abs/2404.17525) · [tutorial](docs/tutorials/llm-mechanical-designer.md) |
+| | [`machine-element-sizing`](skills/machine-element-sizing) | Bolts, shafts, bearings, springs, gears, welds, with the work shown and safety factors | |
+| Analysis & simulation | 🔬 [`cfd-simulation-setup`](skills/cfd-simulation-setup) | Request → OpenFOAM case → run → diagnosis; acceptance decided only by registered contracts | [CFD Forge](https://arxiv.org/abs/2610.14104) · [tutorial](docs/tutorials/cfd-simulation-setup.md) |
+| | [`quick-fea`](skills/quick-fea) | Linear static / modal FEA with a required hand-calc sanity check | |
+| | [`tolerance-stackup`](skills/tolerance-stackup) | Worst-case, RSS and Monte Carlo stack-ups with contributor charts | |
+| | [`thermal-fluids-calc`](skills/thermal-fluids-calc) | Pipe pressure drop, heat exchangers (LMTD / ε-NTU), fins; CoolProp properties | |
+| Decisions & documentation | [`material-selection`](skills/material-selection) | Ashby performance indices → ranked shortlist + charts | |
+| | [`design-review-package`](skills/design-review-package) | Requirements, FMEA, BOM cost roll-up and review checklist | |
+| | [`engineering-calc-report`](skills/engineering-calc-report) | Turns calculations into a calc report ready for sign-off | |
+
+### Manufacturing
+
+| Area | Skill | What it does | Paper · Tutorial |
+|---|---|---|---|
+| Design for manufacture | 🔬 [`agentscad-fdm-dfam`](skills/agentscad-fdm-dfam) | STEP → overhang analysis → reorientation, teardrops and chamfers backed by the analysis → verified STEP | [AgentsCAD](https://arxiv.org/abs/2607.02448) · [tutorial](docs/tutorials/agentscad-fdm-dfam.md) |
+| | [`dfm-review`](skills/dfm-review) | DFM review for machining, sheet metal, molding and AM | |
+| Process planning | 🔬 [`image2gcode`](skills/image2gcode) | Photo or sketch → printer-ready G-code for 2D/2.5D parts; Slice-100K keypoints | [Image2Gcode](https://doi.org/10.1016/j.addlet.2026.100374) · [tutorial](docs/tutorials/image2gcode.md) |
+| | 🔬 [`lpbf-defect-prediction`](skills/lpbf-defect-prediction) | Metal L-PBF parameters → keyholing / lack of fusion / balling / none; process maps | [AdditiveLLM](https://doi.org/10.1016/j.addlet.2025.100292) · [tutorial](docs/tutorials/lpbf-defect-prediction.md) |
+| In-process monitoring | 🔬 [`llm-3d-print-monitor`](skills/llm-3d-print-monitor) | Layer-by-layer camera inspection and safety-bounded G-code correction through Klipper/Moonraker; mock printer included | [LLM-3D Print](https://arxiv.org/abs/2408.14307) · [tutorial](docs/tutorials/llm-3d-print-monitor.md) |
+
+### Teaching
+
+| Skill | What it does |
+|---|---|
+| [`worked-problem-generator`](skills/worked-problem-generator) | Textbook-style problems with code-verified solutions |
+| [`mechanics-visuals`](skills/mechanics-visuals) | FBDs, Mohr's circle, stress–strain, S–N, beam diagrams |
+
+Install a whole group by naming its skills, for example manufacturing:
+```bash
+npx skills add BaratiLab/me-design-skills --skill agentscad-fdm-dfam --skill dfm-review --skill image2gcode \
+    --skill lpbf-defect-prediction --skill llm-3d-print-monitor
+```
 
 Run any skill's tests with `python skills/<skill>/tests/*.py`.
-
-## General engineering skills
-
-| Category | Skill | What it does |
-|---|---|---|
-| Design & CAD | [`parametric-part-cad`](skills/parametric-part-cad) | Plain-English part spec → CadQuery script → STEP/STL + preview |
-| | [`sketch-to-cad`](skills/sketch-to-cad) | Sketch, photo, or video frames → dimensioned CAD reconstruction |
-| | [`drawing-gdt-review`](skills/drawing-gdt-review) | Audits engineering drawings for dimensioning and GD&T errors |
-| Analysis & sizing | [`machine-element-sizing`](skills/machine-element-sizing) | Bolts, shafts, bearings, springs, gears, welds — with shown work and safety factors |
-| | [`quick-fea`](skills/quick-fea) | Linear static / modal FEA with a mandatory hand-calc sanity check |
-| | [`tolerance-stackup`](skills/tolerance-stackup) | Worst-case, RSS, and Monte Carlo stack-ups with contributor charts |
-| | [`cfd-simulation-setup`](skills/cfd-simulation-setup) | Request → OpenFOAM case → run → diagnosis, with deterministic acceptance contracts ([CFD Forge](https://arxiv.org/abs/2610.14104)) |
-| | [`thermal-fluids-calc`](skills/thermal-fluids-calc) | Pipe pressure drop, heat exchangers (LMTD / ε-NTU), fins — CoolProp properties |
-| Process & docs | [`dfm-review`](skills/dfm-review) | Design-for-manufacture review for machining, sheet metal, molding, AM |
-| | [`material-selection`](skills/material-selection) | Ashby performance indices → ranked shortlist + charts |
-| | [`design-review-package`](skills/design-review-package) | Requirements, FMEA, BOM cost roll-up, and review checklist |
-| | [`engineering-calc-report`](skills/engineering-calc-report) | Turns calculations into a signed-off-ready calc report |
-| Teaching | [`worked-problem-generator`](skills/worked-problem-generator) | Textbook-style problems with code-verified solutions |
-| | [`mechanics-visuals`](skills/mechanics-visuals) | FBDs, Mohr's circle, stress–strain, S–N, beam diagrams |
 
 ## Dependencies
 
@@ -66,9 +83,10 @@ Skills install Python packages on demand. The full set:
 pip install numpy scipy matplotlib pint CoolProp cadquery pypdf
 # research skills
 pip install trimesh rtree pyvista opencv-python-headless shapely gmsh scikit-fem
+pip install pandas scikit-learn pyarrow joblib pillow   # lpbf-defect-prediction, llm-3d-print-monitor
 ```
 
-External tools: OpenFOAM v11+ (`cfd-simulation-setup` solves), FreeCAD (`query2cad-freecad`; `micromamba create -p ./fc -c conda-forge freecad`).
+External tools: OpenFOAM v11+ (`cfd-simulation-setup` solves), FreeCAD (`query2cad-freecad`; `micromamba create -p ./fc -c conda-forge freecad`), a Klipper + Moonraker printer with cameras (`llm-3d-print-monitor` live mode; its mock printer needs nothing). `lpbf-defect-prediction` downloads the MeltpoolNet data from GitHub on first use.
 
 `quick-fea` uses `gmsh` and `scikit-fem`. `cfd-simulation-setup` needs OpenFOAM Foundation v11+ (v14 tested in the paper) for the solve; its validators, evidence extraction and builders run without it (`python skills/cfd-simulation-setup/tests/test_paper_cases.py`).
 

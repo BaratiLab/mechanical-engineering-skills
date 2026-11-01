@@ -1,0 +1,408 @@
+{
+ "layers": {
+  "2": {
+   "events": [
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "snapshot",
+     "images": {
+      "top": "/tmp/tut/p3d/layer_2/top.jpg",
+      "front": "/tmp/tut/p3d/layer_2/front.jpg"
+     },
+     "occupancy": {
+      "top": 0.0614,
+      "front": 0.0133
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "detect",
+     "problems": "Problems found",
+     "observations": [
+      "Infill lines in both letters are broken into short dashes with dark gaps between them",
+      "Perimeters are intact in places but have missing segments",
+      "Front view: current layer is discontinuous along both letters"
+     ],
+     "failures": [
+      "under-extrusion"
+     ],
+     "rating": 4
+    },
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "query",
+     "objects": [
+      "extruder",
+      "gcode_move",
+      "firmware_retraction"
+     ],
+     "result": {
+      "extruder": {
+       "temperature": 209.7,
+       "target": 210.0,
+       "pressure_advance": 0.04,
+       "smooth_time": 0.04,
+       "can_extrude": true
+      },
+      "gcode_move": {
+       "speed_factor": 1.0,
+       "extrude_factor": 1.0,
+       "speed": 60.0,
+       "homing_origin": [
+        0,
+        0,
+        0.0,
+        0
+       ],
+       "absolute_coordinates": true,
+       "absolute_extrude": false
+      },
+      "firmware_retraction": {
+       "retract_length": 0.8,
+       "retract_speed": 35.0,
+       "unretract_extra_length": 0.0,
+       "unretract_speed": 25.0
+      }
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "plan",
+     "items": [
+      {
+       "gcode": "M221 S110",
+       "why": "broken infill and perimeters = under-extrusion; +10% flow (max step)"
+      },
+      {
+       "gcode": "M220 S80",
+       "why": "slow to 80% so a partly restricted nozzle can keep up"
+      }
+     ]
+    },
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "apply",
+     "live": true,
+     "results": [
+      {
+       "gcode": "M221 S110",
+       "allowed": true,
+       "reason": "ok",
+       "sent": true,
+       "response": {
+        "result": "ok"
+       }
+      },
+      {
+       "gcode": "M220 S80",
+       "allowed": true,
+       "reason": "ok",
+       "sent": true,
+       "response": {
+        "result": "ok"
+       }
+      }
+     ],
+     "state_after": {
+      "state": "paused",
+      "layer": 2,
+      "total_layers": 8,
+      "filename": "ME_letters_monitored.gcode",
+      "speed_factor": 0.8,
+      "extrude_factor": 1.1,
+      "z_offset": 0.0,
+      "hotend_temp": 209.7,
+      "hotend_target": 210.0,
+      "pressure_advance": 0.04,
+      "bed_temp": 59.8,
+      "bed_target": 60.0,
+      "fan": 1.0,
+      "retract_length": 0.8,
+      "retract_speed": 35.0,
+      "hotend_target_start": 210.0
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:43",
+     "stage": "resume",
+     "live": true
+    }
+   ],
+   "state_at_pause": {
+    "state": "paused",
+    "layer": 2,
+    "total_layers": 8,
+    "filename": "ME_letters_monitored.gcode",
+    "speed_factor": 1.0,
+    "extrude_factor": 1.0,
+    "z_offset": 0.0,
+    "hotend_temp": 209.7,
+    "hotend_target": 210.0,
+    "pressure_advance": 0.04,
+    "bed_temp": 59.8,
+    "bed_target": 60.0,
+    "fan": 1.0,
+    "retract_length": 0.8,
+    "retract_speed": 35.0
+   }
+  },
+  "3": {
+   "events": [
+    {
+     "t": "2026-11-01T08:42:44",
+     "stage": "snapshot",
+     "images": {
+      "top": "/tmp/tut/p3d/layer_3/top.jpg",
+      "front": "/tmp/tut/p3d/layer_3/front.jpg"
+     },
+     "occupancy": {
+      "top": 0.1072,
+      "front": 0.0221
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:52",
+     "stage": "detect",
+     "problems": "Problems found",
+     "observations": [
+      "Infill is now mostly continuous, much better than layer 2",
+      "Short dark gaps remain, concentrated in the left stroke of M and the spine of E",
+      "Front view: layer is nearly continuous"
+     ],
+     "failures": [
+      "mild under-extrusion"
+     ],
+     "previous_solution": "partly worked: occupancy 0.061 -> 0.107",
+     "rating": 7
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "query",
+     "objects": [
+      "extruder",
+      "gcode_move"
+     ],
+     "result": {
+      "extruder": {
+       "temperature": 209.7,
+       "target": 210.0,
+       "pressure_advance": 0.04,
+       "smooth_time": 0.04,
+       "can_extrude": true
+      },
+      "gcode_move": {
+       "speed_factor": 0.8,
+       "extrude_factor": 1.1,
+       "speed": 60.0,
+       "homing_origin": [
+        0,
+        0,
+        0.0,
+        0
+       ],
+       "absolute_coordinates": true,
+       "absolute_extrude": false
+      }
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "plan",
+     "items": [
+      {
+       "gcode": "M221 S115",
+       "why": "remaining gaps; +5% flow to the 115% ceiling"
+      },
+      {
+       "gcode": "M104 S220",
+       "why": "+10 C raises melt throughput through the restriction (PLA window 190-230 C)"
+      },
+      {
+       "gcode": "SET_GCODE_OFFSET Z_ADJUST=-0.2",
+       "why": "test: should be blocked (step > 0.05 mm)"
+      }
+     ]
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "apply",
+     "live": true,
+     "results": [
+      {
+       "gcode": "M221 S115",
+       "allowed": true,
+       "reason": "ok",
+       "sent": false
+      },
+      {
+       "gcode": "M104 S220",
+       "allowed": true,
+       "reason": "ok",
+       "sent": false
+      },
+      {
+       "gcode": "SET_GCODE_OFFSET Z_ADJUST=-0.2",
+       "allowed": false,
+       "reason": "Z_ADJUST must be within \u00b10.05 mm",
+       "sent": false
+      }
+     ],
+     "state_after": {
+      "state": "paused",
+      "layer": 3,
+      "total_layers": 8,
+      "filename": "ME_letters_monitored.gcode",
+      "speed_factor": 0.8,
+      "extrude_factor": 1.1,
+      "z_offset": 0.0,
+      "hotend_temp": 209.7,
+      "hotend_target": 210.0,
+      "pressure_advance": 0.04,
+      "bed_temp": 59.8,
+      "bed_target": 60.0,
+      "fan": 1.0,
+      "retract_length": 0.8,
+      "retract_speed": 35.0,
+      "hotend_target_start": 210.0
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "plan",
+     "items": [
+      {
+       "gcode": "M221 S115",
+       "why": "remaining gaps; +5% flow to the 115% ceiling"
+      },
+      {
+       "gcode": "M104 S220",
+       "why": "+10 C raises melt throughput through the restriction (PLA window 190-230 C)"
+      }
+     ]
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "apply",
+     "live": true,
+     "results": [
+      {
+       "gcode": "M221 S115",
+       "allowed": true,
+       "reason": "ok",
+       "sent": true,
+       "response": {
+        "result": "ok"
+       }
+      },
+      {
+       "gcode": "M104 S220",
+       "allowed": true,
+       "reason": "ok",
+       "sent": true,
+       "response": {
+        "result": "ok"
+       }
+      }
+     ],
+     "state_after": {
+      "state": "paused",
+      "layer": 3,
+      "total_layers": 8,
+      "filename": "ME_letters_monitored.gcode",
+      "speed_factor": 0.8,
+      "extrude_factor": 1.15,
+      "z_offset": 0.0,
+      "hotend_temp": 219.7,
+      "hotend_target": 220.0,
+      "pressure_advance": 0.04,
+      "bed_temp": 59.8,
+      "bed_target": 60.0,
+      "fan": 1.0,
+      "retract_length": 0.8,
+      "retract_speed": 35.0,
+      "hotend_target_start": 210.0
+     }
+    },
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "resume",
+     "live": true
+    }
+   ],
+   "state_at_pause": {
+    "state": "paused",
+    "layer": 3,
+    "total_layers": 8,
+    "filename": "ME_letters_monitored.gcode",
+    "speed_factor": 0.8,
+    "extrude_factor": 1.1,
+    "z_offset": 0.0,
+    "hotend_temp": 209.7,
+    "hotend_target": 210.0,
+    "pressure_advance": 0.04,
+    "bed_temp": 59.8,
+    "bed_target": 60.0,
+    "fan": 1.0,
+    "retract_length": 0.8,
+    "retract_speed": 35.0
+   }
+  },
+  "4": {
+   "events": [
+    {
+     "t": "2026-11-01T08:42:53",
+     "stage": "snapshot",
+     "images": {
+      "top": "/tmp/tut/p3d/layer_4/top.jpg",
+      "front": "/tmp/tut/p3d/layer_4/front.jpg"
+     },
+     "occupancy": {
+      "top": 0.1182,
+      "front": 0.03
+     }
+    },
+    {
+     "t": "2026-11-01T08:43:01",
+     "stage": "detect",
+     "problems": "No problems found",
+     "observations": [
+      "Solid, continuous infill in both letters; sharp perimeters",
+      "Front view: continuous layer"
+     ],
+     "failures": [],
+     "previous_solution": "worked: occupancy 0.107 -> 0.118, gaps gone",
+     "rating": 9
+    },
+    {
+     "t": "2026-11-01T08:43:01",
+     "stage": "resume",
+     "live": true
+    }
+   ],
+   "state_at_pause": {
+    "state": "paused",
+    "layer": 4,
+    "total_layers": 8,
+    "filename": "ME_letters_monitored.gcode",
+    "speed_factor": 0.8,
+    "extrude_factor": 1.15,
+    "z_offset": 0.0,
+    "hotend_temp": 219.7,
+    "hotend_target": 220.0,
+    "pressure_advance": 0.04,
+    "bed_temp": 59.8,
+    "bed_target": 60.0,
+    "fan": 1.0,
+    "retract_length": 0.8,
+    "retract_speed": 35.0
+   }
+  }
+ },
+ "start": {
+  "hotend_target": 210.0,
+  "bed_target": 60.0,
+  "speed_factor": 1.0,
+  "extrude_factor": 1.0
+ },
+ "current": 4
+}
