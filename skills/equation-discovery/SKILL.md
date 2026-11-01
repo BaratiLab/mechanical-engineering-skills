@@ -21,8 +21,12 @@ rehearsal are in `references/paper-notes.md`.
        --target stress --inputs strain,temp --desc "stress in an Al rod vs strain and temperature"
    python scripts/eqdisc.py fetch --problem stressstrain --dir run/        # or an LLM-SR benchmark
    ```
-   - No OOD split? Hold out the highest temperature, load or speed range yourself. Extrapolation is
-     where equations beat black boxes, so test it.
+   - `--test-id` is the **validation** split used for feedback and selection. `--test-ood` is the
+     **final test**: it is stored but hidden from `eval`, `prompt`, `top` and `pareto` until you run
+     `final` once on the frozen equation.
+   - Say what the final split tests. LLM-SR's stress–strain set holds out one temperature (0.667)
+     inside the training range (0.067–1.0): that is interpolation to an unseen condition, not
+     extrapolation. To test extrapolation, hold out the highest temperature, load or speed range.
 2. **Get the baselines** with `baseline --dir run/` (linear, cubic polynomial, sparse cubic). They
    set the error and extrapolation bar.
 3. **Loop for about 5–20 proposals:**
@@ -36,11 +40,12 @@ rehearsal are in `references/paper-notes.md`.
    - Guard domains: `np.abs` before fractional powers, `np.exp` with bounded arguments, no division
      by inputs that cross zero.
 4. **Choose** with `pareto --dir run/ --out front.png`:
-   - Prefer the **simplest** program on the train Pareto front whose **OOD** error is low.
+   - Prefer the **simplest** program on the train Pareto front whose **validation** error is low.
    - A small gain in train NMSE bought with five more params is usually overfitting.
 5. **Report:**
    - the equation with fitted constants (`top --k 1` gives `params`, indexed as `params_used`);
-   - NMSE on train, ID and OOD;
+   - NMSE on train and validation, then `final --id N` for the final-test NMSE (run once, after
+     freezing the equation);
    - the physical reading of each term;
    - what it can't explain.
 

@@ -16,7 +16,8 @@ LLM sees as in-context examples for its next proposals. Here you are the LLM; th
   baseline python eqdisc.py baseline --dir run/                    polynomial / sparse-regression baselines for context
 
 A skeleton file defines `def equation(<inputs...>, params): return ...` using numpy as np; params has MAX_NPARAMS
-entries (default 10). Scores: NMSE = mean((y - yhat)^2) / var(y) on train, test-ID and test-OOD (LLM-SR's metric).
+entries (default 10). Scores: NMSE = mean((y - yhat)^2) / var(y) on train, validation (test-ID) and a final test
+(test-OOD, LLM-SR's held-out split) that stays hidden until `final` is run on the chosen equation.
 """
 import argparse
 import ast
@@ -184,9 +185,33 @@ def buffer(d):
     return [json.loads(l) for l in open(os.path.join(d, "buffer.jsonl")) if l.strip()]
 
 
+FINAL = "test_ood"   # final hidden test: stored, but not shown until `final` is run on a frozen equation
+
+
+def hide_final(r):
+    r = dict(r); r["nmse"] = {k: v for k, v in r["nmse"].items() if k != FINAL}
+    return r
+
+
 def top(d, k=10, key="train"):
+    if key == FINAL:
+        raise SystemExit("the final test is hidden during search; select by train or test_id, then run `final --id N`")
     b = [r for r in buffer(d) if r["nmse"].get(key) is not None]
-    return sorted(b, key=lambda r: (r["nmse"][key], r["complexity"]))[:k]
+    return [hide_final(r) for r in sorted(b, key=lambda r: (r["nmse"][key], r["complexity"]))[:k]]
+
+
+def final(d, rid):
+    """Reveal the final-test NMSE for one frozen equation, once, and log it."""
+    log = os.path.join(d, "final.json")
+    if os.path.exists(log):
+        prev = json.load(open(log))
+        if prev["id"] != rid:
+            print(f"warning: the final test was already used for #{prev['id']}; a second look is no longer an untouched test",
+                  file=sys.stderr)
+    r = next(x for x in buffer(d) if x["id"] == rid)
+    out = {"id": rid, "nmse": r["nmse"], "n_params": r["n_params"], "params": r["params"], "src": r["src"].strip()}
+    json.dump({"id": rid, "nmse": r["nmse"]}, open(log, "w"))
+    return out
 
 
 def prompt(d, k=4):
@@ -209,7 +234,8 @@ def prompt(d, k=4):
              f"# params: up to {meta['max_nparams']} constants, fitted by BFGS. Lower NMSE is better; prefer simpler forms.", ""]
     for i, r in enumerate(picks):
         body = r["src"].replace("def equation(", f"def equation_v{i}(")
-        lines += [f"# v{i}: train NMSE {r['nmse']['train']:.3e}" + (f", OOD NMSE {r['nmse'].get('test_ood'):.3e}" if r["nmse"].get("test_ood") is not None else "")
+        # feedback uses train and validation (test_id) only; the final test (test_ood) is never shown
+        lines += [f"# v{i}: train NMSE {r['nmse']['train']:.3e}" + (f", validation NMSE {r['nmse'].get('test_id'):.3e}" if r["nmse"].get("test_id") is not None else "")
                   + f", {r['n_params']} params, complexity {r['complexity']}", body.strip(), ""]
     lines += [f"def equation_v{len(picks)}({sig}, params):", f'    """Improved version of equation_v{max(len(picks) - 1, 0)}."""']
     return "\n".join(lines)
@@ -226,7 +252,7 @@ def pareto(d, out=None):
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(figsize=(6, 4))
-        for key, mk, lab in (("train", "o", "train"), ("test_id", "s", "test ID"), ("test_ood", "^", "test OOD")):
+        for key, mk, lab in (("train", "o", "train"), ("test_id", "s", "validation")):
             pts = [(r["complexity"], r["nmse"][key]) for r in b if r["nmse"].get(key)]
             if pts:
                 ax.scatter(*zip(*pts), marker=mk, alpha=0.6, label=lab)
@@ -235,7 +261,7 @@ def pareto(d, out=None):
             ax.annotate(f"#{r['id']}", (r["complexity"], r["nmse"]["train"]), fontsize=7, xytext=(3, 3), textcoords="offset points")
         ax.set_yscale("log"); ax.set_xlabel("complexity (AST nodes)"); ax.set_ylabel("NMSE"); ax.legend(fontsize=7)
         fig.tight_layout(); fig.savefig(out, dpi=140)
-    return [{"id": r["id"], "complexity": r["complexity"], "nmse": r["nmse"], "n_params": r["n_params"], "note": r["note"]} for r in front]
+    return [{"id": r["id"], "complexity": r["complexity"], "nmse": hide_final(r)["nmse"], "n_params": r["n_params"], "note": r["note"]} for r in front]
 
 
 def baseline(d, degree=3, alpha=1e-6):
@@ -271,9 +297,12 @@ def main():
     s = sub.add_parser("eval"); s.add_argument("--dir", required=True); s.add_argument("--file"); s.add_argument("--src")
     s.add_argument("--note", default=""); s.add_argument("--restarts", type=int, default=4)
     s = sub.add_parser("top"); s.add_argument("--dir", required=True); s.add_argument("--k", type=int, default=10)
-    s.add_argument("--by", default="train", choices=["train", "test_id", "test_ood"])
+    s.add_argument("--by", default="train", choices=["train", "test_id"])
+    s = sub.add_parser("final", help="reveal the hidden final-test score of one frozen equation")
+    s.add_argument("--dir", required=True); s.add_argument("--id", type=int, required=True)
     s = sub.add_parser("pareto"); s.add_argument("--dir", required=True); s.add_argument("--out")
     s = sub.add_parser("baseline"); s.add_argument("--dir", required=True)
+    s.add_argument("--final", action="store_true", help="also show baselines on the final test (after selection)")
     a = ap.parse_args()
     if a.cmd == "init":
         r = init(a.dir, a.train, a.target, a.inputs.split(",") if a.inputs else None, a.test_id, a.test_ood, a.desc)
@@ -283,13 +312,17 @@ def main():
         print(prompt(a.dir, a.k)); return
     elif a.cmd == "eval":
         src = open(a.file).read() if a.file else textwrap.dedent(a.src)
-        r = evaluate(a.dir, src, a.note, a.restarts); r.pop("src")
+        r = hide_final(evaluate(a.dir, src, a.note, a.restarts)); r.pop("src")
     elif a.cmd == "top":
         r = [{k: v for k, v in x.items() if k != "src"} | {"src": x["src"].strip()} for x in top(a.dir, a.k, a.by)]
     elif a.cmd == "pareto":
         r = pareto(a.dir, a.out)
+    elif a.cmd == "final":
+        r = final(a.dir, a.id)
     else:
         r = baseline(a.dir)
+        if not a.final:
+            r = {m: {k: v for k, v in sc.items() if k != FINAL} for m, sc in r.items()}
     print(json.dumps(r, indent=1))
 
 

@@ -67,6 +67,7 @@
   "length_mm": 1150,
   "stability_cal": 1.52,
   "openrocket_apogee_m": 570.1,
-  "measured_apogee_m": 479
+  "measured_apogee_m": 479,
+  "reconstruction_note": "Approximate reconstruction from the paper's reported dimensions and masses. Parameters not reported in the paper (e.g. fin span) were set or sized by this skill, so agreement on those quantities is by construction; the stored OpenRocket apogee/velocity are the comparison targets."
  }
 }

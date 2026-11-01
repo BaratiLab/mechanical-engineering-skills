@@ -49,6 +49,11 @@ python scripts/rocket.py fins examples/hp1_v38.json --target 1.26 --out sized.js
 ```
 widened the fin span to 162 mm, which is RocketSmith's *stability-analysis* skill.
 
+**What the example is and isn't.** The fin span in `hp1_v38.json` is not taken from the paper: it
+was sized with `fins` to reach the paper's reported 1.26 cal. The stability match in the table is
+therefore by construction. The flight comparison below, against the paper's OpenRocket numbers, is
+the check that was not tuned.
+
 ## 2. Predict the flight and compare with the paper
 ```bash
 python scripts/rocket.py simulate examples/hp1_v38.json --cd 0.45 --plot hp1.png

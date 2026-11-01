@@ -61,13 +61,21 @@ It returns ranked candidates, the levers each one changes, and the warnings from
 batch O's warping). **The agent picks one or two levers and explains the physics**, and the user
 approves before printing.
 
-**Replay check on the manual PA12 GF history** (the suggester only saw the batches up to each point):
+**Replay check on the manual PA12 GF history.** At each point the suggester saw only the batches up
+to that point:
 
-| Batches seen | Suggestion | What actually happened |
+| Batches seen | One lever in the suggestions | What actually happened |
 |---|---|---|
-| A–C | Overlap 25 → 50% | That was batch D's real breakthrough |
-| A–E | Fill 28 mJ/mm | Batch I |
+| A–C | Overlap 25 → 50% | Batch D also moved to 50% overlap |
+| A–E | Fill 28 mJ/mm | Used later, in batch I (not the next batch, F) |
 | A–G | Fill 30 mJ/mm | Between I and J, the best reproducible region |
+
+Read this as **directional agreement on single levers, not reproduction of the operators' choices.**
+Over 11 chronological decisions (A–C through A–M), none of the top-3 suggestions matched the next
+batch on all three settings (fill, overlap and surface temperature). The replay is also
+retrospective: suggested batches that were never printed have no outcome, so it can't show that
+following the suggester would have been better. Use it to propose the next step, and judge that
+step by the printed result.
 
 ## Rules
 - Datasheet targets assume the manufacturer's machine and atmosphere. Say when a target can't be

@@ -40,20 +40,22 @@ Mechanical engineers rely on dozens of specialized tools---CAD kernels, finite-e
 solvers, flight simulators, process maps, thermodynamic databases and research models---each with
 its own interface, installation and learning curve. We present \emph{Mechanical Engineering
 Skills}, an open library of 32 agent skills for design, analysis and manufacturing that makes this
-breadth available through a single conversation in Claude, by text or by voice. Each skill is a
-folder that pairs concise operating instructions with tested scripts: the language model
-understands the request, selects the skill and orchestrates the work, while deterministic tools do
-the computation, and every result is returned with the check that supports it. Users do not need
-to learn each tool, train a model, or download and run models on their own computer; skills are
-loaded only when a request needs them and install with one command. Nineteen skills package
-published or preprint research from our laboratory, spanning text-to-CAD, linkage synthesis, CFD
-case setup, stress-field and lattice surrogates, equation discovery, metal and polymer
-additive-manufacturing process planning, and in-process monitoring. We describe the skill format,
-the design principles, the procedure we used to turn a paper into a reliable skill, and case
-studies in which the skills reproduce the source papers: rocket apogee within 4\% of OpenRocket,
-exact lattice homogenization on solvable cases, an anisotropic lattice designed to a target
-stiffness in two minutes on a laptop, and process suggestions that match operators' choices batch
-by batch. The library is available at
+breadth available through a single conversation, by text or, in hosts that support it, by voice.
+Each skill packages operating instructions, executable tools and verification procedures: the
+language model understands the request, selects the skill and coordinates the workflow, while
+deterministic tools do the computation and results are returned with the checks that support them.
+For the default workflows, users do not need to learn each tool's interface, train a model, or run
+a model on their own computer; skills load only when a request needs them and install with one
+command. Nineteen skills adapt published or preprint research from our laboratory, spanning
+text-to-CAD, linkage synthesis, CFD case setup, stress-field and lattice surrogates, equation
+discovery, additive-manufacturing process planning and in-process monitoring; 13 cover core
+engineering and teaching tasks. We describe the skill format, the design principles and a procedure
+for translating research into usable workflows. Five case studies, each with an explicit evidence
+scope and an independent rerun, show exact analytical agreement for lattice homogenization, rocket
+apogee within 4\% of stored OpenRocket references, a reproduced equation fit that is nine times more
+accurate than a cubic polynomial at an unseen temperature, and a porosity-monitoring pipeline
+rehearsed end to end. A controlled comparison of agents with and without skills is left to future
+work. The library is available at
 \url{https://github.com/BaratiLab/mechanical-engineering-skills}.
 \end{abstract}
 
@@ -80,7 +82,7 @@ it, followed by instructions---plus any scripts and reference files the instruct
 agent sees only the one-line descriptions until a task matches, then loads the instructions, and
 reads deeper files or runs scripts only when needed (\emph{progressive disclosure}). Skills are
 portable across Claude Code, Claude.ai and other agents that adopted the format, and they are
-installed with a single command.
+installed with a single command. Numerical packages, external solvers and any model weights are installed separately (\S\ref{sec:access}).
 
 \begin{figure}[t]
   \centering
@@ -91,7 +93,8 @@ installed with a single command.
   bundles instructions (\texttt{SKILL.md}), tested scripts that do the computation, and checks.
   The results---CAD models, simulations, process plans, designs and reports---come back with the
   evidence that supports them. Nineteen skills package research papers from our laboratory. No
-  per-tool training or locally hosted model is required.}
+  per-tool training or locally hosted model is required for the default workflows; voice input and
+  execution depend on the host and the installed tools.}
   \label{fig:concept}
 \end{figure}
 
@@ -103,13 +106,14 @@ skills (Fig.~\ref{fig:concept}, Table~\ref{tab:library}). Our contributions are:
       (machine-element sizing, FEA with hand checks, tolerance stack-ups, material selection,
       design reviews and teaching aids).
 \item \textbf{Design principles} for engineering skills: tools compute and the model orchestrates;
-      every number carries its check; the paper's protocol is reproduced but its weaknesses are
-      corrected and declared; and the skill states the boundary of its validity.
+      consequential numbers are tied to explicit checks; changes to a source method are declared;
+      and the skill states the boundary of its validity.
 \item \textbf{Access without expertise in each tool}: the whole library is reachable by text or
       voice in one conversation, without learning tool interfaces, training models or running
       models locally (\S\ref{sec:access}).
-\item \textbf{A procedure for turning a paper into a skill}, applied to 19 papers, with case
-      studies that reproduce their key results.
+\item \textbf{A procedure for turning a paper into a skill}, applied to 19 papers, with five
+      case studies whose evidence scope---analytical check, reference comparison, adaptation or
+      synthetic rehearsal---is stated explicitly and confirmed by an independent rerun.
 \end{enumerate}
 
 
@@ -151,8 +155,8 @@ such models with classical references---Rosenthal's moving-source solution~\cite
 Barrowman's stability method~\cite{barrowman1967}, open-source solvers~\cite{weller1998openfoam,niskanen2009openrocket},
 computational thermodynamics~\cite{andersson2002thermocalc}, cellular-solid
 scaling~\cite{gibson1997cellular,alketan2019tpms}, numerical homogenization~\cite{dong2019homo3d}
-and Bayesian optimization~\cite{jones1998ego}---so that every learned prediction can be checked
-against physics.
+and Bayesian optimization~\cite{jones1998ego}---so that learned predictions can be checked against
+physics wherever the assumptions are comparable.
 
 % ------------------------------------------------------------------------------------------------
 \section{Skills as a unit of engineering capability}
@@ -212,7 +216,7 @@ periodic voxel homogenizer for lattices, a plane-stress Q4 finite-element solver
 stability and one-dimensional flight simulator for rockets, a Rosenthal melt-pool solver, an
 SQLite build log with Gaussian-process suggestions for selective laser sintering, and validators
 for OpenFOAM cases. Each research skill also ships a test suite (\texttt{tests/}) and a tutorial
-on the project website that walks through the paper's main experiment with real outputs.
+on the project website with executable examples and a statement of where their data come from.
 
 % ------------------------------------------------------------------------------------------------
 % ------------------------------------------------------------------------------------------------
@@ -257,8 +261,17 @@ the user's project. Training the larger research models remains possible for use
 but it is never required to get an answer.
 
 
+\paragraph{What still has to be in place.} The installation command copies skill folders; it does
+not install or license every underlying tool. Numerical scripts need Python packages such as NumPy
+and SciPy; CAD workflows can need CadQuery or FreeCAD, CFD solves need OpenFOAM, thermodynamic
+calculations can need a licensed database, and live monitoring needs supported printer hardware.
+Where a tool is missing, skills fall back to validators, analytical alternatives or rehearsal data
+and say so. Voice is supplied by the host, so a spoken request reaches the full workflow only where
+the host also gives the agent access to installed skills and code execution.
+
 Table~\ref{tab:usecases} lists representative requests, spoken or typed, with the skills the agent
-chains and what it returns. In each case the user describes the engineering goal; the choice of
+chains and what it is designed to return; it illustrates intended use rather than reporting a
+controlled evaluation. In each case the user describes the engineering goal; the choice of
 tools, their inputs and the checks are handled by the skills.
 
 \begin{table}[p]
@@ -282,13 +295,13 @@ tools, their inputs and the checks are handled by the skills.
 \addlinespace[8pt]
 \emph{``Design a lattice infill 2.5$\times$ stiffer vertically, as light as possible.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/lattice-inverse-design.pdf}}\hspace{5pt}{\footnotesize\texttt{lattice-inverse-design}}\end{tabular} & Cell choice, full stiffness matrix, weakest-direction modulus and a tiled STL \\
 \addlinespace[8pt]
-\emph{``Will 280~W at 900~mm/s keyhole on Ti-6Al-4V?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/lpbf-defect-prediction.pdf}}\hspace{5pt}{\footnotesize\texttt{lpbf-defect-prediction}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/meltpool-geometry.pdf}}\hspace{5pt}{\footnotesize\texttt{meltpool-geometry}}\end{tabular} & Predicted regime, melt-pool size and a process map marking the safe window \\
+\emph{``Will 280~W at 900~mm/s keyhole on Ti-6Al-4V?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/lpbf-defect-prediction.pdf}}\hspace{5pt}{\footnotesize\texttt{lpbf-defect-prediction}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/meltpool-geometry.pdf}}\hspace{5pt}{\footnotesize\texttt{meltpool-geometry}}\end{tabular} & Predicted regime, melt-pool size and a process map marking a candidate operating window \\
 \addlinespace[8pt]
 \emph{``Layer 140 looks odd on the camera---what is wrong and what should I change?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/llm-3d-print-monitor.pdf}}\hspace{5pt}{\footnotesize\texttt{llm-3d-print-monitor}}\end{tabular} & Diagnosis from the layer image and bounded G-code corrections for approval \\
 \addlinespace[8pt]
 \emph{``Which layers of yesterday's build should go to CT first?''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/thermal-porosity.pdf}}\hspace{5pt}{\footnotesize\texttt{thermal-porosity}}\end{tabular} & Per-layer pore counts and maps from the pyrometry, ranked for inspection \\
 \addlinespace[8pt]
-\emph{``Find a law for this stress--strain data that still works at higher strain.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/equation-discovery.pdf}}\hspace{5pt}{\footnotesize\texttt{equation-discovery}}\end{tabular} & An interpretable equation with in-domain and out-of-domain error \\
+\emph{``Find a law for this stress--strain data that also holds at a temperature I haven't tested.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/equation-discovery.pdf}}\hspace{5pt}{\footnotesize\texttt{equation-discovery}}\end{tabular} & An interpretable equation, with error on a validation split and a final held-out test \\
 \addlinespace[8pt]
 \emph{``Give my students three Mohr's-circle problems with worked solutions.''} & \begin{tabular}[c]{@{}l@{}}\raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/worked-problem-generator.pdf}}\hspace{5pt}{\footnotesize\texttt{worked-problem-generator}} \\[5pt] \raisebox{-0.38\height}{\includegraphics[height=0.75cm]{figures/icons/mechanics-visuals.pdf}}\hspace{5pt}{\footnotesize\texttt{mechanics-visuals}}\end{tabular} & Problems, code-verified solutions and figures \\
 \bottomrule
@@ -300,51 +313,53 @@ tools, their inputs and the checks are handled by the skills.
 \fbox{\begin{minipage}{0.94\textwidth}\small
 \textbf{Engineer (voice):} \emph{``I need a lattice infill for a 10 mm cell that is about two and a
 half times stiffer vertically than sideways, as light as possible, printed in PLA.''}\\[4pt]
-\textbf{Agent:} loads \skill{lattice-inverse-design}; asks one question (minimum wall the printer
-can hold); converts the target to $E_1=E_2\approx0.06\,E_s$, $E_3\approx0.15\,E_s$; searches
-homogenized cells and refines thickness; re-checks the best cell at higher resolution.\\[4pt]
+\textbf{Agent:} loads \skill{lattice-inverse-design}; asks for the minimum printable wall and the
+absolute stiffness needed. The engineer confirms $E_1=E_2\approx0.06\,E_s$ and $E_3\approx0.15\,E_s$
+with printed $E_s=3.5$~GPa; the agent searches homogenized cells, refines thickness and re-checks the
+best cell at higher resolution.\\[4pt]
 \textbf{Agent (reply):} \emph{``A gyroid--diamond hybrid with two periods sideways gives
 $E_3/E_1 = 2.6$ at 26\% density (about 0.2 and 0.5~GPa in PLA). Its weakest direction is still
 $0.057\,E_s$, so it does not go soft off-axis. The tiled $3\times3\times3$ STL is attached.''}
 \end{minipage}}
-\caption{A typical exchange. The engineer names the goal; the skill supplies the procedure, the
-computation and the check. No tool-specific input or local model is needed.}
+\caption{An illustrative exchange based on the lattice case study (\S\ref{sec:cases}). The engineer
+names the goal; the skill supplies the procedure, the computation and the check. A stiffness ratio
+alone does not fix a design, so the agent asks for absolute stiffness and the printable wall; the
+search returns the best cell found, not a proven global minimum weight.}
 \label{fig:dialogue}
 \end{figure}
 
 \section{Design principles}
 \label{sec:principles}
 
-\paragraph{P1. The model orchestrates; tools compute.} Every number a user might act on is
-produced by code, never by the model's arithmetic. RocketSmith~\cite{pak2026rocketsmith} reached
-the same conclusion after flying four agent-designed rockets; we apply it library-wide. The model
-remains responsible for what it is good at: eliciting requirements, choosing a method, chaining
-tools, and explaining results.
+\paragraph{P1. The model orchestrates; tools compute.} Instructions require consequential numbers
+to come from executable calculations with declared inputs and units, never from the model's own
+arithmetic. RocketSmith~\cite{pak2026rocketsmith} reached the same conclusion after flying four
+agent-designed rockets; we apply it library-wide. The model remains responsible for what it is good
+at: eliciting requirements, choosing a method, chaining tools and explaining results.
 
 \paragraph{P2. Every result carries its check.} Skills return the evidence for a result alongside
 it: a hand calculation for an FEA run, the exact laminate solution before trusting a lattice
 homogenization, re-simulation of a surrogate's best candidate, a kernel validity and volume check
-after a CAD edit. Where a published method used a learned scorer for acceptance (e.g.\ a surrogate
-predicting a generated lattice's modulus), the skill uses the physics model for acceptance and
-keeps the learned model for guidance.
+after a CAD edit. Where a published method used a learned scorer for acceptance, the skill accepts
+on the physics model and keeps the learned model for guidance. If a check fails or cannot run, the
+result is reported as unverified, with its inputs, assumptions and software versions. Agreement
+between tools that share assumptions is treated as a consistency check, not as physical validation.
 
-\paragraph{P3. Reproduce the paper, then fix what would mislead a user.} Each research skill
-implements the paper's protocol so that its headline numbers can be reproduced, and then changes
-defaults where the original choice would mislead a practitioner, for example by checking units on
-load or by accepting generated designs only after re-simulation. Every deviation is listed in the
-skill's paper notes with the reason and the evidence.
+\paragraph{P3. Distinguish reproduction from adaptation.} A research skill records which parts keep
+the source protocol, which use a replacement model and which have only been exercised on synthetic
+data, with the reason for every change to defaults, acceptance criteria or learned components. A
+working implementation is not, by itself, a reproduction of a paper's headline accuracy.
 
 \paragraph{P4. State the boundary.} Skills say what they do not do: elastic homogenization is not
 crash performance; a flight simulation is a design check, not a launch approval; a defect
 classifier trained on one machine family is not a process qualification. These statements live in
 the instructions so the agent repeats them at the point of use.
 
-\paragraph{P5. Ask once, then act.} Instructions list the few inputs that change the answer (a
-material's printed modulus, minimum wall thickness, certification level) and sensible defaults for
-the rest, so that the agent asks one focused question rather than many generic ones.
+\paragraph{P5. Ask for the inputs that matter, then act.} Instructions name the inputs that change
+the engineering decision---printed modulus, load cases, minimum wall thickness, certification
+level---and give defaults for the rest, so the agent asks a few grouped questions rather than many
+generic ones, and asks again only when a new ambiguity would change the result.
 
-% ------------------------------------------------------------------------------------------------
-% ------------------------------------------------------------------------------------------------
 \section{The library}
 \label{sec:library}
 
@@ -358,8 +373,8 @@ skills for teaching.
 {\small
 \begin{longtable}{@{}>{\centering\arraybackslash}m{1.25cm} >{\raggedright\arraybackslash}m{4.5cm} >{\raggedright\arraybackslash}m{8.3cm} >{\centering\arraybackslash}m{1.1cm}@{}}
 \caption{The skill library. Every skill is installed with one command and used by asking for the
-result in plain language; the agent selects the skill from its description. A citation marks the
-19 skills that package a Barati Farimani Lab paper.}\label{tab:library}\\
+result in plain language; the agent selects the skill from its description. Execution additionally requires
+the skill's dependencies. A citation marks the 19 skills that package a Barati Farimani Lab paper.}\label{tab:library}\\
 \toprule
  & \textbf{Skill} & \textbf{What you can ask for} & \textbf{Paper} \\
 \midrule
@@ -384,7 +399,7 @@ result in plain language; the agent selects the skill from its description. A ci
 \includegraphics[width=1.0cm]{figures/icons/cfd-simulation-setup.pdf} & \texttt{cfd-simulation-setup} & Flow problem to an OpenFOAM case, run and diagnosis; results accepted only against physics checks. & \cite{oza2026cfdforge} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/stress-field-surrogate.pdf} & \texttt{stress-field-surrogate} & Geometry, supports and loads to a full stress field in milliseconds, with its own FEM data generator. & \cite{jadhav2023stressd} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/lattice-inverse-design.pdf} & \texttt{lattice-inverse-design} & Target stiffness to a printable TPMS or hybrid lattice cell with its full stiffness matrix and a tiled STL. & \cite{jadhav2024glu3d} \\[1pt]
-\includegraphics[width=1.0cm]{figures/icons/equation-discovery.pdf} & \texttt{equation-discovery} & Test data to an interpretable equation that extrapolates beyond the data. & \cite{shojaee2025llmsr} \\[1pt]
+\includegraphics[width=1.0cm]{figures/icons/equation-discovery.pdf} & \texttt{equation-discovery} & Test data to an interpretable equation, scored on a validation split and a final held-out test. & \cite{shojaee2025llmsr} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/quick-fea.pdf} & \texttt{quick-fea} & Linear static and modal FEA with a required hand-calculation check. & -- \\[2pt]
 \includegraphics[width=1.0cm]{figures/icons/tolerance-stackup.pdf} & \texttt{tolerance-stackup} & Worst-case, RSS and Monte Carlo tolerance stack-ups with contributor charts. & -- \\[2pt]
 \includegraphics[width=1.0cm]{figures/icons/thermal-fluids-calc.pdf} & \texttt{thermal-fluids-calc} & Pipe pressure drop, heat exchangers and fins with real fluid properties. & -- \\[2pt]
@@ -421,8 +436,9 @@ We used the same procedure for every research skill:
 \item \textbf{Re-derive the physics and build exact checks} before any learned component: a
       solid cell and a laminate for homogenization, Euler--Bernoulli bending for a stress
       generator, published OpenRocket predictions for flight.
-\item \textbf{Reproduce the paper's headline experiment} with its protocol, and record the numbers
-      in the tutorial.
+\item \textbf{Evaluate against the source protocol where feasible}, recording data, numerical
+      settings, metrics and deviations, and label partial implementations and synthetic
+      rehearsals separately from reproductions of the original experiment.
 \item \textbf{Exercise the workflow as a user would}: sanitize units on load, replay sequential
       decisions without future information, and confirm generated designs by re-simulation.
 \item \textbf{Write the instructions last}, including the judgement calls discovered in steps 2--4,
@@ -430,38 +446,69 @@ We used the same procedure for every research skill:
 \end{enumerate}
 When code or data were unavailable or impractical (several repositories were placeholders, one was
 13~GB), the skill implements the method from the paper and ships a generator or rehearsal data so
-that the workflow can be exercised end to end.
+that the workflow can be exercised end to end. Such data test software behaviour, not predictive
+accuracy on the source experiment.
 
+% ------------------------------------------------------------------------------------------------
 % ------------------------------------------------------------------------------------------------
 \section{Case studies}
 \label{sec:cases}
+
+Each case states what kind of evidence it rests on: an exact analytical check, a comparison with
+published or stored reference values, an adaptation of the source method, or a rehearsal on
+synthetic data. All numbers were recomputed in an independent rerun (\S\ref{sec:rerun}).
 
 \subsection{Lattice inverse design (GLU3D)}
 GLU3D~\cite{jadhav2024glu3d} generates lattice unit cells from a target stiffness with a 3D
 conditional diffusion model trained on homogenized TPMS and hybrid-TPMS cells. The skill first
 builds the physics: implicit cells, printability filters (one periodic solid that reaches every
-face, no sealed cavities), and an energy-based periodic voxel homogenizer~\cite{dong2019homo3d}
-that returns the full $6\times6$ stiffness. The homogenizer reproduces a solid cell exactly and
-matches the exact $C_{33}$, $C_{44}$ and $C_{11}$ of a two-phase laminate to $10^{-6}$; a sheet
-gyroid at volume fraction 0.25 gives $E/E_s = 0.086$ with exact cubic symmetry.
-Figure~\ref{fig:lattice}(a) compares stiffness against simple-cubic and BCC strut lattices: at
-equal density the TPMS and hybrid sheets are about $5\times$ stiffer than BCC and $3\times$
-stiffer than simple cubic in its weakest direction, though simple cubic is $1.3\times$ stiffer
-along its own axes---which is why the skill reports the directional minimum.
+face, no sealed cavities) and an energy-based periodic voxel homogenizer~\cite{dong2019homo3d} that
+returns the full $6\times6$ stiffness. It uses periodic eight-node hexahedral elements, an
+isotropic solid with $E_s=1$ and $\nu=0.3$ unless specified, Voigt order $(xx,yy,zz,yz,xz,xy)$ with
+engineering shear strain, and omits void voxels. Directional moduli are evaluated from the
+compliance tensor on 600 sphere directions, so the reported minimum is a sampled estimate.
 
-For one-off designs the skill searches a homogenized dataset and refines thickness and level-set
-bias. For an anisotropic target $E_1=E_2=0.06$, $E_3=0.15$ (relative to the solid) it returned a
-gyroid--diamond--double-diamond hybrid with $E=(0.057, 0.058, 0.151)$ at volume fraction 0.26
-after re-checking at $48^3$ (Fig.~\ref{fig:lattice}b), in two minutes on a laptop CPU.
+The homogenizer reproduces a solid cell exactly and matches the exact $C_{33}$, $C_{44}$ and
+$C_{11}$ of two-phase laminates to a relative error below $10^{-6}$ across several modulus
+contrasts, Poisson ratios and phase fractions. A sheet gyroid at volume fraction 0.25 gives
+$E/E_s=0.086$ with exact cubic symmetry. Figure~\ref{fig:lattice}(a) compares stiffness with
+simple-cubic and BCC strut lattices: at equal density the TPMS and hybrid sheets are about
+$5\times$ stiffer than BCC and $3\times$ stiffer than simple cubic in its weakest direction, though
+simple cubic is $1.3\times$ stiffer along its own axes---which is why the skill reports the
+directional minimum.
 
-The generative route reproduces the paper's training recipe. A literal reproduction on a small
+For one-off designs the skill searches a homogenized dataset and refines sheet thickness and
+level-set bias. For the anisotropic target $E_1=E_2=0.06$, $E_3=0.15$ (relative to the solid) the
+search and refinement took two minutes on a laptop CPU, excluding the one-time creation of a
+300-cell dataset, and returned a gyroid--diamond--double-diamond hybrid with
+$E=(0.057,\,0.058,\,0.151)$ at volume fraction 0.26 (Fig.~\ref{fig:lattice}b).
+Table~\ref{tab:lattice-res} shows the sensitivity of the rounded published specification to voxel
+resolution; the largest axial-modulus change from $32^3$ to $48^3$ is 2.2\%.
+
+\begin{table}[t]
+\centering\small
+\caption{Resolution sensitivity of the lattice found by search (rounded specification: H3
+gyroid--diamond--double-diamond, $t=0.744$, $h=0.209$, $a=-0.187$, periods $(2,2,1)$).}
+\label{tab:lattice-res}
+\begin{tabular}{rrrrr}
+\toprule
+Voxels & Volume fraction & $E_1/E_s$ & $E_2/E_s$ & $E_3/E_s$\\
+\midrule
+$24^3$ & 0.2549 & 0.0551 & 0.0556 & 0.1406\\
+$32^3$ & 0.2605 & 0.0578 & 0.0573 & 0.1473\\
+$48^3$ & 0.2598 & 0.0573 & 0.0577 & 0.1506\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The generative route adapts the paper's training recipe at reduced scale. A first run on a small
 dataset (300 cells, $16^3$, CPU) produced unstructured fields; four changes produced structured
 samples: training on the periodic grid with circular padding (which makes every generated cell
 exactly periodic), a sinusoidal-plus-MLP time embedding in place of a per-step lookup table,
 scaling the conditioning vector inside the encoder, and a longer learning-rate plateau patience.
-Stiffness error after re-homogenization remained 200--280\% at this data scale, against 3723 cells
-at $64^3$ and four GPUs in the paper; the skill therefore recommends search for production designs
-and accepts generated cells only after re-homogenization.
+Stiffness error after re-homogenization remained 200--280\% at this scale, against 3723 cells at
+$64^3$ on four GPUs in the paper. The skill therefore uses search as its default design route and
+accepts generated cells only after re-homogenization.
 
 \begin{figure}[t]
 \centering
@@ -480,21 +527,27 @@ anisotropy comes from two periods along $x$ and $y$.}
 
 \subsection{Printed rockets (RocketSmith)}
 RocketSmith~\cite{pak2026rocketsmith} designed four FDM-printed Class~2 rockets that all flew
-stably; altimeter apogees were 80--84\% of predictions. The skill reconstructs two of them from the
-paper and predicts apogee and speed within a few percent of OpenRocket: 326~m and 75~m/s against
-338.8~m and 76.4~m/s for HP1, and 568~m and 113.7~m/s against 570.1~m and 115.2~m/s for HP4
-(Fig.~\ref{fig:rocket}). Fitting the drag coefficient to the measured apogees (276~m and 479~m)
-gives $C_D \approx 0.84$ and $0.76$, much higher than the 0.4--0.5 typical of smooth commercial
-airframes---a direct, actionable explanation for the shortfall: printed surfaces and fin
-geometry. The skill's fin-sizing loop also flags that HP1's fins (95~mm span) give marginal
-stability and computes the 162~mm span needed for 1.26 calibers.
+stably, with altimeter apogees at 80--84\% of predictions. The skill couples a Barrowman stability
+calculation~\cite{barrowman1967} to a one-dimensional flight simulator and ships approximate
+reconstructions of two of the rockets. With $C_D=0.45$ it predicts 326.4~m and 75.0~m/s for HP1
+against the stored OpenRocket~\cite{niskanen2009openrocket} references of 338.8~m and 76.4~m/s, and
+567.6~m and 113.7~m/s for HP4 against 570.1~m and 115.2~m/s---apogee differences of 3.7\% and 0.4\%
+(Fig.~\ref{fig:rocket}). Parameters the paper does not report were set or sized by the skill: HP1's
+fin span (162~mm) was sized to the paper's liftoff stability of 1.26 calibers, so agreement on
+stability is by construction, while the flight comparison is the untuned check.
+
+Fitting an effective drag coefficient to the measured apogees of 276~m and 479~m gives
+$C_D=0.84$ and $0.76$, well above the 0.4--0.5 typical of smooth commercial airframes. This
+calibration describes those flights; surface finish, geometry differences, mass uncertainty and
+flight conditions are possible contributors, and the skill exposes calibration as an explicit step
+so that the fitted value can be carried to the next flight and tested there.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.62\textwidth]{figures/rocketsmith_hp1_flight.png}
 \caption{\skill{rocketsmith}: simulated flight of the reconstructed HP1 rocket from the skill's
-Barrowman stability model and one-dimensional flight simulator; apogee is within 4\% of
-OpenRocket.}
+Barrowman stability model and one-dimensional flight simulator; apogee differs by 3.7\% from the
+stored OpenRocket reference.}
 \label{fig:rocket}
 \end{figure}
 
@@ -503,70 +556,152 @@ Qualifying a laser powder-bed fusion part usually waits for X-ray computed tomog
 ThermoPore~\cite{pak2024thermopore} asks how much of that answer is already contained in the
 pyrometry recorded during the build~\cite{everton2016review}. For each 30~$\mu$m layer it pairs 200
 thermal frames with the CT pores in that layer and trains a CNN that counts pores ($R^2=0.57$,
-RMSE 7.84) and a video vision transformer~\cite{dosovitskiy2021vit,arnab2021vivit} that localizes
-them on a $16\times16$ grid (mean IoU 0.32). The skill packages the workflow around the models,
-which is where most practical effort goes: empty-frame filtering, resampling each layer to 200
-frames, alignment of CT and thermal coordinates with an explicit check image, equivalent-diameter
-thresholds for which pores count, and splits within each process step as in the paper
-(Fig.~\ref{fig:thermo}). It adds an interpretable baseline---gradient-boosted trees on per-cell
-peak temperature, dwell time above the melt threshold and thermal roughness---that every deep model
-must beat. Because the paper's pyrometry and CT data are not public, the skill ships a synthetic
-rehearsal build with the same structure; on it the baseline reaches $R^2=0.44$ for counting and IoU
-0.27 for localization, and every output from synthetic data is labelled as such so that it is never
-mistaken for a physical result. With a user's own build, the agent can simply be asked which
-layers and regions should be sent to CT first.
+RMSE 7.84 in the source paper) and a video vision transformer~\cite{dosovitskiy2021vit,arnab2021vivit}
+that localizes them on a $16\times16$ grid (mean IoU 0.32). The skill packages the workflow around
+the models, which is where most practical effort goes: empty-frame filtering, resampling each layer
+to 200 frames, alignment of CT and thermal coordinates with an explicit check image,
+equivalent-diameter thresholds for which pores count, and splits within each process step as in the
+paper (Fig.~\ref{fig:thermo}). It adds interpretable tree-based baselines on per-cell peak
+temperature, dwell time above the melt threshold and thermal roughness, as a reference that learned
+models must beat.
+
+Because the paper's pyrometry and CT data are not public, the skill ships a synthetic rehearsal
+build with the same structure (10 process steps, 16 layers each, 200 frames per layer; 120 training
+and 40 test layers). On it the baseline reaches counting $R^2=0.44$ (RMSE 10.1) and localization IoU
+0.27. These outputs carry a synthetic-data flag and establish pipeline behaviour, not accuracy on a
+physical build. With a user's own build, the agent can simply be asked which layers and regions
+should be sent to CT first.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/thermopore_layer.png}
-\caption{\skill{thermal-porosity}: one layer of a rehearsal build. From left: a single pyrometry
-frame with the melt pool mid-raster; peak temperature over the layer, where hot and cold spots
-mark fusion anomalies; dwell time above the melt threshold pooled to the $16\times16$ label grid;
-and the CT pore map used as ground truth.}
+\caption{\skill{thermal-porosity}: one layer of a synthetic rehearsal build. From left: a single
+pyrometry frame with the melt pool mid-raster; peak temperature over the layer; dwell time above the
+melt threshold pooled to the $16\times16$ label grid; and the synthetic pore labels used as ground
+truth.}
 \label{fig:thermo}
 \end{figure}
 
 \subsection{Sequential process optimization (SLS)}
 For polymer selective laser sintering~\cite{pak2026sls}, the skill keeps a build log of 21
-published batches across three materials, reduces ASTM D638/D790 tests, and suggests the next
-batch with a bounded Gaussian-process expected-improvement step. To test it fairly we replayed the
-campaign, showing the suggester only the batches available at each point. After batches A--C it
-proposed raising hotspot overlap to 50\%---what batch D did; after A--E it proposed fill energy
-28~mJ/mm---batch I; after A--G, 30~mJ/mm. The suggestions are bounded to small steps and refuse
-surface temperatures within 3~$^\circ$C of the melt.
+published batches across three materials, reduces ASTM D638/D790 tensile and flexural tests, and
+suggests the next batch with a bounded Gaussian-process expected-improvement step~\cite{jones1998ego}.
+This numerical suggester is an adaptation of the source agent workflow: it excludes results flagged
+as non-reproducible, keeps the surface temperature at least 3~$^\circ$C below the melt peak and
+limits how far one batch can move from the best so far.
+
+To test it without hindsight we replayed the PA12 GF campaign, removing all later batches before
+each of 11 decisions (A--C through A--M) and asking for three ranked suggestions with strength as the
+objective. None of the 33 suggestions matched the next batch on all three settings (fill energy,
+overlap and surface temperature). Agreement was directional: after A--C every suggestion moved to
+50\% overlap, as batch D did, and after A--E the suggestions included 28~mJ/mm, the fill energy
+later used in batch I. Because suggested batches that were never printed have no outcome, the
+replay cannot show that following the suggester would have performed better; its role is to propose
+a bounded next step for the engineer to judge by the printed result.
 
 \subsection{Equation discovery (LLM-SR)}
 LLM-SR~\cite{shojaee2025llmsr} lets a model propose equation skeletons as code while an optimizer
-fits constants. The skill runs proposals in an isolated interpreter after static safety checks,
-fits with BFGS from multiple starts, and scores in-domain and out-of-domain splits. On the
-stress--strain benchmark the best discovered skeleton reached normalized MSE 0.021/0.025/0.074
-(train/in-domain/out-of-domain) against 0.161/0.150/0.680 for a cubic polynomial and 0.38 for
-linear regression; the advantage is largest where it matters for engineering, out of domain.
+fits the constants. The skill evaluates proposals in a time-limited, isolated Python subprocess
+after static source checks (a guard against mistakes, not a security sandbox) and fits constants by
+BFGS. On the LLM-SR stress--strain benchmark, the eight-parameter skeleton
+\begin{align}
+\hat\sigma(\epsilon,T)=(p_0+p_1T+p_6T^2)
+\left[1-\exp\{-p_2(1+p_7T)\epsilon\}\right]-(p_3+p_4T)|\epsilon|^{p_5}
+\end{align}
+reaches normalized MSE 0.021, 0.025 and 0.074 on the training, in-domain and held-out-temperature
+splits (2161, 1442 and 738 rows), against 0.161, 0.150 and 0.680 for a cubic polynomial and 0.380,
+0.377 and 1.31 for linear regression (Table~\ref{tab:eq-replay}); the original repository's evaluator
+gives the same training error. Every term has a physical reading: an elastic rise, a saturation
+stress that falls with temperature, and necking softening. The held-out temperature (0.667) lies
+inside the training range (0.067--1.0), so the result shows generalization to an unseen condition
+by interpolation, not extrapolation.
+
+The replay also exposed a methodological flaw that we corrected in the skill: its prompt builder
+had shown the held-out score to the model while it proposed equations, so that score could not
+serve as an untouched final test. The skill now uses the in-domain split for feedback and
+selection, hides the held-out split from every search command, and reveals it once, through an
+explicit \texttt{final} step, for the equation the user has frozen; tests enforce this behaviour.
+
+\begin{table}[t]
+\centering\small
+\caption{Fixed-skeleton replay on the LLM-SR stress--strain benchmark (normalized MSE). The scores
+reproduce the numerical fit of the discovered skeleton, not the original search campaign.}
+\label{tab:eq-replay}
+\begin{tabular}{lrrr}
+\toprule
+Model & Train & In-domain & Held-out temperature\\
+\midrule
+Discovered eight-parameter skeleton & 0.02096 & 0.02464 & 0.07362\\
+Cubic polynomial & 0.16141 & 0.14952 & 0.67952\\
+Linear regression & 0.38018 & 0.37661 & 1.31432\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Independent rerun and evidence scope}
+\label{sec:rerun}
+All case-study numbers were recomputed in a separate rerun from library commit \texttt{46cfac2} and
+LLM-SR commit \texttt{41c2123} (macOS 15.7.7, arm64; Python 3.9.6, NumPy 2.0.2, SciPy 1.13.1,
+scikit-learn 1.6.1, PyAMG 5.3.0), by direct script execution without modifying the implementations.
+The five test suites passed all 68 assertions that can run without optional dependencies (15
+rocket, 17 lattice, 12 thermal-porosity, 12 SLS and 12 equation-discovery); CadQuery export and
+PyTorch checks were skipped rather than counted. Table~\ref{tab:rerun-scope} summarizes what each case
+establishes and where its evidence stops. The rerun exercises the tools; it does not measure skill
+routing, natural-language reliability or voice operation, which are the subject of the controlled
+evaluation proposed below.
+
+\begin{table}[t]
+\centering\small
+\caption{Evidence scope of the five case studies.}
+\label{tab:rerun-scope}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+Workflow & What the evidence establishes & Where it stops\\
+\midrule
+Lattice & Exact solid and laminate agreement; resolution sensitivity; search result re-homogenized & No full-scale diffusion training or physical coupon tests\\[3pt]
+RocketSmith & Apogee and velocity within 4\% of stored OpenRocket references & Reconstructed geometry; OpenRocket not rerun; no new flight\\[3pt]
+ThermoPore & Complete preprocessing, labelling and baseline pipeline on synthetic data & No source pyrometry/CT data; deep-model accuracy not reproduced\\[3pt]
+SLS & ASTM data reduction; 11 chronological replays with directional agreement & Retrospective; no outcomes for unprinted suggestions\\[3pt]
+LLM-SR & Discovered skeleton and baselines refitted on the original benchmark files & Original model-driven search not rerun; held-out split is interpolation\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 % ------------------------------------------------------------------------------------------------
 \section{Limitations and future work}
-The library has been validated by tests and by reproducing published results, not yet by a
-controlled study of engineers using it; we plan task-based evaluations comparing agents with and
-without skills on design, analysis and manufacturing problems. Several skills need external
-software (OpenFOAM, FreeCAD, Thermo-Calc) or hardware (a Klipper printer, a powder-bed machine);
-they ship validators, mock devices or rehearsal data, but real use requires the tools. Learned
-components were rehearsed at small scale on CPU; their headline accuracy depends on retraining at
-the papers' scale. Finally, skills inherit the limits of their methods; the instructions state
-them, but they cannot replace an engineer's sign-off on safety-critical decisions.
+The case studies verify selected executable components and document how each research method was
+adapted; they do not yet show library-wide agent reliability or an improvement over an agent with
+the same tools but no skills, and they do not reproduce all 19 source papers. Synthetic rehearsals
+test pipeline behaviour and cannot support accuracy claims on physical builds, and learned
+components rehearsed at small scale remain unvalidated at the source papers' scale.
 
-% ------------------------------------------------------------------------------------------------
+The next step is a controlled evaluation. Task definitions and acceptance criteria will be frozen
+before execution; the same agent with the same tool access will be run with and without skills
+under equal budgets and repeated across seeds; and design, analysis and manufacturing tasks will be
+scored on constraint satisfaction, numerical correctness, failed or skipped checks, unsupported
+claims, completion time and cost, including spoken requests. An ablation that removes the
+verification instructions will measure their contribution.
+
+Several skills depend on external software (OpenFOAM, FreeCAD, Thermo-Calc), licensed data or
+hardware (a Klipper printer, a powder-bed machine); they ship validators, mock devices or rehearsal
+data, but real use requires the tools. Instructions make assumptions and checks visible, but
+whether an agent follows them, and whether the checks are adequate, must be measured. Skills
+inherit the limits of their methods and do not replace an engineer's sign-off on safety-critical
+decisions.
+
 \section{Conclusion}
-Mechanical Engineering Skills packages 32 engineering capabilities, 19 of them from our research,
-in a form that a general agent can discover, load and use correctly. The central idea is simple:
-let the model plan and explain, let tested code compute, and return every result with its check.
-Because the interface is plain language, the whole library is available by text or voice, without
-learning each tool, training models or running them locally; and applying this discipline to our
-own papers reproduced their key results, which suggests that a skill is also a useful standard for
-research reproducibility. The library is open-source under the MIT license;
-we invite contributions of skills from other groups.
+Mechanical Engineering Skills packages 32 engineering capabilities, including 19 adaptations of our
+research, as instructions, executable tools and verification procedures that a general agent can
+discover, load and use. The central idea is simple: let the model plan and explain, let tested code
+compute, and return every result with its check. Because the interface is natural language, this
+breadth is available in one conversation, by text or voice, without learning each tool, training
+models or running them locally. Writing the skills and rerunning their case studies also made each
+method's evidence explicit---and exposed and fixed a flaw in one evaluation---which suggests that
+a skill is a useful standard for research reproducibility as well as a delivery format. The library
+is open-source under the MIT license; we invite other groups to contribute skills and to help
+validate them.
 
-\paragraph{Availability.}\sloppy\ Code, tests and tutorials:\\ \url{https://github.com/BaratiLab/mechanical-engineering-skills};
-\\ website: \url{https://baratilab.github.io/mechanical-engineering-skills/}.\\ Install all skills with
+\paragraph{Availability.}\sloppy\ Code, tests and tutorials:\\ \url{https://github.com/BaratiLab/mechanical-engineering-skills};\\ website: \url{https://baratilab.github.io/mechanical-engineering-skills/}.\\ Install all skills with
 \texttt{npx skills add BaratiLab/mechanical-engineering-skills --all}.
 
 \bibliographystyle{unsrtnat}

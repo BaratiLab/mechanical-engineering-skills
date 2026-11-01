@@ -44,4 +44,15 @@ with tempfile.TemporaryDirectory() as d:
     check("pareto front ends at the best program", fr[-1]["nmse"]["train"] == min(r["nmse"]["train"] for r in E.buffer(run)))
     b = E.baseline(run)
     check("baselines computed", "poly3" in b and b["poly3"]["train"] < b["linear"]["train"])
+    check("final test never appears in the proposal prompt", "OOD" not in p and f"{r2['nmse']['test_ood']:.3e}" not in p)
+    check("final test hidden from pareto and top during search",
+          all("test_ood" not in r["nmse"] for r in fr) and all("test_ood" not in r["nmse"] for r in E.top(run, 5)))
+    try:
+        E.top(run, 5, "test_ood"); refused = False
+    except SystemExit:
+        refused = True
+    check("selecting by the final test is refused", refused)
+    f = E.final(run, r2["id"])
+    check("final reveals the held-out score once and logs it",
+          abs(f["nmse"]["test_ood"] - r2["nmse"]["test_ood"]) < 1e-12 and os.path.exists(os.path.join(run, "final.json")))
 print(f"\n{ok} checks passed")
