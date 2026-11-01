@@ -1,0 +1,14 @@
+[
+ {"question": "What equivalent spherical diameter threshold was used to filter small pores from the micro-CT data?", "file": "S2214860424005499", "must_contain": "53.19"},
+ {"question": "Which embedding model did AMGPT use for document retrieval?", "file": "S2772369024000409", "must_contain": "mpnet"},
+ {"question": "What frame rate and pixel size did the pyrometry camera have?", "file": "S2214860424005499", "must_contain": "kHz"},
+ {"question": "Which camera captured the low-resolution webcam images of the build plate?", "file": "S221486042500154X", "must_contain": "Logitech"},
+ {"question": "What patch size was used for patch-based super-resolution training?", "file": "S221486042500154X", "must_contain": "64"},
+ {"question": "How is absorptivity estimated for keyhole-mode melt pools in the melt pool benchmark?", "file": "S2214860422002172", "must_contain": "minimum absorptivity"},
+ {"question": "What R2 did the Rosenthal equation achieve for melt pool length?", "file": "S2214860422002172", "must_contain": "Rosenthal"},
+ {"question": "What width to depth ratio indicates keyholing?", "file": "S277236902500026X", "must_contain": "1.5"},
+ {"question": "How many hatch spacing and layer height values were used to augment the dataset for lack of fusion?", "file": "S277236902500026X", "must_contain": "hatch"},
+ {"question": "Which G-code commands were excluded as unsafe for the LLM agents to execute?", "file": "S2214860425003926", "must_contain": "restart"},
+ {"question": "What success rate did node-level retry reach for linkage generation?", "file": "2601.04054", "must_contain": "99"},
+ {"question": "How many layer-wise images were collected in the first build for super-resolution?", "file": "S221486042500154X", "must_contain": "65"}
+]

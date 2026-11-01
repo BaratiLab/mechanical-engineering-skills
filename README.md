@@ -1,6 +1,6 @@
 # Mechanical Engineering Design Skills
 
-A collection of 22 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Nine of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
+A collection of 26 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Thirteen of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
 Maintained by the Barati Farimani Lab, Carnegie Mellon University. Tutorials and use cases: **https://baratilab.github.io/me-design-skills/**
 
@@ -26,8 +26,8 @@ npx skills add BaratiLab/me-design-skills --list
 
 ## Skills by category
 
-22 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
-9 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
+26 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
+13 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
 step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-cases.md)**.
 
 ### Design
@@ -58,7 +58,11 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 | | [`dfm-review`](skills/dfm-review) | DFM review for machining, sheet metal, molding and AM | |
 | Process planning | 🔬 [`image2gcode`](skills/image2gcode) | Photo or sketch → printer-ready G-code for 2D/2.5D parts; Slice-100K keypoints | [Image2Gcode](https://doi.org/10.1016/j.addlet.2026.100374) · [tutorial](docs/tutorials/image2gcode.md) |
 | | 🔬 [`lpbf-defect-prediction`](skills/lpbf-defect-prediction) | Metal L-PBF parameters → keyholing / lack of fusion / balling / none; process maps | [AdditiveLLM](https://doi.org/10.1016/j.addlet.2025.100292) · [tutorial](docs/tutorials/lpbf-defect-prediction.md) |
-| In-process monitoring | 🔬 [`llm-3d-print-monitor`](skills/llm-3d-print-monitor) | Layer-by-layer camera inspection and safety-bounded G-code correction through Klipper/Moonraker; mock printer included | [LLM-3D Print](https://arxiv.org/abs/2408.14307) · [tutorial](docs/tutorials/llm-3d-print-monitor.md) |
+| | 🔬 [`meltpool-geometry`](skills/meltpool-geometry) | Melt-pool depth / width / length and mode from power, speed and alloy; Rosenthal, dimensionally consistent power laws, cross-study validation, own-track calibration | [MeltpoolNet](https://doi.org/10.1016/j.addma.2022.102817) · [tutorial](docs/tutorials/meltpool-geometry.md) |
+| In-process monitoring | 🔬 [`llm-3d-print-monitor`](skills/llm-3d-print-monitor) | Layer-by-layer camera inspection and safety-bounded G-code correction through Klipper/Moonraker; mock printer included | [LLM-3D Print](https://doi.org/10.1016/j.addma.2025.105027) · [tutorial](docs/tutorials/llm-3d-print-monitor.md) |
+| | 🔬 [`thermal-porosity`](skills/thermal-porosity) | L-PBF pyrometry sequences → layer pore count and 16×16 porosity map; CT alignment, ESD thresholds, baseline + CNN / ViViT | [ThermoPore](https://doi.org/10.1016/j.addma.2024.104503) · [tutorial](docs/tutorials/thermal-porosity.md) |
+| | 🔬 [`lpbf-superres`](skills/lpbf-superres) | Webcam → high-resolution layer images with conditional diffusion; registration, PSNR / SSIM / texture metrics, part IoU and edge roughness | [LPBF super-resolution](https://doi.org/10.1016/j.addma.2025.104790) · [tutorial](docs/tutorials/lpbf-superres.md) |
+| Knowledge | 🔬 [`am-literature-rag`](skills/am-literature-rag) | Page-cited answers from your own AM paper library (BM25 + all-mpnet-base-v2 retrieval); retrieval evaluation | [AMGPT](https://doi.org/10.1016/j.addlet.2024.100232) · [tutorial](docs/tutorials/am-literature-rag.md) |
 
 ### Teaching
 
@@ -70,7 +74,8 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 Install a whole group by naming its skills, for example manufacturing:
 ```bash
 npx skills add BaratiLab/me-design-skills --skill agentscad-fdm-dfam --skill dfm-review --skill image2gcode \
-    --skill lpbf-defect-prediction --skill llm-3d-print-monitor
+    --skill lpbf-defect-prediction --skill meltpool-geometry \
+    --skill llm-3d-print-monitor --skill thermal-porosity --skill lpbf-superres --skill am-literature-rag
 ```
 
 Run any skill's tests with `python skills/<skill>/tests/*.py`.
@@ -83,10 +88,11 @@ Skills install Python packages on demand. The full set:
 pip install numpy scipy matplotlib pint CoolProp cadquery pypdf
 # research skills
 pip install trimesh rtree pyvista opencv-python-headless shapely gmsh scikit-fem
-pip install pandas scikit-learn pyarrow joblib pillow   # lpbf-defect-prediction, llm-3d-print-monitor
+pip install pandas scikit-learn pyarrow joblib pillow PyWavelets scikit-image pypdf rank_bm25   # AM skills
+pip install torch sentence-transformers   # optional: deep models (thermal-porosity, lpbf-superres), dense retrieval
 ```
 
-External tools: OpenFOAM v11+ (`cfd-simulation-setup` solves), FreeCAD (`query2cad-freecad`; `micromamba create -p ./fc -c conda-forge freecad`), a Klipper + Moonraker printer with cameras (`llm-3d-print-monitor` live mode; its mock printer needs nothing). `lpbf-defect-prediction` downloads the MeltpoolNet data from GitHub on first use.
+External tools: OpenFOAM v11+ (`cfd-simulation-setup` solves), FreeCAD (`query2cad-freecad`; `micromamba create -p ./fc -c conda-forge freecad`), a Klipper + Moonraker printer with cameras (`llm-3d-print-monitor` live mode; its mock printer needs nothing). `lpbf-defect-prediction` and `meltpool-geometry` download the MeltpoolNet data from GitHub on first use. `thermal-porosity` and `lpbf-superres` ship synthetic rehearsal data because the papers' datasets are not public; bring your own builds for real numbers.
 
 `quick-fea` uses `gmsh` and `scikit-fem`. `cfd-simulation-setup` needs OpenFOAM Foundation v11+ (v14 tested in the paper) for the solve; its validators, evidence extraction and builders run without it (`python skills/cfd-simulation-setup/tests/test_paper_cases.py`).
 

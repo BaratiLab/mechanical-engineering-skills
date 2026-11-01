@@ -1,0 +1,5 @@
+Material,Power,Velocity,beam D,Hatch spacing,layer thickness,depth of meltpool,width of melt pool
+SS316L,150,800,80,,,70,105
+SS316L,200,800,80,,,95,121
+SS316L,250,800,80,,,130,138
+SS316L,300,800,80,,,170,152

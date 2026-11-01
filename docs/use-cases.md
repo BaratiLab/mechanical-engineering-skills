@@ -1,6 +1,6 @@
 # Use cases: Barati Farimani Lab research skills
 
-Nine skills in this library package Barati Farimani Lab papers as agent workflows: five for **design** and four for **manufacturing**. Each has a step-by-step tutorial with real outputs.
+Thirteen skills in this library package Barati Farimani Lab papers as agent workflows: five for **design** and eight for **manufacturing**. Each has a step-by-step tutorial with real outputs.
 
 ### Design
 | Skill | Paper | Best for | Tutorial |
@@ -18,6 +18,10 @@ Nine skills in this library package Barati Farimani Lab papers as agent workflow
 | `image2gcode` | Image2Gcode (Addit. Manuf. Lett. 2026) | Photo or sketch → G-code for 2D/2.5D parts, toolpath datasets | [tutorial](tutorials/image2gcode.md) |
 | `lpbf-defect-prediction` | AdditiveLLM (Addit. Manuf. Lett. 2025) | Metal L-PBF parameter screening and process windows | [tutorial](tutorials/lpbf-defect-prediction.md) |
 | `llm-3d-print-monitor` | LLM-3D Print (Addit. Manuf. 2025) | Layer-by-layer camera monitoring and safe in-process correction of FDM prints | [tutorial](tutorials/llm-3d-print-monitor.md) |
+| `meltpool-geometry` | MeltpoolNet (Addit. Manuf. 2022) | Melt-pool size and mode estimates with Rosenthal, power laws and calibrated ML | [tutorial](tutorials/meltpool-geometry.md) |
+| `thermal-porosity` | ThermoPore (Addit. Manuf. 2024) | Pore count and location per layer from in-situ pyrometry | [tutorial](tutorials/thermal-porosity.md) |
+| `lpbf-superres` | Diffusion super-resolution (Addit. Manuf. 2025) | High-resolution layer images and edge roughness from a webcam | [tutorial](tutorials/lpbf-superres.md) |
+| `am-literature-rag` | AMGPT (Addit. Manuf. Lett. 2024) | Page-cited answers from your own AM literature | [tutorial](tutorials/am-literature-rag.md) |
 
 ## By the job to be done
 
@@ -44,6 +48,9 @@ Nine skills in this library package Barati Farimani Lab papers as agent workflow
 
 **"I'm printing it in metal."**
 - Is this parameter set safe? Where is the window? → `lpbf-defect-prediction`.
+- How big will the melt pool be? → `meltpool-geometry` (calibrate with a few of your own single tracks).
+- Where are the pores in this build? → `thermal-porosity` (pyrometry) and `lpbf-superres` (layer images from a cheap camera).
+- What does the literature say? → `am-literature-rag` over your own papers.
 
 **"My print is going wrong as it prints."**
 - Klipper printer with cameras → `llm-3d-print-monitor`. Rehearse on its mock printer first.
@@ -61,7 +68,8 @@ Nine skills in this library package Barati Farimani Lab papers as agent workflow
 5. **Path → mechanism → hardware.** `linkage-synthesis` (six-bar) → `parametric-part-cad` (links and pins) → `machine-element-sizing` → `agentscad-fdm-dfam` to print a prototype.
 6. **Print with a watcher.** `agentscad-fdm-dfam` → slice → `add_layer_pauses.py` → `llm-3d-print-monitor` corrects the print layer by layer and leaves an audit log.
 7. **Metal part qualification plan.** `lpbf-defect-prediction` map → choose the robust point → design a density-cube DOE around it → `engineering-calc-report`.
-8. **Course module on agentic engineering.** Use the tutorials in order (Query2CAD → CADSmith → AgentsCAD → CFD Forge) to show how verification gets stricter: a VLM score, then kernel metrics with an independent judge, then rule-based geometry checks, then registered physics contracts.
+8. **Metal AM process development loop.** `am-literature-rag` (what has been tried for this alloy) → `meltpool-geometry` + `lpbf-defect-prediction` (window) → single tracks to calibrate (`--extra`) → build with pyrometry and a webcam → `thermal-porosity` + `lpbf-superres` flag layers → targeted CT.
+9. **Course module on agentic engineering.** Use the tutorials in order (Query2CAD → CADSmith → AgentsCAD → CFD Forge) to show how verification gets stricter: a VLM score, then kernel metrics with an independent judge, then rule-based geometry checks, then registered physics contracts.
 
 ## A pattern shared across the papers
 The model proposes; something deterministic checks. The check takes a different form in each paper:
@@ -74,5 +82,9 @@ The model proposes; something deterministic checks. The check takes a different 
 - **LinkD:** dyadic topology and full-rotation kinematics checks on every node, with bounded retries.
 - **AdditiveLLM:** closed-form melt-pool criteria label the data; monotonic physics constraints shape the model.
 - **LLM-3D Print:** a supervisor enforces stage order, and an allowlist with step limits decides what reaches the printer.
+- **MeltpoolNet:** dimensional analysis constrains the fitted equations; leave-paper-out validation decides how much to trust the ML.
+- **ThermoPore:** an interpretable thermal-history baseline every deep model must beat.
+- **Super-resolution:** texture and roughness metrics alongside PSNR, so a smooth average can't pass for detail.
+- **AMGPT:** every sentence of an answer carries a page citation; no passage, no claim.
 
 When you add a skill to this library, keep this pattern: a deterministic check the agent can't talk its way past.

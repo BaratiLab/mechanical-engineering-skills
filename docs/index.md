@@ -21,6 +21,10 @@ npx skills add BaratiLab/me-design-skills --all
 - [Image2Gcode: image → G-code](tutorials/image2gcode.md)
 - [AdditiveLLM: L-PBF defect regimes and process maps](tutorials/lpbf-defect-prediction.md)
 - [LLM-3D Print: layer-by-layer monitoring and correction](tutorials/llm-3d-print-monitor.md)
+- [MeltpoolNet: melt-pool size and mode](tutorials/meltpool-geometry.md)
+- [ThermoPore: porosity from thermal images](tutorials/thermal-porosity.md)
+- [Diffusion super-resolution of layer images](tutorials/lpbf-superres.md)
+- [AMGPT: page-cited answers from your AM library](tutorials/am-literature-rag.md)
 
 ## Engineering skills
 Machine element sizing, quick FEA, tolerance stack-up, thermal-fluids, DFM review, material selection, design review packages, calculation reports, drawing / GD&T review, parametric CAD, sketch-to-CAD, worked problems, and mechanics visuals. See the [repository README](https://github.com/BaratiLab/me-design-skills#skills-by-category).
