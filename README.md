@@ -2,7 +2,7 @@
 
 A collection of 22 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Nine of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
-Maintained by the Barati Farimani Lab, Carnegie Mellon University.
+Maintained by the Barati Farimani Lab, Carnegie Mellon University. Tutorials and use cases: **https://baratilab.github.io/me-design-skills/**
 
 ## Install
 
