@@ -1,0 +1,196 @@
+\begin{thebibliography}{26}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barkley et~al.(2026)Barkley, Loghmani, and
+  Barati~Farimani]{barkley2026cadsmith}
+J.~Barkley, R.~Loghmani, and A.~Barati~Farimani.
+\newblock {CADSmith}: Multi-agent {CAD} generation with programmatic geometric
+  validation.
+\newblock \emph{arXiv preprint arXiv:2603.26512}, 2026.
+
+\bibitem[Badagabettu et~al.(2024)Badagabettu, Yarlagadda, and
+  Barati~Farimani]{badagabettu2024query2cad}
+A.~Badagabettu, S.~S. Yarlagadda, and A.~Barati~Farimani.
+\newblock {Query2CAD}: Generating {CAD} models using natural language queries.
+\newblock \emph{arXiv preprint arXiv:2406.00144}, 2024.
+
+\bibitem[Jadhav and Barati~Farimani(2026{\natexlab{a}})]{jadhav2026linkd}
+Y.~Jadhav and A.~Barati~Farimani.
+\newblock {LinkD}: {AutoRegressive} diffusion model for mechanical linkage
+  synthesis.
+\newblock \emph{arXiv preprint arXiv:2601.04054}, 2026{\natexlab{a}}.
+
+\bibitem[Jadhav and Barati~Farimani(2026{\natexlab{b}})]{jadhav2026designer}
+Y.~Jadhav and A.~Barati~Farimani.
+\newblock Large language model agent as a mechanical designer.
+\newblock \emph{Journal of Engineering Design}, 2026{\natexlab{b}}.
+\newblock arXiv:2404.17525.
+
+\bibitem[Oza et~al.(2026)Oza, Johnson, and Barati~Farimani]{oza2026cfdforge}
+A.~S. Oza, R.~F. Johnson, and A.~Barati~Farimani.
+\newblock {CFD Forge}: A physics-constrained agentic framework for autonomous
+  {CFD}.
+\newblock \emph{arXiv preprint arXiv:2610.14104}, 2026.
+
+\bibitem[Pak and Barati~Farimani(2025)]{pak2025additivellm}
+P.~Pak and A.~Barati~Farimani.
+\newblock {AdditiveLLM}: Large language models predict defects in metals
+  additive manufacturing.
+\newblock \emph{Additive Manufacturing Letters}, 14:\penalty0 100292, 2025.
+\newblock \doi{10.1016/j.addlet.2025.100292}.
+
+\bibitem[Pak et~al.(2026{\natexlab{a}})Pak, Chandrasekhar, and
+  Barati~Farimani]{pak2026alloy}
+P.~Pak, A.~Chandrasekhar, and A.~Barati~Farimani.
+\newblock Agentic additive manufacturing alloy evaluation.
+\newblock \emph{Additive Manufacturing Letters}, 17:\penalty0 100355,
+  2026{\natexlab{a}}.
+\newblock \doi{10.1016/j.addlet.2026.100355}.
+
+\bibitem[Pak et~al.(2026{\natexlab{b}})Pak, Alvarado, and
+  Barati~Farimani]{pak2026sls}
+P.~Pak, V.~Alvarado, and A.~Barati~Farimani.
+\newblock {AI} agentic selective laser sintering process optimization.
+\newblock \emph{arXiv preprint arXiv:2608.25928}, 2026{\natexlab{b}}.
+
+\bibitem[Jadhav et~al.(2025)Jadhav, Pak, and
+  Barati~Farimani]{jadhav2025llm3dprint}
+Y.~Jadhav, P.~Pak, and A.~Barati~Farimani.
+\newblock {LLM-3D Print}: Large language models to monitor and control {3D}
+  printing.
+\newblock \emph{Additive Manufacturing}, 114:\penalty0 105027, 2025.
+\newblock arXiv:2408.14307.
+
+\bibitem[{Anthropic}(2025)]{anthropic2025skills}
+{Anthropic}.
+\newblock Equipping agents for the real world with {Agent Skills}.
+\newblock Anthropic Engineering blog, October 2025.
+\newblock URL
+  \url{https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills}.
+
+\bibitem[{Agent Skills}(2025)]{agentskills2025spec}
+{Agent Skills}.
+\newblock Agent skills: an open format for packaging agent capabilities, 2025.
+\newblock URL \url{https://agentskills.io}.
+\newblock Published as an open standard in December 2025.
+
+\bibitem[{Barati Farimani Lab}(2026)]{mes2026repo}
+{Barati Farimani Lab}.
+\newblock Mechanical engineering skills.
+\newblock GitHub repository, 2026.
+\newblock URL \url{https://github.com/BaratiLab/mechanical-engineering-skills}.
+
+\bibitem[Pak et~al.(2026{\natexlab{c}})Pak, Barkley, Loghmani, Baich, Pamal,
+  and Barati~Farimani]{pak2026rocketsmith}
+P.~Pak, J.~Barkley, R.~Loghmani, D.~Baich, A.~Pamal, and A.~Barati~Farimani.
+\newblock {RocketSmith}: Agentic additive manufacturing of high-powered
+  rockets.
+\newblock \emph{arXiv preprint arXiv:2606.00097}, 2026{\natexlab{c}}.
+
+\bibitem[Ashby(2011)]{ashby2011}
+M.~F. Ashby.
+\newblock \emph{Materials Selection in Mechanical Design}.
+\newblock Butterworth-Heinemann, 4 edition, 2011.
+
+\bibitem[Barrowman(1967)]{barrowman1967}
+J.~S. Barrowman.
+\newblock The practical calculation of the aerodynamic characteristics of
+  slender finned vehicles.
+\newblock M.s. thesis, The Catholic University of America, 1967.
+
+\bibitem[Jadhav et~al.(2023)Jadhav, Berthel, Hu, Panat, Beuth, and
+  Barati~Farimani]{jadhav2023stressd}
+Y.~Jadhav, J.~Berthel, C.~Hu, R.~Panat, J.~Beuth, and A.~Barati~Farimani.
+\newblock {StressD}: {2D} stress estimation using denoising diffusion model.
+\newblock \emph{Computer Methods in Applied Mechanics and Engineering},
+  416:\penalty0 116343, 2023.
+\newblock \doi{10.1016/j.cma.2023.116343}.
+
+\bibitem[Jadhav et~al.(2024)Jadhav, Berthel, Hu, Panat, Beuth, and
+  Barati~Farimani]{jadhav2024glu3d}
+Y.~Jadhav, J.~Berthel, C.~Hu, R.~Panat, J.~Beuth, and A.~Barati~Farimani.
+\newblock Generative lattice units with {3D} diffusion for inverse design:
+  {GLU3D}.
+\newblock \emph{Advanced Functional Materials}, 34:\penalty0 2404165, 2024.
+\newblock \doi{10.1002/adfm.202404165}.
+
+\bibitem[Shojaee et~al.(2025)Shojaee, Meidani, Gupta, Barati~Farimani, and
+  Reddy]{shojaee2025llmsr}
+P.~Shojaee, K.~Meidani, S.~Gupta, A.~Barati~Farimani, and C.~K. Reddy.
+\newblock {LLM-SR}: Scientific equation discovery via programming with large
+  language models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2025.
+\newblock Oral; arXiv:2404.18400.
+
+\bibitem[George et~al.(2026)George, Keefe, Pak, and
+  Barati~Farimani]{george2026agentscad}
+E.~George, C.~Keefe, P.~Pak, and A.~Barati~Farimani.
+\newblock {AgentsCAD}: Automated design for manufacturing of {FDM} parts via
+  multi-agent {LLM} reasoning and geometric feature recognition.
+\newblock \emph{arXiv preprint arXiv:2607.02448}, 2026.
+
+\bibitem[Wang et~al.(2026)Wang, Jadhav, Pak, and
+  Barati~Farimani]{wang2026image2gcode}
+Z.~Wang, Y.~Jadhav, P.~Pak, and A.~Barati~Farimani.
+\newblock {Image2Gcode}: Image-to-{G}-code generation for additive
+  manufacturing using diffusion-transformer model.
+\newblock \emph{Additive Manufacturing Letters}, 17:\penalty0 100374, 2026.
+\newblock \doi{10.1016/j.addlet.2026.100374}.
+
+\bibitem[Akbari et~al.(2022)Akbari, Ogoke, Kao, Meidani, Yeh, Lee, and
+  Barati~Farimani]{akbari2022meltpoolnet}
+P.~Akbari, F.~Ogoke, N.-Y. Kao, K.~Meidani, C.-Y. Yeh, W.~Lee, and
+  A.~Barati~Farimani.
+\newblock {MeltpoolNet}: Melt pool characteristic prediction in metal additive
+  manufacturing using machine learning.
+\newblock \emph{Additive Manufacturing}, 55:\penalty0 102817, 2022.
+\newblock \doi{10.1016/j.addma.2022.102817}.
+
+\bibitem[Rosenthal(1946)]{rosenthal1946}
+D.~Rosenthal.
+\newblock The theory of moving sources of heat and its application to metal
+  treatments.
+\newblock \emph{Transactions of the American Society of Mechanical Engineers},
+  68:\penalty0 849--866, 1946.
+
+\bibitem[Pak et~al.(2024)Pak, Ogoke, Polonsky, Garland, Bolintineanu, Moser,
+  Arnhart, Madison, Ivanoff, Mitchell, Jared, Salzbrenner, Heiden, and
+  Barati~Farimani]{pak2024thermopore}
+P.~Pak, F.~Ogoke, A.~Polonsky, A.~Garland, D.~S. Bolintineanu, D.~R. Moser,
+  M.~Arnhart, J.~Madison, T.~Ivanoff, J.~Mitchell, B.~Jared, B.~Salzbrenner,
+  M.~J. Heiden, and A.~Barati~Farimani.
+\newblock {ThermoPore}: Predicting part porosity based on thermal images using
+  deep learning.
+\newblock \emph{Additive Manufacturing}, page 104503, 2024.
+\newblock \doi{10.1016/j.addma.2024.104503}.
+
+\bibitem[Ogoke et~al.(2025)Ogoke, Kalambettu~Suresh, Adamczyk, Bolintineanu,
+  Garland, Heiden, and Barati~Farimani]{ogoke2025superres}
+F.~Ogoke, S.~Kalambettu~Suresh, J.~Adamczyk, D.~Bolintineanu, A.~Garland,
+  M.~Heiden, and A.~Barati~Farimani.
+\newblock Deep learning based optical image super-resolution via generative
+  diffusion models for layerwise in-situ {LPBF} monitoring.
+\newblock \emph{Additive Manufacturing}, 107:\penalty0 104790, 2025.
+\newblock \doi{10.1016/j.addma.2025.104790}.
+
+\bibitem[Chandrasekhar et~al.(2024)Chandrasekhar, Chan, Ogoke, Ajenifujah, and
+  Barati~Farimani]{chandrasekhar2024amgpt}
+A.~Chandrasekhar, J.~Chan, F.~Ogoke, O.~Ajenifujah, and A.~Barati~Farimani.
+\newblock {AMGPT}: A large language model for contextual querying in additive
+  manufacturing.
+\newblock \emph{Additive Manufacturing Letters}, 11:\penalty0 100232, 2024.
+\newblock \doi{10.1016/j.addlet.2024.100232}.
+
+\bibitem[Dong et~al.(2019)Dong, Tang, and Zhao]{dong2019homo3d}
+G.~Dong, Y.~Tang, and Y.~F. Zhao.
+\newblock A 149 line homogenization code for three-dimensional cellular
+  materials written in {MATLAB}.
+\newblock \emph{Journal of Engineering Materials and Technology}, 141\penalty0
+  (1):\penalty0 011005, 2019.
+
+\end{thebibliography}

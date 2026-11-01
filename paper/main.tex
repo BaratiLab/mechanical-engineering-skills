@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds,shapes.geometric}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\setlist{itemsep=2pt,topsep=4pt}
+
+\newcommand{\skill}[1]{\texttt{#1}}
+\newcommand{\lab}{\textsuperscript{\(\star\)}}
+
+\title{\textbf{Mechanical Engineering Skills in Claude}}
+
+\author{
+Yayati Jadhav \quad Peter Pak \quad J.\ Barkley \quad Akshay Badagabettu \quad E.\ George \\
+Aakash S.\ Oza \quad Parshin Shojaee \quad Z.\ Wang \quad Achuth Chandrasekhar \\
+Francis Ogoke \quad Parand Akbari \quad Amir Barati Farimani\thanks{Corresponding author: \texttt{barati@cmu.edu}} \\[4pt]
+\small Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA 15213, USA
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large language models can now plan multi-step engineering work, call software and read the
+results, yet they remain unreliable at the parts of mechanical engineering that matter most:
+getting the numbers right, choosing the right check, and knowing when a result is outside the
+range where a method holds. We present \emph{Mechanical Engineering Skills}, an open library of
+32 agent skills for design, analysis and manufacturing that run in Claude (Claude Code and
+Claude.ai) and in other agents that read the open Agent Skills format. Each skill is a folder that
+pairs concise operating instructions with tested scripts, so the model orchestrates while
+deterministic tools compute, and every result is returned with the check that supports it. Nineteen
+skills package published or preprint research from our laboratory, spanning text-to-CAD,
+linkage synthesis, CFD case setup, stress-field and lattice surrogates, equation discovery,
+metal and polymer additive-manufacturing process planning, and in-process monitoring. We describe
+the design principles, the procedure we used to turn a paper into a reliable skill, and what the
+process revealed: reproductions that match the source papers (rocket apogee within 4\% of
+OpenRocket, exact homogenization on solvable cases, process suggestions that match operators'
+choices batch by batch) and also unit errors in released data, train/test leakage that inflates
+reported accuracy, and under-specified details that block reproduction. We argue
+that skills are a practical unit for transferring engineering research into everyday agent use,
+and that writing a skill is itself a strong test of whether a method is reproducible. The library
+is available at \url{https://github.com/BaratiLab/mechanical-engineering-skills}.
+\end{abstract}
+
+% ------------------------------------------------------------------------------------------------
+\section{Introduction}
+Mechanical engineering work is a chain of small, checkable steps: read a requirement, pick a
+model, compute, compare against a hand estimate or a known case, and decide. General-purpose
+language-model agents are now capable of driving such chains: they write CAD scripts, set up
+simulations, and read sensor data. Our own work has shown this across the life cycle of a part,
+from text-to-CAD~\cite{barkley2026cadsmith,badagabettu2024query2cad} and mechanism
+synthesis~\cite{jadhav2026linkd} to LLM-in-the-loop structural design~\cite{jadhav2026designer},
+autonomous CFD~\cite{oza2026cfdforge}, additive-manufacturing process
+planning~\cite{pak2025additivellm,pak2026alloy,pak2026sls} and print
+monitoring~\cite{jadhav2025llm3dprint}.
+
+Two obstacles keep this research from becoming everyday practice. First, each method lives in its
+own code base, with its own environment, data and conventions, and is rarely packaged for someone
+who simply has an engineering question. Second, agents left to themselves make the kind of errors
+engineers cannot accept: arithmetic slips, wrong units, a correlation used outside its range, or a
+confident answer with no evidence behind it.
+
+Agent Skills~\cite{anthropic2025skills,agentskills2025spec} offer a light-weight remedy. A skill is a
+directory with a \texttt{SKILL.md} file---a short description that tells the agent when to use
+it, followed by instructions---plus any scripts and reference files the instructions point to. The
+agent sees only the one-line descriptions until a task matches, then loads the instructions, and
+reads deeper files or runs scripts only when needed (\emph{progressive disclosure}). Skills are
+portable across Claude Code, Claude.ai and other agents that adopted the format, and they are
+installed with a single command.
+
+This paper presents \emph{Mechanical Engineering Skills}~\cite{mes2026repo}, a library of 32 such
+skills (Fig.~\ref{fig:grid}). Our contributions are:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{A library} covering design, analysis and manufacturing, in which 19 skills package
+      peer-reviewed or preprint research from our laboratory and 13 cover core engineering tasks
+      (machine-element sizing, FEA with hand checks, tolerance stack-ups, material selection,
+      design reviews and teaching aids).
+\item \textbf{Design principles} for engineering skills: tools compute and the model orchestrates;
+      every number carries its check; the paper's protocol is reproduced but its weaknesses are
+      corrected and declared; and the skill states the boundary of its validity.
+\item \textbf{A procedure for turning a paper into a skill}, and a report of what it uncovered when
+      applied to 19 papers, including reproduced results, errors in released data, evaluation
+      leakage and missing details.
+\end{enumerate}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/skills_grid.png}
+  \caption{The 32 skills in Mechanical Engineering Skills, grouped by area. Tile colour encodes the
+  sub-area; a gold dot marks the 19 skills that package a Barati Farimani Lab paper. Each skill is
+  installed with \texttt{npx skills add BaratiLab/mechanical-engineering-skills}.}
+  \label{fig:grid}
+\end{figure}
+
+% ------------------------------------------------------------------------------------------------
+\section{Skills as a unit of engineering capability}
+\label{sec:anatomy}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=3pt, align=left, inner sep=5pt, fill=#1},
+  box/.default=white,
+  lbl/.style={font=\footnotesize\bfseries, text=black!70},
+  arr/.style={-{Stealth[length=2.2mm]}, thick, black!60}]
+  % agent column
+  \node[box=blue!6, minimum width=3.3cm, align=center] (user) {Engineer's request\\ \emph{``a lattice with}\\ \emph{E$_3$ = 2.5 E$_1$, light''}};
+  \node[box=blue!12, below=6mm of user, minimum width=3.3cm, align=center] (agent) {\textbf{Agent (Claude)}\\ plans, calls tools,\\ reads results, reports};
+  \node[box=green!10, below=6mm of agent, minimum width=3.3cm, align=center] (out) {Checked deliverables\\ STEP/STL, G-code, plots,\\ report + evidence};
+  \draw[arr] (user) -- (agent); \draw[arr] (agent) -- (out);
+  % skill folder
+  \node[box=orange!8, right=22mm of agent, yshift=10mm, text width=6.6cm, align=left] (skillmd)
+     {\texttt{SKILL.md}\\[1pt]\footnotesize \textbf{description}: when to use (always loaded)\\
+      \textbf{workflow}: steps, questions to ask, defaults\\ \textbf{judgement calls}: validity limits};
+  \node[box=orange!4, below=2mm of skillmd, text width=6.6cm] (scripts)
+     {\texttt{scripts/}\ \footnotesize deterministic tools that compute (FEM, solvers, fits, CAD, G-code)};
+  \node[box=orange!4, below=2mm of scripts, text width=6.6cm] (refs)
+     {\texttt{references/}\ \footnotesize paper notes, data provenance, deviations};
+  \node[box=orange!4, below=2mm of refs, text width=6.6cm] (tests)
+     {\texttt{tests/}\ \footnotesize exact cases, paper numbers, regression checks};
+  \begin{scope}[on background layer]
+    \node[draw=orange!60, dashed, rounded corners=5pt, inner sep=6pt, fit=(skillmd)(tests),
+          label={[lbl]above:skill folder (one per capability)}] (folder) {};
+  \end{scope}
+  \draw[arr] (agent.east) -- node[above, font=\footnotesize, align=center] {loads when\\relevant} (folder.west|-agent.east);
+  \draw[arr, dashed] (scripts.west) to[bend left=18] node[below, font=\footnotesize, pos=0.4] {runs} (agent.south east);
+  % tutorial
+  \node[box=gray!8, right=5mm of folder, text width=2.2cm, align=center] (tut) {Tutorial + use cases\\ \footnotesize (project website)};
+  \draw[arr, gray] (folder.east) -- (tut.west);
+\end{tikzpicture}
+\caption{Anatomy of an engineering skill and how an agent uses it. Only the one-line description
+is always in the agent's context; instructions, scripts and references are loaded on demand. Tests
+and a public tutorial accompany every research skill.}
+\label{fig:anatomy}
+\end{figure}
+
+Figure~\ref{fig:anatomy} shows the structure we use for every skill. The \texttt{SKILL.md}
+front matter carries a description written for the agent's routing decision: what the skill does,
+what it is based on, and the situations that should trigger it. The body is a short
+workflow---typically four to six numbered steps---with the commands to run and, crucially, the
+\emph{judgement calls} an experienced engineer would make: which inputs to ask for, what to report
+alongside the headline number, and where the method stops being valid. Long material (paper
+notes, provenance, interpretation choices) sits in \texttt{references/} so that it costs no
+context unless needed.
+
+The \texttt{scripts/} directory holds the computation. Scripts are ordinary command-line Python
+programs with JSON output so that the agent can parse results reliably. Examples include a
+periodic voxel homogenizer for lattices, a plane-stress Q4 finite-element solver, a Barrowman
+stability and one-dimensional flight simulator for rockets, a Rosenthal melt-pool solver, an
+SQLite build log with Gaussian-process suggestions for selective laser sintering, and validators
+for OpenFOAM cases. Each research skill also ships a test suite (\texttt{tests/}) and a tutorial
+on the project website that walks through the paper's main experiment with real outputs.
+
+% ------------------------------------------------------------------------------------------------
+\section{Design principles}
+\label{sec:principles}
+
+\paragraph{P1. The model orchestrates; tools compute.} Every number a user might act on is
+produced by code, never by the model's arithmetic. RocketSmith~\cite{pak2026rocketsmith} reached
+the same conclusion after flying four agent-designed rockets; we apply it library-wide. The model
+remains responsible for what it is good at: eliciting requirements, choosing a method, chaining
+tools, and explaining results.
+
+\paragraph{P2. Every result carries its check.} Skills return the evidence for a result alongside
+it: a hand calculation for an FEA run, the exact laminate solution before trusting a lattice
+homogenization, re-simulation of a surrogate's best candidate, a kernel validity and volume check
+after a CAD edit. Where a published method used a learned scorer for acceptance (e.g.\ a surrogate
+predicting a generated lattice's modulus), the skill uses the physics model for acceptance and
+keeps the learned model for guidance.
+
+\paragraph{P3. Reproduce the paper, then fix what would mislead a user.} Each research skill
+implements the paper's protocol so that its headline numbers can be reproduced, and then changes
+defaults where the original choice would mislead a practitioner---most often the evaluation split
+(\S\ref{sec:findings}). Every deviation is listed in the skill's paper notes with the reason and
+the evidence.
+
+\paragraph{P4. State the boundary.} Skills say what they do not do: elastic homogenization is not
+crash performance; a flight simulation is a design check, not a launch approval; a defect
+classifier trained on one machine family is not a process qualification. These statements live in
+the instructions so the agent repeats them at the point of use.
+
+\paragraph{P5. Ask once, then act.} Instructions list the few inputs that change the answer (a
+material's printed modulus, minimum wall thickness, certification level) and sensible defaults for
+the rest, so that the agent asks one focused question rather than many generic ones.
+
+% ------------------------------------------------------------------------------------------------
+\section{The library}
+\label{sec:library}
+
+Table~\ref{tab:research} lists the 19 research skills with the source paper and the checks each
+one runs. The 13 general skills cover machine-element sizing with safety factors, linear static
+and modal FEA with a mandatory hand-calculation comparison, tolerance stack-ups (worst case, RSS
+and Monte Carlo), thermal-fluids calculations with CoolProp properties, Ashby-index material
+selection~\cite{ashby2011}, design-review packages (requirements, FMEA, BOM), calculation reports,
+drawing and GD\&T review, parametric and sketch-to-CAD modelling, DFM review, and two teaching
+skills that generate problems with code-verified solutions and mechanics diagrams.
+
+\begin{table}[!t]
+\centering
+\small
+\caption{Research skills, their source papers and the checks they run. Area: D = design and
+CAD, A = analysis and simulation, M = manufacturing.}
+\label{tab:research}
+\begin{tabularx}{\textwidth}{@{}l c l X@{}}
+\toprule
+Skill & Area & Source & What the skill computes and checks \\
+\midrule
+\skill{cadsmith-text-to-cad} & D & \cite{barkley2026cadsmith} & CadQuery generation with kernel measurements, three-view judge; Chamfer/F1/IoU after ICP \\
+\skill{query2cad-freecad} & D & \cite{badagabettu2024query2cad} & FreeCAD macros, error repair, VQA scoring, caption-driven refinement \\
+\skill{linkage-synthesis} & D & \cite{jadhav2026linkd} & Node-by-node linkage construction, dyadic and kinematic validation, Chamfer to target path \\
+\skill{llm-mechanical-designer} & D & \cite{jadhav2026designer} & LLM-proposed trusses evaluated by exact FEM, ranked history \\
+\skill{rocketsmith} & D & \cite{pak2026rocketsmith} & Barrowman CP~\cite{barrowman1967}, stability, flight simulation, fin sizing, $C_D$ calibration, printable CAD \\
+\skill{cfd-simulation-setup} & A & \cite{oza2026cfdforge} & OpenFOAM case building; acceptance only by registered physics contracts \\
+\skill{stress-field-surrogate} & A & \cite{jadhav2023stressd} & Q4 FEM data generator (beam theory within 1\%), diffusion and regression surrogates \\
+\skill{lattice-inverse-design} & A & \cite{jadhav2024glu3d} & TPMS/hybrid cells, printability, periodic homogenization (exact on laminates), search, 3D diffusion \\
+\skill{equation-discovery} & A & \cite{shojaee2025llmsr} & LLM-proposed equation skeletons, sandboxed BFGS fits, in- and out-of-domain NMSE \\
+\skill{agentscad-fdm-dfam} & M & \cite{george2026agentscad} & Overhang analysis, reorientation, teardrops and chamfers, kernel-verified STEP \\
+\skill{image2gcode} & M & \cite{wang2026image2gcode} & Image to toolpath and G-code; area check against the drawn part \\
+\skill{lpbf-defect-prediction} & M & \cite{pak2025additivellm} & Keyhole/lack-of-fusion/balling regimes and process maps, grouped evaluation \\
+\skill{am-alloy-screening} & M & \cite{pak2026alloy} & Thermo-Calc or flagged estimates, Rosenthal LoF maps, unit sanitation, ranking \\
+\skill{sls-process-optimization} & M & \cite{pak2026sls} & Build memory, ASTM D638/D790 reduction, bounded Bayesian next batch \\
+\skill{meltpool-geometry} & M & \cite{akbari2022meltpoolnet} & Rosenthal~\cite{rosenthal1946} and power laws, cross-study validation, own-track calibration \\
+\skill{llm-3d-print-monitor} & M & \cite{jadhav2025llm3dprint} & Layer images, bounded G-code corrections via Klipper/Moonraker, mock printer \\
+\skill{thermal-porosity} & M & \cite{pak2024thermopore} & Pyrometry to pore count and porosity map; CT alignment \\
+\skill{lpbf-superres} & M & \cite{ogoke2025superres} & Diffusion super-resolution of layer images, registration, edge roughness \\
+\skill{am-literature-rag} & M & \cite{chandrasekhar2024amgpt} & Page-cited retrieval over the user's own literature; retrieval evaluation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ------------------------------------------------------------------------------------------------
+\section{From paper to skill}
+\label{sec:procedure}
+
+We used the same procedure for every research skill:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Extract the engineering workflow}, not the model. Most papers describe a model and a
+      benchmark; a practitioner needs the steps around it---what to measure, how to prepare
+      inputs, how to decide. We write those steps first.
+\item \textbf{Re-derive the physics and build exact checks} before any learned component: a
+      solid cell and a laminate for homogenization, Euler--Bernoulli bending for a stress
+      generator, published OpenRocket predictions for flight.
+\item \textbf{Reproduce the paper's headline experiment} with its protocol, and record the numbers
+      in the tutorial.
+\item \textbf{Stress-test the protocol}: change the split to unseen geometries, parts or studies;
+      sanitize units; replay sequential decisions without future information.
+\item \textbf{Write the instructions last}, including the judgement calls discovered in steps 2--4,
+      and add tests for every check.
+\end{enumerate}
+When code or data were unavailable or impractical (several repositories were placeholders, one was
+13~GB), the skill implements the method from the paper and ships a generator or rehearsal data so
+that the workflow can be exercised end to end.
+
+% ------------------------------------------------------------------------------------------------
+\section{Case studies}
+\label{sec:cases}
+
+\subsection{Lattice inverse design (GLU3D)}
+GLU3D~\cite{jadhav2024glu3d} generates lattice unit cells from a target stiffness with a 3D
+conditional diffusion model trained on homogenized TPMS and hybrid-TPMS cells. The skill first
+builds the physics: implicit cells, printability filters (one periodic solid that reaches every
+face, no sealed cavities), and an energy-based periodic voxel homogenizer~\cite{dong2019homo3d}
+that returns the full $6\times6$ stiffness. The homogenizer reproduces a solid cell exactly and
+matches the exact $C_{33}$, $C_{44}$ and $C_{11}$ of a two-phase laminate to $10^{-6}$; a sheet
+gyroid at volume fraction 0.25 gives $E/E_s = 0.086$ with exact cubic symmetry.
+Figure~\ref{fig:lattice}(a) compares stiffness against simple-cubic and BCC strut lattices: at
+equal density the TPMS and hybrid sheets are about $5\times$ stiffer than BCC and $3\times$
+stiffer than simple cubic in its weakest direction, though simple cubic is $1.3\times$ stiffer
+along its own axes---which is why the skill reports the directional minimum.
+
+For one-off designs the skill searches a homogenized dataset and refines thickness and level-set
+bias. For an anisotropic target $E_1=E_2=0.06$, $E_3=0.15$ (relative to the solid) it returned a
+gyroid--diamond--double-diamond hybrid with $E=(0.057, 0.058, 0.151)$ at volume fraction 0.26
+after re-checking at $48^3$ (Fig.~\ref{fig:lattice}b), in two minutes on a laptop CPU.
+
+The generative route reproduces the paper's training recipe. A literal reproduction on a small
+dataset (300 cells, $16^3$, CPU) produced unstructured fields; four changes produced structured
+samples: training on the periodic grid with circular padding (which makes every generated cell
+exactly periodic), a sinusoidal-plus-MLP time embedding in place of a per-step lookup table,
+scaling the conditioning vector inside the encoder, and a longer learning-rate plateau patience.
+Stiffness error after re-homogenization remained 200--280\% at this data scale, against 3723 cells
+at $64^3$ and four GPUs in the paper; the skill therefore recommends search for production designs
+and accepts generated cells only after re-homogenization.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.56\textwidth}\centering
+\includegraphics[width=\textwidth]{figures/glu3d_compare.png}\\ \small (a)
+\end{minipage}\hfill
+\begin{minipage}{0.42\textwidth}\centering
+\includegraphics[width=\textwidth]{figures/glu3d_search.png}\\ \small (b)
+\end{minipage}
+\caption{Lattice inverse design. (a) Mean axial and weakest-direction modulus against volume
+fraction for simple cubic, BCC, sheet gyroid, sheet I-WP and a gyroid--primitive hybrid, from the
+skill's homogenizer. (b) The three best cells returned by search for $E_1=E_2=0.06$, $E_3=0.15$;
+anisotropy comes from two periods along $x$ and $y$.}
+\label{fig:lattice}
+\end{figure}
+
+\subsection{Printed rockets (RocketSmith)}
+RocketSmith~\cite{pak2026rocketsmith} designed four FDM-printed Class~2 rockets that all flew
+stably; altimeter apogees were 80--84\% of predictions. The skill reconstructs two of them from the
+paper and predicts apogee and speed within a few percent of OpenRocket: 326~m and 75~m/s against
+338.8~m and 76.4~m/s for HP1, and 568~m and 113.7~m/s against 570.1~m and 115.2~m/s for HP4
+(Fig.~\ref{fig:rocket}a). Fitting the drag coefficient to the measured apogees (276~m and 479~m)
+gives $C_D \approx 0.84$ and $0.76$, much higher than the 0.4--0.5 typical of smooth commercial
+airframes---a direct, actionable explanation for the shortfall: printed surfaces and fin
+geometry. The skill's fin-sizing loop also flags that HP1's fins (95~mm span) give marginal
+stability and computes the 162~mm span needed for 1.26 calibers.
+
+\subsection{Alloy screening and the cost of unchecked units}
+The alloy-evaluation paper~\cite{pak2026alloy} asks an agent to judge whether a known or new alloy
+prints by laser powder-bed fusion, from Thermo-Calc properties and Rosenthal lack-of-fusion maps.
+The skill reproduces the paper's ranking (IN625 above SS316L, copper last;
+Fig.~\ref{fig:rocket}b). While porting the released property files we found densities about
+$1000\times$ too high and heat capacities in J\,mol$^{-1}$\,K$^{-1}$ instead of
+J\,kg$^{-1}$\,K$^{-1}$, which shifts thermal diffusivity by a factor of 50--100. The skill now
+sanitizes units on load and reports what it corrected, and its outputs are explicitly keyed, since
+the paper traced an LLM error to an unlabeled list of tuples.
+
+\begin{figure}[t]
+\centering
+\begin{minipage}{0.48\textwidth}\centering
+\includegraphics[width=\textwidth]{figures/rocketsmith_hp1_flight.png}\\ \small (a)
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}\centering
+\includegraphics[width=\textwidth]{figures/alloy_known_maps.png}\\ \small (b)
+\end{minipage}
+\caption{(a) Simulated flight of the reconstructed HP1 rocket. (b) Lack-of-fusion process maps for
+known alloys produced by \skill{am-alloy-screening} after unit sanitation.}
+\label{fig:rocket}
+\end{figure}
+
+\subsection{Sequential process optimization (SLS)}
+For polymer selective laser sintering~\cite{pak2026sls}, the skill keeps a build log of 21
+published batches across three materials, reduces ASTM D638/D790 tests, and suggests the next
+batch with a bounded Gaussian-process expected-improvement step. To test it fairly we replayed the
+campaign, showing the suggester only the batches available at each point. After batches A--C it
+proposed raising hotspot overlap to 50\%---what batch D did; after A--E it proposed fill energy
+28~mJ/mm---batch I; after A--G, 30~mJ/mm. The suggestions are bounded to small steps and refuse
+surface temperatures within 3~$^\circ$C of the melt.
+
+\subsection{Equation discovery (LLM-SR)}
+LLM-SR~\cite{shojaee2025llmsr} lets a model propose equation skeletons as code while an optimizer
+fits constants. The skill runs proposals in an isolated interpreter after static safety checks,
+fits with BFGS from multiple starts, and scores in-domain and out-of-domain splits. On the
+stress--strain benchmark the best discovered skeleton reached normalized MSE 0.021/0.025/0.074
+(train/in-domain/out-of-domain) against 0.161/0.150/0.680 for a cubic polynomial and 0.38 for
+linear regression; the advantage is largest where it matters for engineering, out of domain.
+
+% ------------------------------------------------------------------------------------------------
+\section{What writing skills revealed}
+\label{sec:findings}
+
+\paragraph{Evaluation leakage is common and large.} Several papers used random splits in which the
+same geometry, melt pool or study appears in training and test data. Re-evaluating on held-out
+groups changed the conclusions a user would draw (Table~\ref{tab:splits}). Each affected skill
+defaults to the grouped split and reports both numbers.
+
+\begin{table}[!htb]
+\centering
+\small
+\caption{Paper protocol versus the grouped split each skill uses by default.}
+\label{tab:splits}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Skill & Metric & Random split & Grouped split \\
+\midrule
+\skill{lpbf-defect-prediction} & regime accuracy & 98.1\% & 87.9\% (melt pools held out) \\
+\skill{stress-field-surrogate} & MAE (MPa), equal training & 0.57 & 0.81 (geometries held out) \\
+\skill{meltpool-geometry} & mode accuracy & 82.6\% & $\approx$45\% (studies held out) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Released data can be wrong in ways an agent will not notice.} The unit errors in the
+alloy data would have produced plausible-looking process maps. Agents need explicit sanity rules
+(order-of-magnitude bounds on density, heat capacity and conductivity), which the skill encodes.
+
+\paragraph{Papers under-specify what reproduction needs.} Missing supporting information (the
+lattice families), ambiguous signs in a scaling equation, and training details whose literal
+reading fails on smaller data (a per-step time-embedding table; a plateau scheduler that anneals
+the learning rate to nothing within 60 epochs) each blocked or degraded reproduction. Writing them
+down in the skill notes turns tacit knowledge into something the next user, human or agent, can
+act on.
+
+\paragraph{Small physics models are worth more than they look.} Calibrating one drag coefficient
+from a measured apogee, or one melt-pool constant from a few single tracks, closed most of the gap
+between prediction and measurement. Skills therefore expose calibration as a first-class step.
+
+% ------------------------------------------------------------------------------------------------
+\section{Limitations and future work}
+The library has been validated by tests and by reproducing published results, not yet by a
+controlled study of engineers using it; we plan task-based evaluations comparing agents with and
+without skills on design, analysis and manufacturing problems. Several skills need external
+software (OpenFOAM, FreeCAD, Thermo-Calc) or hardware (a Klipper printer, a powder-bed machine);
+they ship validators, mock devices or rehearsal data, but real use requires the tools. Learned
+components were rehearsed at small scale on CPU; their headline accuracy depends on retraining at
+the papers' scale. Finally, skills inherit the limits of their methods; the instructions state
+them, but they cannot replace an engineer's sign-off on safety-critical decisions.
+
+% ------------------------------------------------------------------------------------------------
+\section{Conclusion}
+Mechanical Engineering Skills packages 32 engineering capabilities, 19 of them from our research,
+in a form that a general agent can discover, load and use correctly. The central idea is simple:
+let the model plan and explain, let tested code compute, and return every result with its check.
+Applying this discipline to our own papers reproduced their key results and also exposed data
+errors, leakage and missing details---suggesting that a skill is not only a delivery format but a
+useful standard for research reproducibility. The library is open-source under the MIT license;
+we invite contributions of skills from other groups.
+
+\paragraph{Availability.}\sloppy\ Code, tests and tutorials:\\ \url{https://github.com/BaratiLab/mechanical-engineering-skills};
+\\ website: \url{https://baratilab.github.io/mechanical-engineering-skills/}.\\ Install all skills with
+\texttt{npx skills add BaratiLab/mechanical-engineering-skills --all}.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}
