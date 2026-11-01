@@ -41,8 +41,24 @@ rrect(0, 0, W, H, 0, "#ffffff", "none", 0)
 # ---------------- left: engineer, voice or text ----------------
 rrect(24, 150, 300, 530, 22, "#f8fafc", "#cbd5e1")
 text(174, 196, "Engineer", 26, "bold", anchor="middle")
-add('<circle cx="174" cy="262" r="38" fill="#475569"/>')
-add('<path d="M106,370 C106,318 140,302 174,302 C208,302 242,318 242,370 Z" fill="#475569"/>')
+# engineer: hard hat, face, work shirt with hi-vis vest, wrench
+add('''<g>
+  <path d="M96,374 C96,326 132,306 174,306 C216,306 252,326 252,374 Z" fill="#1d4ed8"/>
+  <path d="M120,374 L120,322 C132,314 144,310 156,309 L174,352 L192,309 C204,310 216,314 228,322 L228,374 Z" fill="#f97316"/>
+  <path d="M121,344 H160 M188,344 H227 M121,358 H164 M184,358 H227" stroke="#fde68a" stroke-width="5"/>
+  <path d="M156,309 L174,352 L192,309 Z" fill="#dbeafe"/>
+  <rect x="160" y="290" width="28" height="22" fill="#d6a77a"/>
+  <ellipse cx="174" cy="266" rx="32" ry="35" fill="#e8b98a"/>
+  <circle cx="162" cy="268" r="3.5" fill="#1f2937"/><circle cx="186" cy="268" r="3.5" fill="#1f2937"/>
+  <path d="M163,284 Q174,292 185,284" stroke="#9a3412" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M140,252 C140,222 156,208 174,208 C192,208 208,222 208,252 Z" fill="#facc15"/>
+  <path d="M174,208 V250" stroke="#eab308" stroke-width="6"/>
+  <rect x="130" y="248" width="88" height="11" rx="5.5" fill="#eab308"/>
+  <g transform="translate(232,300) rotate(40)">
+    <rect x="-5" y="-6" width="10" height="56" rx="4" fill="#94a3b8"/>
+    <path d="M-14,-14 a14,14 0 1 0 28,0 l-6,0 l0,8 l-16,0 l0,-8 z" fill="#94a3b8"/>
+  </g>
+</g>''')
 # voice chip
 rrect(52, 398, 116, 54, 27, "#e0f2fe", "#0284c7")
 add('<rect x="74" y="410" width="14" height="22" rx="7" fill="#0284c7"/><path d="M68,424 a13,13 0 0 0 26,0 M81,437 v6" stroke="#0284c7" stroke-width="3" fill="none" stroke-linecap="round"/>')
