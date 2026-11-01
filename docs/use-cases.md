@@ -1,6 +1,6 @@
 # Use cases: Barati Farimani Lab research skills
 
-Thirteen skills in this library package Barati Farimani Lab papers as agent workflows: five for **design** and eight for **manufacturing**. Each has a step-by-step tutorial with real outputs.
+Eighteen skills in this library package Barati Farimani Lab papers as agent workflows: eight for **design** and ten for **manufacturing**. Each has a step-by-step tutorial with real outputs.
 
 ### Design
 | Skill | Paper | Best for | Tutorial |
@@ -10,6 +10,9 @@ Thirteen skills in this library package Barati Farimani Lab papers as agent work
 | `linkage-synthesis` | LinkD (arXiv:2601.04054) | Four-bar and six-bar linkages that trace a target path | [tutorial](tutorials/linkage-synthesis.md) |
 | `llm-mechanical-designer` | LLM Agent as a Mechanical Designer (arXiv:2404.17525) | LLM-in-the-loop truss design against exact FEM | [tutorial](tutorials/llm-mechanical-designer.md) |
 | `cfd-simulation-setup` | CFD Forge (arXiv:2610.14104) | Trustworthy OpenFOAM setup, diagnosis and acceptance | [tutorial](tutorials/cfd-simulation-setup.md) |
+| `stress-field-surrogate` | StressD (CMAME 2023) | Instant von Mises fields for design iteration, validated on unseen geometries | [tutorial](tutorials/stress-field-surrogate.md) |
+| `equation-discovery` | LLM-SR (ICLR 2025) | Interpretable laws from test data that extrapolate | [tutorial](tutorials/equation-discovery.md) |
+| `rocketsmith` | RocketSmith (arXiv:2606.00097) | Printed hobby rockets: stability, flight prediction, printable parts | [tutorial](tutorials/rocketsmith.md) |
 
 ### Manufacturing
 | Skill | Paper | Best for | Tutorial |
@@ -18,6 +21,8 @@ Thirteen skills in this library package Barati Farimani Lab papers as agent work
 | `image2gcode` | Image2Gcode (Addit. Manuf. Lett. 2026) | Photo or sketch → G-code for 2D/2.5D parts, toolpath datasets | [tutorial](tutorials/image2gcode.md) |
 | `lpbf-defect-prediction` | AdditiveLLM (Addit. Manuf. Lett. 2025) | Metal L-PBF parameter screening and process windows | [tutorial](tutorials/lpbf-defect-prediction.md) |
 | `llm-3d-print-monitor` | LLM-3D Print (Addit. Manuf. 2025) | Layer-by-layer camera monitoring and safe in-process correction of FDM prints | [tutorial](tutorials/llm-3d-print-monitor.md) |
+| `am-alloy-screening` | Agentic alloy evaluation (Addit. Manuf. Lett. 2026) | Which alloy (known or new) prints, and where its LoF boundary is | [tutorial](tutorials/am-alloy-screening.md) |
+| `sls-process-optimization` | Agentic SLS (arXiv:2608.25928) | Polymer SLS parameters from ASTM results, batch by batch | [tutorial](tutorials/sls-process-optimization.md) |
 | `meltpool-geometry` | MeltpoolNet (Addit. Manuf. 2022) | Melt-pool size and mode estimates with Rosenthal, power laws and calibrated ML | [tutorial](tutorials/meltpool-geometry.md) |
 | `thermal-porosity` | ThermoPore (Addit. Manuf. 2024) | Pore count and location per layer from in-situ pyrometry | [tutorial](tutorials/thermal-porosity.md) |
 | `lpbf-superres` | Diffusion super-resolution (Addit. Manuf. 2025) | High-resolution layer images and edge roughness from a webcam | [tutorial](tutorials/lpbf-superres.md) |
@@ -55,6 +60,19 @@ Thirteen skills in this library package Barati Farimani Lab papers as agent work
 **"My print is going wrong as it prints."**
 - Klipper printer with cameras → `llm-3d-print-monitor`. Rehearse on its mock printer first.
 
+**"I need an equation, not a black box."**
+- Test data → interpretable law that extrapolates → `equation-discovery`.
+
+**"I'm iterating a 2D shape and FEA is too slow."**
+- `stress-field-surrogate` for instant fields on new shapes, `quick-fea` to confirm the final one.
+
+**"Which alloy, or which polymer settings?"**
+- Metal powder bed: `am-alloy-screening` (alloy choice) → `lpbf-defect-prediction` (window).
+- Polymer SLS: `sls-process-optimization`.
+
+**"I'm building a rocket."**
+- `rocketsmith` (certified commercial motors; design check, not launch approval).
+
 **"I need results I can defend."**
 - CFD acceptance against declared criteria → `cfd-simulation-setup`.
 - A signed-off calculation document → `engineering-calc-report`.
@@ -86,5 +104,10 @@ The model proposes; something deterministic checks. The check takes a different 
 - **ThermoPore:** an interpretable thermal-history baseline every deep model must beat.
 - **Super-resolution:** texture and roughness metrics alongside PSNR, so a smooth average can't pass for detail.
 - **AMGPT:** every sentence of an answer carries a page citation; no passage, no claim.
+- **Alloy evaluation:** unit sanity checks on every material file; keyed outputs so a ranking can't be misread.
+- **SLS:** a human approves each batch; bounded step sizes; datasheet targets and scatter both reported.
+- **RocketSmith:** tools compute every number; stability, rail exit and Class limits are hard checks.
+- **StressD:** validated on unseen geometries, against a FEM that is itself checked against beam theory.
+- **LLM-SR:** constants fitted by an optimizer, never guessed; out-of-domain error picks the law.
 
 When you add a skill to this library, keep this pattern: a deterministic check the agent can't talk its way past.

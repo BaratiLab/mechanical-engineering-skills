@@ -307,10 +307,11 @@ def plot_maps(maps, out, powers, velocities):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    n = len(maps)
-    fig, axs = plt.subplots(1, n, figsize=(4.3 * n, 4), squeeze=False)
-    colors = {0: "#2c7fb8", 1: "#7fcdbb", 2: "#edf8b1"}
-    for ax, m in zip(axs[0], maps):
+    n = len(maps); cols = min(n, 3); rows = math.ceil(n / cols)
+    fig, axs = plt.subplots(rows, cols, figsize=(4.3 * cols, 3.8 * rows), squeeze=False)
+    for ax in axs.ravel()[n:]:
+        ax.axis("off")
+    for ax, m in zip(axs.ravel(), maps):
         layers = sorted(m["layers"].values(), key=lambda x: -x["layer_um"])
         for i, L in enumerate(layers):
             pts = L["lack_of_fusion_points"]

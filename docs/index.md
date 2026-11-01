@@ -15,12 +15,17 @@ npx skills add BaratiLab/me-design-skills --all
 - [LinkD: target curve → planar linkage](tutorials/linkage-synthesis.md)
 - [LLM Agent as a Mechanical Designer: truss design loop](tutorials/llm-mechanical-designer.md)
 - [CFD Forge: physics-constrained CFD](tutorials/cfd-simulation-setup.md)
+- [StressD: instant stress fields](tutorials/stress-field-surrogate.md)
+- [LLM-SR: equation discovery](tutorials/equation-discovery.md)
+- [RocketSmith: printed high-power rockets](tutorials/rocketsmith.md)
 
 ### Manufacturing
 - [AgentsCAD: DFAM for FDM parts](tutorials/agentscad-fdm-dfam.md)
 - [Image2Gcode: image → G-code](tutorials/image2gcode.md)
 - [AdditiveLLM: L-PBF defect regimes and process maps](tutorials/lpbf-defect-prediction.md)
 - [LLM-3D Print: layer-by-layer monitoring and correction](tutorials/llm-3d-print-monitor.md)
+- [Agentic alloy evaluation: which alloy prints](tutorials/am-alloy-screening.md)
+- [Agentic SLS process optimization](tutorials/sls-process-optimization.md)
 - [MeltpoolNet: melt-pool size and mode](tutorials/meltpool-geometry.md)
 - [ThermoPore: porosity from thermal images](tutorials/thermal-porosity.md)
 - [Diffusion super-resolution of layer images](tutorials/lpbf-superres.md)

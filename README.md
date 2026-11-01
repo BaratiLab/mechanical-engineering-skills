@@ -1,6 +1,6 @@
 # Mechanical Engineering Design Skills
 
-A collection of 26 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Thirteen of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
+A collection of 31 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Eighteen of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
 Maintained by the Barati Farimani Lab, Carnegie Mellon University. Tutorials and use cases: **https://baratilab.github.io/me-design-skills/**
 
@@ -26,8 +26,8 @@ npx skills add BaratiLab/me-design-skills --list
 
 ## Skills by category
 
-26 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
-13 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
+31 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
+18 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
 step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-cases.md)**.
 
 ### Design
@@ -40,9 +40,12 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 | | [`sketch-to-cad`](skills/sketch-to-cad) | Sketch, photo or video frames → dimensioned CAD reconstruction | |
 | | [`drawing-gdt-review`](skills/drawing-gdt-review) | Audits engineering drawings for dimensioning and GD&T errors | |
 | Mechanisms & structures | 🔬 [`linkage-synthesis`](skills/linkage-synthesis) | Target curve → four-/six-bar linkage, built node by node with dyadic and kinematic validation | [LinkD](https://arxiv.org/abs/2601.04054) · [tutorial](docs/tutorials/linkage-synthesis.md) |
+| | 🔬 [`rocketsmith`](skills/rocketsmith) | 3D-printed hobby high-power rockets: Barrowman stability, fin sizing, flight simulation, printable nose cone and fin can, flight-data calibration | [RocketSmith](https://arxiv.org/abs/2606.00097) · [tutorial](docs/tutorials/rocketsmith.md) |
 | | 🔬 [`llm-mechanical-designer`](skills/llm-mechanical-designer) | LLM ↔ FEM truss design loop with ranked history | [LLM Mechanical Designer](https://arxiv.org/abs/2404.17525) · [tutorial](docs/tutorials/llm-mechanical-designer.md) |
 | | [`machine-element-sizing`](skills/machine-element-sizing) | Bolts, shafts, bearings, springs, gears, welds, with the work shown and safety factors | |
 | Analysis & simulation | 🔬 [`cfd-simulation-setup`](skills/cfd-simulation-setup) | Request → OpenFOAM case → run → diagnosis; acceptance decided only by registered contracts | [CFD Forge](https://arxiv.org/abs/2610.14104) · [tutorial](docs/tutorials/cfd-simulation-setup.md) |
+| | 🔬 [`stress-field-surrogate`](skills/stress-field-surrogate) | Geometry + supports + loads → von Mises field in milliseconds (diffusion + scale network); built-in Q4 FEM data generator; unseen-geometry validation | [StressD](https://doi.org/10.1016/j.cma.2023.116343) · [tutorial](docs/tutorials/stress-field-surrogate.md) |
+| | 🔬 [`equation-discovery`](skills/equation-discovery) | LLM-SR loop: propose equation skeletons, fit constants, score in- and out-of-domain, Pareto choice | [LLM-SR](https://arxiv.org/abs/2404.18400) · [tutorial](docs/tutorials/equation-discovery.md) |
 | | [`quick-fea`](skills/quick-fea) | Linear static / modal FEA with a required hand-calc sanity check | |
 | | [`tolerance-stackup`](skills/tolerance-stackup) | Worst-case, RSS and Monte Carlo stack-ups with contributor charts | |
 | | [`thermal-fluids-calc`](skills/thermal-fluids-calc) | Pipe pressure drop, heat exchangers (LMTD / ε-NTU), fins; CoolProp properties | |
@@ -58,6 +61,8 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 | | [`dfm-review`](skills/dfm-review) | DFM review for machining, sheet metal, molding and AM | |
 | Process planning | 🔬 [`image2gcode`](skills/image2gcode) | Photo or sketch → printer-ready G-code for 2D/2.5D parts; Slice-100K keypoints | [Image2Gcode](https://doi.org/10.1016/j.addlet.2026.100374) · [tutorial](docs/tutorials/image2gcode.md) |
 | | 🔬 [`lpbf-defect-prediction`](skills/lpbf-defect-prediction) | Metal L-PBF parameters → keyholing / lack of fusion / balling / none; process maps | [AdditiveLLM](https://doi.org/10.1016/j.addlet.2025.100292) · [tutorial](docs/tutorials/lpbf-defect-prediction.md) |
+| | 🔬 [`am-alloy-screening`](skills/am-alloy-screening) | Known or new alloy → properties (Thermo-Calc or flagged estimates) → lack-of-fusion process map → ranked recommendation, unit-checked | [Agentic alloy evaluation](https://doi.org/10.1016/j.addlet.2026.100355) · [tutorial](docs/tutorials/am-alloy-screening.md) |
+| | 🔬 [`sls-process-optimization`](skills/sls-process-optimization) | Polymer SLS batch-to-batch optimization: build memory, ASTM D638/D790 reduction, bounded Bayesian next-batch suggestions | [Agentic SLS](https://arxiv.org/abs/2608.25928) · [tutorial](docs/tutorials/sls-process-optimization.md) |
 | | 🔬 [`meltpool-geometry`](skills/meltpool-geometry) | Melt-pool depth / width / length and mode from power, speed and alloy; Rosenthal, dimensionally consistent power laws, cross-study validation, own-track calibration | [MeltpoolNet](https://doi.org/10.1016/j.addma.2022.102817) · [tutorial](docs/tutorials/meltpool-geometry.md) |
 | In-process monitoring | 🔬 [`llm-3d-print-monitor`](skills/llm-3d-print-monitor) | Layer-by-layer camera inspection and safety-bounded G-code correction through Klipper/Moonraker; mock printer included | [LLM-3D Print](https://doi.org/10.1016/j.addma.2025.105027) · [tutorial](docs/tutorials/llm-3d-print-monitor.md) |
 | | 🔬 [`thermal-porosity`](skills/thermal-porosity) | L-PBF pyrometry sequences → layer pore count and 16×16 porosity map; CT alignment, ESD thresholds, baseline + CNN / ViViT | [ThermoPore](https://doi.org/10.1016/j.addma.2024.104503) · [tutorial](docs/tutorials/thermal-porosity.md) |
@@ -74,7 +79,7 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 Install a whole group by naming its skills, for example manufacturing:
 ```bash
 npx skills add BaratiLab/me-design-skills --skill agentscad-fdm-dfam --skill dfm-review --skill image2gcode \
-    --skill lpbf-defect-prediction --skill meltpool-geometry \
+    --skill lpbf-defect-prediction --skill meltpool-geometry --skill am-alloy-screening --skill sls-process-optimization \
     --skill llm-3d-print-monitor --skill thermal-porosity --skill lpbf-superres --skill am-literature-rag
 ```
 
