@@ -1,6 +1,6 @@
 # Use cases: Barati Farimani Lab research skills
 
-Eighteen skills in this library package Barati Farimani Lab papers as agent workflows: eight for **design** and ten for **manufacturing**. Each has a step-by-step tutorial with real outputs.
+Nineteen skills in this library package Barati Farimani Lab papers as agent workflows: nine for **design** and ten for **manufacturing**. Each has a step-by-step tutorial with real outputs.
 
 ### Design
 | Skill | Paper | Best for | Tutorial |
@@ -11,6 +11,7 @@ Eighteen skills in this library package Barati Farimani Lab papers as agent work
 | `llm-mechanical-designer` | LLM Agent as a Mechanical Designer (arXiv:2404.17525) | LLM-in-the-loop truss design against exact FEM | [tutorial](tutorials/llm-mechanical-designer.md) |
 | `cfd-simulation-setup` | CFD Forge (arXiv:2610.14104) | Trustworthy OpenFOAM setup, diagnosis and acceptance | [tutorial](tutorials/cfd-simulation-setup.md) |
 | `stress-field-surrogate` | StressD (CMAME 2023) | Instant von Mises fields for design iteration, validated on unseen geometries | [tutorial](tutorials/stress-field-surrogate.md) |
+| `lattice-inverse-design` | GLU3D (Adv. Funct. Mater. 2024) | Printable lattice cells for a target (an)isotropic stiffness, and lattice-vs-strut comparisons | [tutorial](tutorials/lattice-inverse-design.md) |
 | `equation-discovery` | LLM-SR (ICLR 2025) | Interpretable laws from test data that extrapolate | [tutorial](tutorials/equation-discovery.md) |
 | `rocketsmith` | RocketSmith (arXiv:2606.00097) | Printed hobby rockets: stability, flight prediction, printable parts | [tutorial](tutorials/rocketsmith.md) |
 
@@ -69,6 +70,9 @@ Eighteen skills in this library package Barati Farimani Lab papers as agent work
 **"Which alloy, or which polymer settings?"**
 - Metal powder bed: `am-alloy-screening` (alloy choice) → `lpbf-defect-prediction` (window).
 - Polymer SLS: `sls-process-optimization`.
+
+**"I need a lightweight lattice with a given stiffness."**
+- `lattice-inverse-design`: search or generate a TPMS/hybrid cell, check it by homogenisation, export a tiled STL; then `agentscad-fdm-dfam` / `dfm-review` for the print.
 
 **"I'm building a rocket."**
 - `rocketsmith` (certified commercial motors; design check, not launch approval).

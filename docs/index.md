@@ -16,6 +16,7 @@ npx skills add BaratiLab/me-design-skills --all
 - [LLM Agent as a Mechanical Designer: truss design loop](tutorials/llm-mechanical-designer.md)
 - [CFD Forge: physics-constrained CFD](tutorials/cfd-simulation-setup.md)
 - [StressD: instant stress fields](tutorials/stress-field-surrogate.md)
+- [GLU3D: lattice cells for a target stiffness](tutorials/lattice-inverse-design.md)
 - [LLM-SR: equation discovery](tutorials/equation-discovery.md)
 - [RocketSmith: printed high-power rockets](tutorials/rocketsmith.md)
 

@@ -1,6 +1,6 @@
 # Mechanical Engineering Design Skills
 
-A collection of 31 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Eighteen of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
+A collection of 32 agent skills for mechanical **design** and **manufacturing**, plus engineering teaching. Nineteen of them package Barati Farimani Lab research papers. Works with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI, and any agent supported by the open [Agent Skills](https://skills.sh) format.
 
 Maintained by the Barati Farimani Lab, Carnegie Mellon University. Tutorials and use cases: **https://baratilab.github.io/me-design-skills/**
 
@@ -26,8 +26,8 @@ npx skills add BaratiLab/me-design-skills --list
 
 ## Skills by category
 
-31 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
-18 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
+32 skills in two main groups, **Design** and **Manufacturing**, plus teaching aids. 🔬 marks the
+19 skills that package a Barati Farimani Lab paper. Each of those has a tested workflow, a
 step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-cases.md)**.
 
 ### Design
@@ -45,6 +45,7 @@ step-by-step tutorial and use cases. Start with **[docs/use-cases.md](docs/use-c
 | | [`machine-element-sizing`](skills/machine-element-sizing) | Bolts, shafts, bearings, springs, gears, welds, with the work shown and safety factors | |
 | Analysis & simulation | 🔬 [`cfd-simulation-setup`](skills/cfd-simulation-setup) | Request → OpenFOAM case → run → diagnosis; acceptance decided only by registered contracts | [CFD Forge](https://arxiv.org/abs/2610.14104) · [tutorial](docs/tutorials/cfd-simulation-setup.md) |
 | | 🔬 [`stress-field-surrogate`](skills/stress-field-surrogate) | Geometry + supports + loads → von Mises field in milliseconds (diffusion + scale network); built-in Q4 FEM data generator; unseen-geometry validation | [StressD](https://doi.org/10.1016/j.cma.2023.116343) · [tutorial](docs/tutorials/stress-field-surrogate.md) |
+| | 🔬 [`lattice-inverse-design`](skills/lattice-inverse-design) | Target stiffness → printable TPMS / hybrid lattice cell: periodic homogenisation (6×6 C), parametric search, stiffness-conditioned 3D diffusion, watertight tiled STL | [GLU3D](https://doi.org/10.1002/adfm.202404165) · [tutorial](docs/tutorials/lattice-inverse-design.md) |
 | | 🔬 [`equation-discovery`](skills/equation-discovery) | LLM-SR loop: propose equation skeletons, fit constants, score in- and out-of-domain, Pareto choice | [LLM-SR](https://arxiv.org/abs/2404.18400) · [tutorial](docs/tutorials/equation-discovery.md) |
 | | [`quick-fea`](skills/quick-fea) | Linear static / modal FEA with a required hand-calc sanity check | |
 | | [`tolerance-stackup`](skills/tolerance-stackup) | Worst-case, RSS and Monte Carlo stack-ups with contributor charts | |
@@ -94,6 +95,7 @@ pip install numpy scipy matplotlib pint CoolProp cadquery pypdf
 # research skills
 pip install trimesh rtree pyvista opencv-python-headless shapely gmsh scikit-fem
 pip install pandas scikit-learn pyarrow joblib pillow PyWavelets scikit-image pypdf rank_bm25   # AM skills
+pip install pyamg   # optional: faster lattice homogenisation
 pip install torch sentence-transformers   # optional: deep models (thermal-porosity, lpbf-superres), dense retrieval
 ```
 
