@@ -1,6 +1,6 @@
 # Tutorial: ThermoPore (in-situ thermal images → layer porosity)
 
-**Skill:** [`thermal-porosity`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/thermal-porosity) · **Paper:** P. Pak, F. Ogoke, A. Polonsky, A. Garland, D.S. Bolintineanu, D.R. Moser, M. Arnhart, J. Madison, T. Ivanoff, J. Mitchell, B. Jared, B. Salzbrenner, M.J. Heiden, A. Barati Farimani, *ThermoPore: Predicting part porosity based on thermal images using deep learning*, Additive Manufacturing 95 (2024) 104503, [doi:10.1016/j.addma.2024.104503](https://doi.org/10.1016/j.addma.2024.104503)
+**Skill:** [`thermal-porosity`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/thermal-porosity) · **Paper:** P. Pak, F. Ogoke, A. Polonsky, A. Garland, D.S. Bolintineanu, D.R. Moser, M. Arnhart, J. Madison, T. Ivanoff, J. Mitchell, B. Jared, B. Salzbrenner, M.J. Heiden, A. Barati Farimani, *ThermoPore: Predicting part porosity based on thermal images using deep learning*, Additive Manufacturing 95 (2024) 104503, [doi:10.1016/j.addma.2024.104503](https://doi.org/10.1016/j.addma.2024.104503)
 
 Part qualification usually waits for CT. ThermoPore asks how much of that answer is already in the
 pyrometry stream recorded while the part was built. For each 30 µm layer it pairs 200 thermal
@@ -23,7 +23,7 @@ data arrives.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill thermal-porosity
+npx skills add BaratiLab/mechanical-engineering-skills --skill thermal-porosity
 pip install numpy pandas scikit-learn matplotlib     # + torch for the CNN / ViViT
 cd skills/thermal-porosity
 ```

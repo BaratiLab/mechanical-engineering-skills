@@ -1,6 +1,6 @@
 # Tutorial: RocketSmith (design, check and print a hobby high-power rocket)
 
-**Skill:** [`rocketsmith`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/rocketsmith) · **Paper:** P. Pak, J. Barkley, R. Loghmani, D. Baich, A. Pamal, A. Barati Farimani, *RocketSmith: Agentic Additive Manufacturing of High-Powered Rockets*, arXiv:2606.00097 (2026) · **Code:** [ppak10/RocketSmith](https://github.com/ppak10/RocketSmith)
+**Skill:** [`rocketsmith`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/rocketsmith) · **Paper:** P. Pak, J. Barkley, R. Loghmani, D. Baich, A. Pamal, A. Barati Farimani, *RocketSmith: Agentic Additive Manufacturing of High-Powered Rockets*, arXiv:2606.00097 (2026) · **Code:** [ppak10/RocketSmith](https://github.com/ppak10/RocketSmith)
 
 RocketSmith designed four FDM-printed Class 2 rockets with OpenRocket, build123d/CADSmith and
 PrusaSlicer behind an LLM agent. All four launched stably at a Tripoli Pittsburgh event. Two were
@@ -22,7 +22,7 @@ manufacturer and your Range Safety Officer.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill rocketsmith
+npx skills add BaratiLab/mechanical-engineering-skills --skill rocketsmith
 pip install numpy matplotlib cadquery
 cd skills/rocketsmith
 ```

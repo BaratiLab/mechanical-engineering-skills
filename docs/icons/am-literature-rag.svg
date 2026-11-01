@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><linearGradient id="g-am-literature-rag" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#5b21b6"/></linearGradient></defs>
+  <rect width="96" height="96" rx="22" fill="url(#g-am-literature-rag)"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M14,24 C24,20 34,20 44,26 V72 C34,66 24,66 14,70 Z M44,26 C52,20 60,20 66,22"/>
+        <circle cx="64" cy="48" r="12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M73,57 L82,66"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M22,34 h14 M22,44 h14 M22,54 h10"/>
+</svg>

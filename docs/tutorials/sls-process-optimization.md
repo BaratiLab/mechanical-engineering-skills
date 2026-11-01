@@ -1,6 +1,6 @@
 # Tutorial: agentic SLS process optimization (build history → ASTM → next batch)
 
-**Skill:** [`sls-process-optimization`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/sls-process-optimization) · **Paper:** P. Pak, V. Alvarado, A. Barati Farimani, *AI Agentic Selective Laser Sintering Process Optimization*, arXiv:2608.25928 (2026)
+**Skill:** [`sls-process-optimization`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/sls-process-optimization) · **Paper:** P. Pak, V. Alvarado, A. Barati Farimani, *AI Agentic Selective Laser Sintering Process Optimization*, arXiv:2608.25928 (2026)
 
 On an open-source SLS4All Inova Mk1 (10 W blue diode laser), the paper's agent had three resources:
 memory of every build, ASTM D638/D790 results, and tools for print profiles. Each batch, it proposed
@@ -22,7 +22,7 @@ suggests bounded next steps, and the agent explains every change.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill sls-process-optimization
+npx skills add BaratiLab/mechanical-engineering-skills --skill sls-process-optimization
 pip install numpy scipy scikit-learn matplotlib
 cd skills/sls-process-optimization
 ```

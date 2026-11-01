@@ -24,7 +24,7 @@ import sys
 
 import numpy as np
 
-CACHE = os.path.expanduser(os.environ.get("LPBF_CACHE", "~/.cache/me-design-skills/meltpoolnet"))
+CACHE = os.path.expanduser(os.environ.get("LPBF_CACHE", "~/.cache/mechanical-engineering-skills/meltpoolnet"))
 URLS = {"classification": "https://raw.githubusercontent.com/BaratiLab/MeltpoolNet/main/Data/meltpoolnet_classification.csv",
         "regression": "https://raw.githubusercontent.com/BaratiLab/MeltpoolNet/main/Data/meltpoolnet_regression.csv"}
 LABELS = ["Keyholing", "Lack of Fusion", "Balling", "None"]

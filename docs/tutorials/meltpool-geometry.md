@@ -1,6 +1,6 @@
 # Tutorial: MeltpoolNet (process parameters → melt-pool size and mode)
 
-**Skill:** [`meltpool-geometry`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/meltpool-geometry) · **Paper:** P. Akbari, F. Ogoke, N.-Y. Kao, K. Meidani, C.-Y. Yeh, W. Lee, A. Barati Farimani, *MeltpoolNet: Melt pool characteristic prediction in Metal Additive Manufacturing using machine learning*, Additive Manufacturing 55 (2022) 102817, [doi:10.1016/j.addma.2022.102817](https://doi.org/10.1016/j.addma.2022.102817) · **Data:** [BaratiLab/MeltpoolNet](https://github.com/BaratiLab/MeltpoolNet)
+**Skill:** [`meltpool-geometry`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/meltpool-geometry) · **Paper:** P. Akbari, F. Ogoke, N.-Y. Kao, K. Meidani, C.-Y. Yeh, W. Lee, A. Barati Farimani, *MeltpoolNet: Melt pool characteristic prediction in Metal Additive Manufacturing using machine learning*, Additive Manufacturing 55 (2022) 102817, [doi:10.1016/j.addma.2022.102817](https://doi.org/10.1016/j.addma.2022.102817) · **Data:** [BaratiLab/MeltpoolNet](https://github.com/BaratiLab/MeltpoolNet)
 
 MeltpoolNet collected melt-pool measurements from more than 80 metal AM papers: power, speed, beam
 size, alloy, and the resulting depth, width, length and melt-pool mode. It benchmarks ML models with
@@ -24,7 +24,7 @@ It also tests honestly how well the ML models transfer to a machine they have ne
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill meltpool-geometry
+npx skills add BaratiLab/mechanical-engineering-skills --skill meltpool-geometry
 pip install numpy pandas scipy scikit-learn matplotlib joblib
 cd skills/meltpool-geometry
 ```

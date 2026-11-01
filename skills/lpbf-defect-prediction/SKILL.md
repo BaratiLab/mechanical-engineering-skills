@@ -14,7 +14,7 @@ multi-label classifier. Paper details and how this skill differs are in
 
 Everything runs through `scripts/lpbf.py` (numpy, pandas, scikit-learn, matplotlib,
 pyarrow). The first run downloads MeltpoolNet (~1 MB) from
-github.com/BaratiLab/MeltpoolNet to `~/.cache/me-design-skills/meltpoolnet`. Set
+github.com/BaratiLab/MeltpoolNet to `~/.cache/mechanical-engineering-skills/meltpoolnet`. Set
 `LPBF_CACHE` to put it elsewhere.
 
 ## Pick the mode from what the user has

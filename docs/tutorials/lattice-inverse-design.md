@@ -1,6 +1,6 @@
 # Tutorial: GLU3D (lattice unit cells for a target stiffness)
 
-**Skill:** [`lattice-inverse-design`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/lattice-inverse-design) · **Paper:** Y. Jadhav, J. Berthel, C. Hu, R. Panat, J. Beuth, A. Barati Farimani, *Generative Lattice Units with 3D Diffusion for Inverse Design: GLU3D*, Advanced Functional Materials 34 (2024) 2404165, [doi:10.1002/adfm.202404165](https://doi.org/10.1002/adfm.202404165)
+**Skill:** [`lattice-inverse-design`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/lattice-inverse-design) · **Paper:** Y. Jadhav, J. Berthel, C. Hu, R. Panat, J. Beuth, A. Barati Farimani, *Generative Lattice Units with 3D Diffusion for Inverse Design: GLU3D*, Advanced Functional Materials 34 (2024) 2404165, [doi:10.1002/adfm.202404165](https://doi.org/10.1002/adfm.202404165)
 
 Architected lattices give a printed part a stiffness and weight of your choosing, if you can find
 the right unit cell. GLU3D turns the usual trial-and-error around. You give it a target 6 × 6
@@ -21,7 +21,7 @@ cells followed the requested modulus.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill lattice-inverse-design
+npx skills add BaratiLab/mechanical-engineering-skills --skill lattice-inverse-design
 pip install numpy scipy scikit-image trimesh matplotlib pyamg   # + torch for the models
 cd skills/lattice-inverse-design
 python tests/test_glu3d.py        # 20 checks, ~1 min

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><linearGradient id="g-lpbf-defect-prediction" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#92400e"/></linearGradient></defs>
+  <rect width="96" height="96" rx="22" fill="url(#g-lpbf-defect-prediction)"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M18,18 V76 H80"/>
+        <path d="M20,74 L20,20 C34,40 44,56 78,62 L78,74 Z" fill="#fff" fill-opacity="0.18"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M20,22 C34,40 44,56 78,62 M38,74 C44,60 56,48 78,40"/>
+        <circle cx="52" cy="58" r="4.5" fill="#fff"/>
+</svg>

@@ -1,6 +1,6 @@
 # Tutorial: StressD (geometry + loads → von Mises field, instantly)
 
-**Skill:** [`stress-field-surrogate`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/stress-field-surrogate) · **Paper:** Y. Jadhav, J. Berthel, C. Hu, R. Panat, J. Beuth, A. Barati Farimani, *StressD: 2D stress estimation using denoising diffusion model*, Computer Methods in Applied Mechanics and Engineering 416 (2023) 116343, [doi:10.1016/j.cma.2023.116343](https://doi.org/10.1016/j.cma.2023.116343)
+**Skill:** [`stress-field-surrogate`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/stress-field-surrogate) · **Paper:** Y. Jadhav, J. Berthel, C. Hu, R. Panat, J. Beuth, A. Barati Farimani, *StressD: 2D stress estimation using denoising diffusion model*, Computer Methods in Applied Mechanics and Engineering 416 (2023) 116343, [doi:10.1016/j.cma.2023.116343](https://doi.org/10.1016/j.cma.2023.116343)
 
 Topology optimization and generative design ask for thousands of stress fields. StressD answers each
 one in a fraction of an FEA solve. A conditional diffusion model draws the stress field normalised
@@ -15,7 +15,7 @@ benchmark, StressD cut MAE by about 78% compared with StressNet and StressGAN.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill stress-field-surrogate
+npx skills add BaratiLab/mechanical-engineering-skills --skill stress-field-surrogate
 pip install numpy scipy matplotlib torch
 cd skills/stress-field-surrogate
 ```

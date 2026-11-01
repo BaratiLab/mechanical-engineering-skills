@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><linearGradient id="g-worked-problem-generator" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#166534"/></linearGradient></defs>
+  <rect width="96" height="96" rx="22" fill="url(#g-worked-problem-generator)"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M38,62 C30,56 26,48 26,40 a22,22 0 0 1 44,0 c0,8 -4,16 -12,22 Z"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M40,70 h16 M42,78 h12"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M40,40 l6,6 l10,-12"/>
+</svg>

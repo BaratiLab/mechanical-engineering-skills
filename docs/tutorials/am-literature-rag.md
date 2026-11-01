@@ -1,6 +1,6 @@
 # Tutorial: AMGPT (ask your AM library, get page-cited answers)
 
-**Skill:** [`am-literature-rag`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/am-literature-rag) · **Paper:** A. Chandrasekhar, J. Chan, F. Ogoke, O. Ajenifujah, A. Barati Farimani, *AMGPT: A large language model for contextual querying in additive manufacturing*, Additive Manufacturing Letters 11 (2024) 100232, [doi:10.1016/j.addlet.2024.100232](https://doi.org/10.1016/j.addlet.2024.100232) · **Code:** [BaratiLab/LLM_RAG](https://github.com/BaratiLab/LLM_RAG)
+**Skill:** [`am-literature-rag`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/am-literature-rag) · **Paper:** A. Chandrasekhar, J. Chan, F. Ogoke, O. Ajenifujah, A. Barati Farimani, *AMGPT: A large language model for contextual querying in additive manufacturing*, Additive Manufacturing Letters 11 (2024) 100232, [doi:10.1016/j.addlet.2024.100232](https://doi.org/10.1016/j.addlet.2024.100232) · **Code:** [BaratiLab/LLM_RAG](https://github.com/BaratiLab/LLM_RAG)
 
 General chatbots answer metal-AM questions with outlines. AMGPT showed that retrieval-augmented
 generation (RAG) over a curated corpus gives specific, checkable answers. The setup was about 50 AM
@@ -21,7 +21,7 @@ a page-exact citation.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill am-literature-rag
+npx skills add BaratiLab/mechanical-engineering-skills --skill am-literature-rag
 pip install pypdf rank_bm25            # + sentence-transformers for the paper's dense retriever
 cd skills/am-literature-rag
 ```

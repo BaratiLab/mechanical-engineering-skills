@@ -1,6 +1,6 @@
 # Tutorial: LinkD (target curve → planar linkage)
 
-**Skill:** [`linkage-synthesis`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/linkage-synthesis) · **Paper:** *LinkD: Autoregressive diffusion for mechanical linkage synthesis*, Barati Farimani Lab, [arXiv:2601.04054](https://arxiv.org/abs/2601.04054)
+**Skill:** [`linkage-synthesis`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/linkage-synthesis) · **Paper:** *LinkD: Autoregressive diffusion for mechanical linkage synthesis*, Barati Farimani Lab, [arXiv:2601.04054](https://arxiv.org/abs/2601.04054)
 
 LinkD designs one-degree-of-freedom planar linkages whose end-effector traces a target curve.
 
@@ -43,7 +43,7 @@ pivot spacing, overall size), so a fit cannot come from a mechanism nobody could
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill linkage-synthesis
+npx skills add BaratiLab/mechanical-engineering-skills --skill linkage-synthesis
 pip install numpy scipy matplotlib
 cd skills/linkage-synthesis
 ```

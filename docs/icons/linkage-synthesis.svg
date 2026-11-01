@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><linearGradient id="g-linkage-synthesis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#1e40af"/></linearGradient></defs>
+  <rect width="96" height="96" rx="22" fill="url(#g-linkage-synthesis)"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="3 5" d="M52,26 C70,16 84,30 74,40 C66,48 50,44 52,26 Z"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M24,68 L30,44 L62,36 L66,68"/>
+        <circle cx="30" cy="44" r="3.5" fill="#fff"/><circle cx="62" cy="36" r="3.5" fill="#fff"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M30,44 L58,30"/><circle cx="58" cy="30" r="3.5" fill="#fff"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M18,74 h14 l-7,-6 z M59,74 h14 l-7,-6 z"/>
+</svg>

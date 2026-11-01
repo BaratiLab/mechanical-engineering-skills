@@ -1,6 +1,6 @@
 # Tutorial: agentic AM alloy evaluation (composition → LoF process map → ranking)
 
-**Skill:** [`am-alloy-screening`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/am-alloy-screening) · **Paper:** P. Pak, A. Chandrasekhar, A. Barati Farimani, *Agentic additive manufacturing alloy evaluation*, Additive Manufacturing Letters 17 (2026) 100355, [doi:10.1016/j.addlet.2026.100355](https://doi.org/10.1016/j.addlet.2026.100355) · **Code:** [BaratiLab/Agentic-Additive-Manufacturing-Alloy-Evaluation](https://github.com/BaratiLab/Agentic-Additive-Manufacturing-Alloy-Evaluation)
+**Skill:** [`am-alloy-screening`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/am-alloy-screening) · **Paper:** P. Pak, A. Chandrasekhar, A. Barati Farimani, *Agentic additive manufacturing alloy evaluation*, Additive Manufacturing Letters 17 (2026) 100355, [doi:10.1016/j.addlet.2026.100355](https://doi.org/10.1016/j.addlet.2026.100355) · **Code:** [BaratiLab/Agentic-Additive-Manufacturing-Alloy-Evaluation](https://github.com/BaratiLab/Agentic-Additive-Manufacturing-Alloy-Evaluation)
 
 "Can I print this alloy, and with what settings?" normally takes CALPHAD software, a melt-pool model
 and someone who knows both. The paper gave an LLM agent MCP tools for three steps:
@@ -24,7 +24,7 @@ installed; otherwise built-in alloy data or flagged estimates stand in.
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill am-alloy-screening
+npx skills add BaratiLab/mechanical-engineering-skills --skill am-alloy-screening
 pip install numpy matplotlib          # + Thermo-Calc with TC-Python for new compositions (optional)
 cd skills/am-alloy-screening
 ```

@@ -1,6 +1,6 @@
 # Tutorial: AgentsCAD (design for additive manufacturing of FDM parts)
 
-**Skill:** [`agentscad-fdm-dfam`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/agentscad-fdm-dfam) · **Paper:** E. George, C. Keefe, P. Pak, A. Barati Farimani, *AgentsCAD: Automated Design for Manufacturing of FDM Parts via Multi-Agent LLM Reasoning and Geometric Feature Recognition*, [arXiv:2607.02448](https://arxiv.org/abs/2607.02448)
+**Skill:** [`agentscad-fdm-dfam`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/agentscad-fdm-dfam) · **Paper:** E. George, C. Keefe, P. Pak, A. Barati Farimani, *AgentsCAD: Automated Design for Manufacturing of FDM Parts via Multi-Agent LLM Reasoning and Geometric Feature Recognition*, [arXiv:2607.02448](https://arxiv.org/abs/2607.02448)
 
 Slicers flag overhangs but can't change the geometry. AgentsCAD turns a STEP file into an LLM-readable blackboard (per-face JSON plus an adjacency graph), detects overhangs by rule, has the agent reason about reorientation and local fixes with grounding tools, applies the fixes programmatically, and verifies the result. Its key finding: **without the orientation tools, the agent hallucinated rotation angles**. With them, those errors disappeared.
 
@@ -12,7 +12,7 @@ Slicers flag overhangs but can't change the geometry. AgentsCAD turns a STEP fil
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill agentscad-fdm-dfam
+npx skills add BaratiLab/mechanical-engineering-skills --skill agentscad-fdm-dfam
 pip install cadquery pyvista numpy
 python examples/make_birdhouse.py birdhouse.step      # the paper-style test part
 ```

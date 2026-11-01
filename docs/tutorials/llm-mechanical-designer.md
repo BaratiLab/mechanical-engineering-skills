@@ -1,6 +1,6 @@
 # Tutorial: LLM Agent as a Mechanical Designer (truss design loop)
 
-**Skill:** [`llm-mechanical-designer`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/llm-mechanical-designer) · **Paper:** Y. Jadhav, A. Barati Farimani, *Large Language Model Agent as a Mechanical Designer*, J. Engineering Design (2026), [arXiv:2404.17525](https://arxiv.org/abs/2404.17525) · **Reference code:** [BaratiLab/LLLM-Agent-Mechanical-Designer](https://github.com/BaratiLab/LLLM-Agent-Mechanical-Designer)
+**Skill:** [`llm-mechanical-designer`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/llm-mechanical-designer) · **Paper:** Y. Jadhav, A. Barati Farimani, *Large Language Model Agent as a Mechanical Designer*, J. Engineering Design (2026), [arXiv:2404.17525](https://arxiv.org/abs/2404.17525) · **Reference code:** [BaratiLab/LLLM-Agent-Mechanical-Designer](https://github.com/BaratiLab/LLLM-Agent-Mechanical-Designer)
 
 The agent proposes a truss (node positions, members, discrete cross-sections). An exact FEM scores it. A ranked history of every design is fed back, with an **optimize** prompt when the design is feasible and a **constraint** prompt when it isn't, until the agent decides further gains are marginal.
 
@@ -13,7 +13,7 @@ The agent proposes a truss (node positions, members, discrete cross-sections). A
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill llm-mechanical-designer
+npx skills add BaratiLab/mechanical-engineering-skills --skill llm-mechanical-designer
 pip install numpy matplotlib
 ```
 Ask Claude: *"Use the llm-mechanical-designer skill to solve Task 1 Variation 1 from the paper."* The transcript below is a real session.

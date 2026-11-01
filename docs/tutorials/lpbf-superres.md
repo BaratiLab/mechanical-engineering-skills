@@ -1,6 +1,6 @@
 # Tutorial: diffusion super-resolution of L-PBF layer images (webcam → scientific camera)
 
-**Skill:** [`lpbf-superres`](https://github.com/BaratiLab/me-design-skills/tree/main/skills/lpbf-superres) · **Paper:** F. Ogoke, S. Kalambettu Suresh, J. Adamczyk, D. Bolintineanu, A. Garland, M. Heiden, A. Barati Farimani, *Deep learning based optical image super-resolution via generative diffusion models for layerwise in-situ LPBF monitoring*, Additive Manufacturing 107 (2025) 104790, [doi:10.1016/j.addma.2025.104790](https://doi.org/10.1016/j.addma.2025.104790)
+**Skill:** [`lpbf-superres`](https://github.com/BaratiLab/mechanical-engineering-skills/tree/main/skills/lpbf-superres) · **Paper:** F. Ogoke, S. Kalambettu Suresh, J. Adamczyk, D. Bolintineanu, A. Garland, M. Heiden, A. Barati Farimani, *Deep learning based optical image super-resolution via generative diffusion models for layerwise in-situ LPBF monitoring*, Additive Manufacturing 107 (2025) 104790, [doi:10.1016/j.addma.2025.104790](https://doi.org/10.1016/j.addma.2025.104790)
 
 Layer-wise photos of the powder bed reveal defects, but cameras sharp enough to resolve scan tracks
 and edge roughness are expensive and produce a lot of data. The paper mounted a 1080p webcam next
@@ -25,7 +25,7 @@ a synthetic ring-part build plate to rehearse on:
 
 ## Setup
 ```bash
-npx skills add BaratiLab/me-design-skills --skill lpbf-superres
+npx skills add BaratiLab/mechanical-engineering-skills --skill lpbf-superres
 pip install numpy scipy opencv-python-headless scikit-image PyWavelets torch
 cd skills/lpbf-superres
 ```

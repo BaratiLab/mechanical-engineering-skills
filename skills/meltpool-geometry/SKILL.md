@@ -14,7 +14,7 @@ interpretable to most data-driven:
 
 All of it runs through `scripts/meltpool.py` (numpy, pandas, scipy, scikit-learn, matplotlib). The
 data downloads on first use from github.com/BaratiLab/MeltpoolNet into
-`~/.cache/me-design-skills/meltpoolnet`, the same cache `lpbf-defect-prediction` uses.
+`~/.cache/mechanical-engineering-skills/meltpoolnet`, the same cache `lpbf-defect-prediction` uses.
 
 Units: P in W, V in mm/s, beam/hatch/layer/melt-pool sizes in µm, ρ in kg/m³, Cp in J/kg·K, k in
 W/m·K, melting T in K.
