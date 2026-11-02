@@ -85,7 +85,7 @@ PROCESS = {
 DEFAULTS = {"labor_usd_h": 30.0, "annual_volume": 100000, "lifetime_years": 3}
 
 PART_FIELDS = ["id", "name", "qty", "subassembly", "kind", "material", "process", "mass_g", "cost_usd",
-               "cycle_s", "cavities", "tooling_usd", "handling", "insertion", "moves",
+               "cycle_s", "cavities", "tooling_usd", "handling", "insertion", "time_s", "moves",
                "different_material", "separate_for_service", "necessary", "wear_part", "depth", "notes"]
 
 
@@ -123,7 +123,7 @@ def is_necessary(p):
     """Boothroyd minimum-part-count test for one part (per unit)."""
     if "necessary" in p and p["necessary"] is not None:
         return bool(p["necessary"])
-    if p.get("kind") in ("fastener", "label", "packaging"):
+    if p.get("kind") in ("fastener", "label", "packaging", "process"):
         return False
     return bool(p.get("moves") or p.get("different_material") or p.get("separate_for_service"))
 
@@ -181,7 +181,10 @@ def analyze(spec):
             notes.append(f"{p['id']}: unknown handling '{h}', used 'easy'"); h = "easy"
         if i not in INSERTION_S:
             notes.append(f"{p['id']}: unknown insertion '{i}', used 'align'"); i = "align"
-        t = qty * (HANDLING_S[h] + INSERTION_S[i])
+        if p.get("time_s") is not None:           # measured or process step time per item
+            t = qty * _num(p["time_s"])
+        else:
+            t = qty * (HANDLING_S[h] + INSERTION_S[i])
         nec = is_necessary(p)
         nmin = qty if nec else 0
         cost, br = part_cost(p, prod, notes)
@@ -297,12 +300,17 @@ PALETTE = ["#1e40af", "#f97316", "#14b8a6", "#8b5cf6", "#ec4899", "#f59e0b", "#6
 E = html.escape
 
 
+def _g(v):
+    """Mass label that stays readable for watch-sized parts."""
+    return f"{v:,.0f} g" if v >= 10 else (f"{v:.1f} g" if v >= 1 else f"{v:.2f} g" if v >= 0.01 else f"{v:.3f} g")
+
+
 def _bars(items, unit_fmt, width=560, bar_h=22, color="#1e40af", max_items=10):
     items = list(items)[:max_items]
     if not items:
         return ""
     vmax = max(v for _, v in items) or 1.0
-    lab_w = 230
+    lab_w = 300 if width >= 800 else 230
     h = len(items) * (bar_h + 8) + 8
     out = [f'<svg viewBox="0 0 {width} {h}" width="{width}" style="max-width:100%;height:auto" role="img">']
     for k, (lab, v) in enumerate(items):
@@ -389,7 +397,7 @@ th{background:#f1f5f9;font-weight:700;color:#334155}td.r,th.r{text-align:right;w
 .card{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:10px 14px;margin:8px 0}
 .card b{display:block}.mut{color:var(--mut);font-size:13.5px}
 ul{margin:4px 0 4px 18px;padding:0}li{margin:3px 0}.pid{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#64748b}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.gallery figure{margin:0}.gallery img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.gallery{display:flex;flex-direction:column;gap:18px;margin-bottom:10px}.gallery figure{margin:0;text-align:center}.gallery img{display:block;margin:0 auto;max-width:100%;max-height:820px;border-radius:10px;border:1px solid var(--line)}
 .gallery figcaption{font-size:12.5px;color:var(--mut)}
 .verdict{background:#0f172a;color:#f8fafc;border:none}.verdict h2{color:#fff}.verdict p{font-size:17px;margin:0}
 footer{color:var(--mut);font-size:12.5px;text-align:center;margin-top:24px}
@@ -447,7 +455,7 @@ def render_html(spec, a, base_dir="."):
     for r in sorted(a["parts"], key=lambda r: (r["subassembly"], r["id"])):
         bom.append(f'<tr><td class="pid">{E(r["id"])}</td><td>{E(r["name"])}</td><td class="r">{r["qty"]}</td>'
                    f'<td>{E(r["subassembly"])}</td><td>{E(r["material"])}</td><td>{E(r["process"].replace("_"," "))}</td>'
-                   f'<td class="r">{r["mass_g"]:.0f} g</td><td class="r">{money(r["cost_usd"])}</td>'
+                   f'<td class="r">{_g(r["mass_g"])}</td><td class="r">{money(r["cost_usd"])}</td>'
                    f'<td class="{"yes" if r["necessary"] else "no"}">{"yes" if r["necessary"] else "no"}</td></tr>')
     bom.append("</table>")
     body.append(sec("Bill of materials", "".join(bom)))

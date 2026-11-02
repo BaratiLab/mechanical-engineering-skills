@@ -30,6 +30,10 @@ check("labour = time x rate", abs(a["labor_usd"] - t_hand / 3600 * 36.0) < 1e-12
 check("elimination candidates are ranked by time (screws first)",
       [c["id"] for c in a["elimination_candidates"]] == ["F", "C"])
 
+a2 = T.analyze(spec([{"id": "R", "name": "regulate", "kind": "process", "qty": 2, "time_s": 40, "cost_usd": 0}]))
+check("time_s overrides the table time, and process steps are never necessary",
+      a2["assembly_time_s"] == 80 and a2["n_min"] == 0)
+
 # --- necessity rules -------------------------------------------------------------------------------
 check("fasteners are never necessary", not T.is_necessary({"kind": "fastener", "moves": True}))
 check("different material makes a part necessary", T.is_necessary({"kind": "part", "different_material": True}))
@@ -82,6 +86,9 @@ except ValueError:
 check("duplicate part ids are rejected", dup)
 
 # --- worked example and report ---------------------------------------------------------------------
+for exf in sorted(f for f in os.listdir(os.path.join(HERE, "..", "examples")) if f.endswith(".json")):
+    ea = T.analyze(json.load(open(os.path.join(HERE, "..", "examples", exf))))
+    check(f"example {exf}: analyses without error, 0 < DFA < 1", 0 < ea["dfa_index"] < 1)
 ex = os.path.join(HERE, "..", "examples", "cordless_drill.json")
 E = json.load(open(ex))
 a = T.analyze(E)

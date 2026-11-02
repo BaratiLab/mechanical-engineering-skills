@@ -27,7 +27,7 @@ explain a decision, and back every number with an observation or a stated estima
    and say how the design meets each one. Then build a function tree (store/convert/transmit/control/
    protect...) and map every part to a function. A part that maps to no function is a finding.
 4. **Fill the spec.** Run `python scripts/teardown.py template > spec.json`. For each part record id,
-   name, qty, subassembly, kind (part / fastener / label), material, process, mass_g, and either
+   name, qty, subassembly, kind (part / fastener / label / process, e.g. lubrication or regulation), material, process, mass_g, and either
    cost_usd (quote, catalogue price, or a purchased-part estimate) or the process inputs (cycle_s,
    cavities, tooling_usd). Then record the DFA fields:
    - handling: `easy | orient | small | flexible | heavy`
@@ -35,7 +35,8 @@ explain a decision, and back every number with an observation or a stated estima
    - the three Boothroyd questions: `moves`, `different_material`, `separate_for_service`
 
    Mark the parts that wear out or fail as `wear_part`, with `depth` (how many parts must come off
-   first). Times and tables are in `references/dfa_times.md`; cost data is in `references/should_cost.md`.
+   first). If a step takes a known time (regulation, a measured operation), set `time_s` per item
+   instead. Times and tables are in `references/dfa_times.md`; cost data is in `references/should_cost.md`.
 5. **Compute.** Run `python scripts/teardown.py analyze spec.json`. Read the output critically:
    - **DFA index.** Under 10 % is poor, 20–30 % is typical of good consumer products, and over 40 %
      is excellent.
@@ -74,10 +75,17 @@ explain a decision, and back every number with an observation or a stated estima
 design), `material-selection` (alternatives for a part the teardown flags), `machine-element-sizing`
 (check a gear, spring or bearing you measured), `tolerance-stackup` (a fit you suspect is marginal).
 
-## Example
-`examples/cordless_drill.json` is a worked spec for a generic 18 V drill/driver, and
-`examples/cordless_drill_report.html` is its report ([view online](https://baratilab.github.io/mechanical-engineering-skills/examples/mechanical-teardown-drill.html)). Run the tests with
-`python tests/test_teardown.py`.
+## Examples
+- `examples/cordless_drill.json`: a generic 18 V drill/driver (clamshell, planetary gearbox,
+  slip clutch). [Report](https://baratilab.github.io/mechanical-engineering-skills/examples/mechanical-teardown-drill.html).
+- `examples/automatic_watch.json`: a generic automatic diver's watch with the movement torn down
+  (gear train checked by calculation, pawl-lever winding, lever escapement, keyless works,
+  process steps such as lubrication and regulation with `time_s`). Its exploded view and gear-train
+  figures are drawn by `examples/make_watch_figures.py` and embedded through `images`.
+  [Report](https://baratilab.github.io/mechanical-engineering-skills/examples/mechanical-teardown-watch.html).
+
+Both are illustrative: the structure and mechanics are right, and the masses and costs are labelled
+estimates. Run the tests with `python tests/test_teardown.py`.
 
 ## Credits
 The idea of a fixed-spine teardown that ends in a printable HTML report comes from

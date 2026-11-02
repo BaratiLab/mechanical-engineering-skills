@@ -1,0 +1,135 @@
+{
+  "product": {
+    "name": "Automatic diver's watch, 3 hands + date (generic, 21,600 bph)",
+    "category": "Mechanical wristwatch",
+    "maker": "Unbranded mass-market example",
+    "model": "illustrative design",
+    "price_usd": 295.0,
+    "annual_volume": 500000,
+    "lifetime_years": 4,
+    "labor_usd_h": 6.0,
+    "pitch": "A self-winding watch that stores the wearer's arm motion in a coiled spring and releases it through a gear train at exactly six beats per second, kept honest by a balance wheel and hairspring, inside a 200 m water-resistant steel case.",
+    "evidence": [
+      "Illustrative design study: an archetypal mass-market automatic movement (Swiss-lever escapement, 21,600 bph, about 41 h reserve, bidirectional pawl-lever winding, quickset date) in a 42 mm steel diver case. The tooth counts are a consistent train checked by calculation; masses and costs are engineering estimates, not measurements of a specific calibre.",
+      "Line items group identical or near-identical parts (for example 18 pressed jewels, 16 movement screws); the movement has about 130 physical parts.",
+      "DFA handling times use the Boothroyd 'small part' row; real watch assembly under a microscope with tweezers is slower, so the DFA index here is optimistic.",
+      "To use this as a template for a real watch: weigh the parts on a 0.001 g balance, count teeth under a loupe, and read the calibre's own parts list."
+    ],
+    "repair": {"standard_tools": false, "spares_available": true, "manual_available": true}
+  },
+  "requirements": [
+    {"need": "Keeps good time", "metric": "Rate -20 / +40 s/day across positions; isochronism within 10 s/day from full wind to 24 h", "how_met": "21,600 bph balance with an index regulator for adjustment; the Fe-Ni self-compensating hairspring keeps the rate stable with temperature"},
+    {"need": "Runs over a weekend off the wrist", "metric": "Power reserve >= 40 h", "how_met": "Barrel turns once per 8 h (80/10 into the centre pinion); 5.1 turns of mainspring give about 41 h"},
+    {"need": "Winds itself", "metric": "Full wind after about 8 h of normal wear", "how_met": "3 g off-centre rotor on a ball bearing; pawl lever rectifies both rotation directions into ratchet motion"},
+    {"need": "Can be dived with", "metric": "200 m water resistance (ISO 6425 style test); readable in the dark", "how_met": "Screw-down crown and caseback with radial gaskets; compressed crystal gasket; lume on hands and indices; unidirectional bezel"},
+    {"need": "Survives knocks", "metric": "Runs after a 1 m drop onto hardwood (ISO 1413 style)", "how_met": "Spring-mounted shock settings on both balance pivots"},
+    {"need": "Survives a phone or bag clasp", "metric": "Rate change < 30 s/day after 4,800 A/m (ISO 764)", "how_met": "Fe-Ni hairspring meets the minimum; a silicon hairspring would make this a non-issue (see opportunities)"}
+  ],
+  "functions": [
+    {"function": "Store energy", "parts": [], "subfunctions": [
+      {"function": "Wind automatically from wrist motion", "parts": ["M28", "M29"]},
+      {"function": "Wind manually with the crown", "parts": ["C08", "M20", "M21", "M23", "M24"]},
+      {"function": "Store and release torque", "parts": ["M07", "M08", "M09"]}]},
+    {"function": "Divide time", "parts": [], "subfunctions": [
+      {"function": "Transmit and step down (barrel to escape wheel, ratio 1:5760)", "parts": ["M10", "M11", "M12", "M13"]},
+      {"function": "Release one tooth per two beats", "parts": ["M14"]},
+      {"function": "Oscillate at 3 Hz", "parts": ["M15", "M16", "M17", "M18"]}]},
+    {"function": "Display time and date", "parts": ["D01", "D03", "M25", "D04", "M26"], "subfunctions": [
+      {"function": "Set hands and date", "parts": ["M20", "M21", "M22"]}]},
+    {"function": "Locate and support", "parts": ["M01", "M02", "M03", "M04", "M05", "M06", "M19", "M27"]},
+    {"function": "Protect from water, dust and knocks", "parts": ["C01", "C04", "C05", "C06", "C07", "C08", "C09"]},
+    {"function": "Attach to the wrist", "parts": ["S01", "S02", "S03"]}
+  ],
+  "parts": [
+    {"id": "C01", "name": "Case middle with lugs", "qty": 1, "subassembly": "Case", "kind": "part", "material": "316L stainless", "process": "cnc_milling", "cost_usd": 9.0, "mass_g": 48, "handling": "easy", "insertion": "drop_in", "separate_for_service": true, "notes": "Forged blank, CNC, brushed and polished; polishing is about half the cost"},
+    {"id": "C02", "name": "Unidirectional bezel with anodized insert", "qty": 1, "subassembly": "Case", "kind": "part", "material": "316L stainless", "process": "cnc_turning", "cost_usd": 2.2, "mass_g": 7, "handling": "orient", "insertion": "snap", "moves": true},
+    {"id": "C03", "name": "Bezel click spring (120 clicks)", "qty": 1, "subassembly": "Case", "kind": "part", "material": "spring steel", "process": "stamping", "mass_g": 0.1, "cycle_s": 0.5, "tooling_usd": 4000, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "C04", "name": "Sapphire crystal, AR coated inside", "qty": 1, "subassembly": "Case", "kind": "part", "material": "sapphire", "process": "purchased", "cost_usd": 4.5, "mass_g": 2.5, "handling": "orient", "insertion": "press", "different_material": true, "wear_part": true, "depth": 1},
+    {"id": "C05", "name": "Crystal gasket (compressed)", "qty": 1, "subassembly": "Case", "kind": "part", "material": "rubber", "process": "purchased", "cost_usd": 0.05, "mass_g": 0.1, "handling": "flexible", "insertion": "press", "different_material": true},
+    {"id": "C06", "name": "Screw-down caseback", "qty": 1, "subassembly": "Case", "kind": "part", "material": "316L stainless", "process": "cnc_turning", "cost_usd": 3.0, "mass_g": 14, "handling": "orient", "insertion": "screw", "separate_for_service": true},
+    {"id": "C07", "name": "Caseback gasket", "qty": 1, "subassembly": "Case", "kind": "part", "material": "rubber", "process": "purchased", "cost_usd": 0.03, "mass_g": 0.1, "handling": "flexible", "insertion": "align", "different_material": true, "wear_part": true, "depth": 1, "notes": "Replace at every service; the main water-ingress path"},
+    {"id": "C08", "name": "Screw-down crown with tube and 2 gaskets", "qty": 1, "subassembly": "Case", "kind": "part", "material": "316L stainless", "process": "purchased", "cost_usd": 1.6, "mass_g": 1.5, "handling": "small", "insertion": "screw", "moves": true, "wear_part": true, "depth": 0},
+    {"id": "C09", "name": "Movement holder ring", "qty": 1, "subassembly": "Case", "kind": "part", "material": "PA66", "process": "injection_molding", "mass_g": 0.8, "cycle_s": 20, "cavities": 8, "tooling_usd": 15000, "handling": "orient", "insertion": "align", "necessary": false, "notes": "Spacer between a 29.4 mm movement and a larger case; the case could be bored to fit"},
+    {"id": "C10", "name": "Casing clamps with screws", "qty": 2, "subassembly": "Case", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.03, "mass_g": 0.05, "handling": "small", "insertion": "screw"},
+
+    {"id": "D01", "name": "Dial, printed, applied lumed indices", "qty": 1, "subassembly": "Dial and hands", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 2.0, "mass_g": 1.2, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "D03", "name": "Hands (hour, minute, seconds) with lume", "qty": 3, "subassembly": "Dial and hands", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.35, "mass_g": 0.06, "handling": "small", "insertion": "press", "moves": true},
+    {"id": "D04", "name": "Date disc, 31 days", "qty": 1, "subassembly": "Dial and hands", "kind": "part", "material": "brass", "process": "stamping", "cost_usd": 0.3, "mass_g": 0.3, "handling": "small", "insertion": "drop_in", "moves": true},
+
+    {"id": "M01", "name": "Main plate (pillar plate)", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 3.0, "mass_g": 3.5, "handling": "orient", "insertion": "drop_in", "separate_for_service": true, "notes": "Stamped blank, milled pockets, about 40 bored and jewelled seats"},
+    {"id": "M02", "name": "Barrel bridge", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 1.2, "mass_g": 1.2, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "M03", "name": "Train wheel bridge", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 1.0, "mass_g": 0.8, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "M04", "name": "Balance cock", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 0.8, "mass_g": 0.4, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "M05", "name": "Pallet bridge", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 0.5, "mass_g": 0.2, "handling": "small", "insertion": "align", "separate_for_service": true},
+    {"id": "M06", "name": "Automatic device bridge", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "cnc_milling", "cost_usd": 1.0, "mass_g": 1.0, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "M19", "name": "Jewels pressed into plate and bridges", "qty": 18, "subassembly": "Movement frame", "kind": "part", "material": "synthetic ruby", "process": "purchased", "cost_usd": 0.02, "mass_g": 0.003, "handling": "small", "insertion": "press", "different_material": true},
+    {"id": "M27", "name": "Date ring holding plate", "qty": 1, "subassembly": "Movement frame", "kind": "part", "material": "brass", "process": "stamping", "mass_g": 0.4, "cycle_s": 1.0, "tooling_usd": 8000, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "F01", "name": "Movement screws (bridges, cock, rotor, plates)", "qty": 16, "subassembly": "Movement frame", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.01, "mass_g": 0.01, "handling": "small", "insertion": "screw"},
+
+    {"id": "M07", "name": "Barrel drum (80 T) and cover", "qty": 2, "subassembly": "Movement energy", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.25, "mass_g": 0.25, "handling": "small", "insertion": "press", "moves": true},
+    {"id": "M08", "name": "Mainspring with slipping bridle", "qty": 1, "subassembly": "Movement energy", "kind": "part", "material": "Co-Ni spring alloy", "process": "purchased", "cost_usd": 0.6, "mass_g": 0.4, "handling": "flexible", "insertion": "hold_down", "moves": true, "wear_part": true, "depth": 5, "notes": "Wound into the barrel with a mainspring winder; the bridle slips at full wind so the automatic cannot overwind"},
+    {"id": "M09", "name": "Barrel arbor", "qty": 1, "subassembly": "Movement energy", "kind": "part", "material": "alloy steel", "process": "screw_machining", "mass_g": 0.08, "cycle_s": 25, "handling": "small", "insertion": "align", "moves": true},
+    {"id": "M28", "name": "Oscillating weight (rotor) on ball bearing", "qty": 1, "subassembly": "Movement energy", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 1.2, "mass_g": 3.0, "handling": "orient", "insertion": "align", "moves": true, "wear_part": true, "depth": 1},
+    {"id": "M29", "name": "Pawl lever with eccentric and transmission wheels", "qty": 3, "subassembly": "Movement energy", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.15, "mass_g": 0.05, "handling": "small", "insertion": "align", "moves": true},
+
+    {"id": "M10", "name": "Centre wheel (64 T) and pinion (10)", "qty": 1, "subassembly": "Movement train", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.35, "mass_g": 0.2, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M11", "name": "Third wheel (75 T) and pinion (8)", "qty": 1, "subassembly": "Movement train", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.25, "mass_g": 0.08, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M12", "name": "Fourth (seconds) wheel (84 T) and pinion (10)", "qty": 1, "subassembly": "Movement train", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.25, "mass_g": 0.07, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M13", "name": "Escape wheel (15 T) and pinion (7)", "qty": 1, "subassembly": "Movement train", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 0.3, "mass_g": 0.02, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M14", "name": "Pallet fork with 2 ruby pallet stones", "qty": 1, "subassembly": "Movement regulator", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 0.4, "mass_g": 0.02, "handling": "small", "insertion": "align", "moves": true},
+    {"id": "M15", "name": "Balance wheel with staff, roller and impulse jewel", "qty": 1, "subassembly": "Movement regulator", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.8, "mass_g": 0.3, "handling": "small", "insertion": "align", "moves": true, "wear_part": true, "depth": 1, "notes": "Pivots break on hard knocks despite the shock settings"},
+    {"id": "M16", "name": "Hairspring with collet and stud", "qty": 1, "subassembly": "Movement regulator", "kind": "part", "material": "Fe-Ni alloy", "process": "purchased", "cost_usd": 1.2, "mass_g": 0.01, "handling": "flexible", "insertion": "hold_down", "moves": true},
+    {"id": "M17", "name": "Regulator index", "qty": 1, "subassembly": "Movement regulator", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.1, "mass_g": 0.05, "handling": "small", "insertion": "align", "moves": true},
+    {"id": "M18", "name": "Shock settings (spring, cap and hole jewels)", "qty": 2, "subassembly": "Movement regulator", "kind": "part", "material": "spring steel", "process": "purchased", "cost_usd": 0.25, "mass_g": 0.01, "handling": "small", "insertion": "press", "moves": true},
+    {"id": "P01", "name": "Lubrication points (oils and greases)", "qty": 12, "subassembly": "Movement regulator", "kind": "process", "material": "oil", "process": "purchased", "cost_usd": 0.004, "mass_g": 0.0, "time_s": 6, "insertion": "adhesive"},
+    {"id": "P02", "name": "Regulation on a timegrapher, demagnetise", "qty": 1, "subassembly": "Movement regulator", "kind": "process", "material": "", "process": "purchased", "cost_usd": 0.0, "mass_g": 0.0, "time_s": 90},
+
+    {"id": "M20", "name": "Winding stem", "qty": 1, "subassembly": "Keyless and motion works", "kind": "part", "material": "alloy steel", "process": "screw_machining", "mass_g": 0.1, "cycle_s": 20, "handling": "small", "insertion": "align", "moves": true},
+    {"id": "M21", "name": "Sliding pinion (clutch) and winding pinion", "qty": 2, "subassembly": "Keyless and motion works", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 0.12, "mass_g": 0.05, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M22", "name": "Setting lever, yoke and yoke spring", "qty": 3, "subassembly": "Keyless and motion works", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.08, "mass_g": 0.05, "handling": "small", "insertion": "hold_down", "moves": true, "notes": "The yoke spring is the classic part that flies across the bench"},
+    {"id": "M23", "name": "Crown wheel and ratchet wheel", "qty": 2, "subassembly": "Keyless and motion works", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.12, "mass_g": 0.15, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M24", "name": "Click and click spring", "qty": 2, "subassembly": "Keyless and motion works", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.05, "mass_g": 0.02, "handling": "small", "insertion": "hold_down", "moves": true},
+    {"id": "M25", "name": "Cannon pinion, minute wheel, hour wheel", "qty": 3, "subassembly": "Keyless and motion works", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.1, "mass_g": 0.05, "handling": "small", "insertion": "drop_in", "moves": true},
+    {"id": "M26", "name": "Date driving wheel, date jumper and spring", "qty": 3, "subassembly": "Keyless and motion works", "kind": "part", "material": "steel", "process": "stamping", "cost_usd": 0.1, "mass_g": 0.05, "handling": "small", "insertion": "hold_down", "moves": true},
+    {"id": "F02", "name": "Dial-side screws", "qty": 3, "subassembly": "Keyless and motion works", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.01, "mass_g": 0.01, "handling": "small", "insertion": "screw"},
+
+    {"id": "S01", "name": "FKM rubber strap halves", "qty": 2, "subassembly": "Strap", "kind": "part", "material": "rubber", "process": "purchased", "cost_usd": 2.0, "mass_g": 11, "handling": "easy", "insertion": "align", "separate_for_service": true, "wear_part": true, "depth": 0},
+    {"id": "S02", "name": "Spring bars", "qty": 2, "subassembly": "Strap", "kind": "fastener", "material": "316L stainless", "process": "purchased", "cost_usd": 0.08, "mass_g": 0.4, "handling": "small", "insertion": "hold_down"},
+    {"id": "S03", "name": "Buckle with pin", "qty": 1, "subassembly": "Strap", "kind": "part", "material": "316L stainless", "process": "purchased", "cost_usd": 0.8, "mass_g": 4, "handling": "orient", "insertion": "align", "moves": true}
+  ],
+  "fmea": [
+    {"item": "Caseback and crown gaskets", "mode": "Lose compression with age and sunscreen", "effect": "Water ingress, rust on the movement", "cause": "Rubber compression set after 3-5 years", "S": 8, "O": 4, "D": 6, "action": "FKM gaskets, pressure test at each service, print 'service every 5 years' in the manual"},
+    {"item": "Lubricants", "mode": "Oil dries or migrates", "effect": "Amplitude drops, rate drifts, wear on pivots", "cause": "Oil ageing over 5-7 years; epilame missing on a jewel", "S": 5, "O": 6, "D": 5, "action": "Epilame on escape and pallet jewels; dry-lubricated silicon escapement in a premium version"},
+    {"item": "Hairspring", "mode": "Magnetised (coils stick)", "effect": "Gains minutes per day", "cause": "Laptop speaker, phone case or bag clasp magnets", "S": 6, "O": 5, "D": 4, "action": "Silicon or Nb-Zr hairspring; soft-iron inner cage as a lower-cost option"},
+    {"item": "Balance staff pivots", "mode": "Break on impact", "effect": "Watch stops", "cause": "Drop onto a hard floor beyond the shock-setting travel", "S": 7, "O": 3, "D": 2, "action": "Check shock-spring preload; larger end-shake limits"},
+    {"item": "Date mechanism", "mode": "Jams when quick-set between 21:00 and 03:00", "effect": "Bent date jumper or broken date-driving tooth", "cause": "Quickset fights the driving finger while it engages", "S": 4, "O": 5, "D": 7, "action": "Slip clutch on the date driving wheel, or an instantaneous date jump"},
+    {"item": "Mainspring", "mode": "Fatigue fracture", "effect": "Watch stops, no power", "cause": "Cyclic winding over about 10 years", "S": 7, "O": 2, "D": 3, "action": "Replace at service; spring is a stock part"}
+  ],
+  "design_signals": [
+    {"title": "A 1:5760 reduction in four meshes", "evidence": "Barrel 80/10, centre 64/8, third 75/10, fourth 84/7. The centre wheel turns once an hour, the fourth once a minute, the escape wheel 12 times a minute, and the barrel once every 8 h.", "why": "Every wheel has a job on the dial (hour, minute, seconds) or in the energy budget (8 h per barrel turn gives the 41 h reserve with about 5 spring turns). Pinions of 7-10 leaves keep the wheels small, at the cost of some engagement friction."},
+    {"title": "The pawl lever winds in both directions with two parts", "evidence": "An eccentric on the rotor pinion rocks a lever with two pawls that push the transmission wheel on both strokes.", "why": "Replaces a pair of reverser wheels (each a small clutch of 6-8 parts) and is more efficient at low rotor angles. It is also why this archetype is cheap and robust."},
+    {"title": "A slipping bridle instead of a stop", "evidence": "The outer end of the mainspring is a friction bridle against the barrel wall.", "why": "The automatic can never overwind: at full wind the bridle slips. One feature does the job of a separate torque limiter."},
+    {"title": "One brass plate locates everything", "evidence": "About 40 bored seats in the main plate hold jewels, pillars and steady pins; the bridges only cap them.", "why": "Holding the critical centre distances in one part is what makes the train mesh without fitting by hand. The plate costs more than any wheel because of it."},
+    {"title": "Water resistance lives in four rubber rings", "evidence": "Crystal, caseback and two crown gaskets are the only seals. The steel and the sapphire do no sealing on their own.", "why": "The 200 m rating is a maintenance item, not a property of the case. The rating depends on the cheapest parts in the watch."}
+  ],
+  "benchmark": {
+    "dimensions": ["Regulator", "Accuracy", "Power reserve", "Parts (movement)", "Service interval", "Typical price"],
+    "products": [
+      {"name": "This watch (mass-market automatic)", "values": ["Balance + hairspring, 3 Hz", "-20/+40 s/day", "~41 h", "~130", "5-7 years", "$250-400"]},
+      {"name": "Typical quartz diver", "values": ["Quartz 32,768 Hz", "+/-15 s/month", "Battery 2-3 years", "~40-60", "Battery + gaskets", "$80-200"]},
+      {"name": "Typical certified Swiss automatic", "values": ["Balance + hairspring, 4 Hz", "-4/+6 s/day", "~38-80 h", "~140-200", "5-10 years", "$1,000+"]}
+    ]
+  },
+  "opportunities": [
+    {"title": "Size the movement to the case", "change": "Bore the case middle to the movement diameter and delete the holder ring", "impact": "One part and one assembly step fewer; the movement seats on metal, not plastic", "effort": "low", "savings_usd": 0.05},
+    {"title": "Fold the pallet bridge into the train bridge", "change": "One bridge carries the train and the pallet pivots", "impact": "One part and two screws fewer, about 15 s off assembly; the pallet still comes out with the train bridge for service", "effort": "med", "savings_usd": 0.55},
+    {"title": "Quick-release spring bars", "change": "Spring bars with a lever so the wearer changes straps without a tool", "impact": "The commonest owner repair becomes tool-free; strap sales rise", "effort": "low", "savings_usd": -0.15},
+    {"title": "Silicon hairspring", "change": "Replace the Fe-Ni hairspring with oxidised silicon", "impact": "Removes the magnetism failure mode and improves temperature stability; needs a new collet and stud", "effort": "high", "savings_usd": -2.5},
+    {"title": "Date mechanism that cannot jam", "change": "Slip clutch on the date driving wheel", "impact": "Removes the 21:00-03:00 'do not set' warning from the manual", "effort": "med", "savings_usd": -0.1}
+  ],
+  "verdict": "A textbook mass-market automatic: the gear train, pawl-lever winding and slipping bridle get the most function from the fewest parts, and the brass main plate does the precision work so that the wheels can be cheap. The cost sits in the case, the crystal and the plate rather than in the gears, and assembly is dominated by tiny-part handling, sixteen movement screws, lubrication and regulation. Reliability is set by the four gaskets, the oil and the hairspring's magnetism, not by the steel. A silicon hairspring and a jam-proof date are the upgrades that change the owner experience; the holder ring and the separate pallet bridge are the cost-downs.",
+  "images": [
+    {"path": "watch_exploded.svg", "caption": "Exploded view, crystal to caseback (illustration)"},
+    {"path": "watch_train.svg", "caption": "Power flow and gear train with tooth counts and speeds"}
+  ]
+}
