@@ -84,7 +84,7 @@ text(800, 196, "loads a skill only when a request needs it", 15, fill="#ffedd5",
 
 groups = [("Design &amp; CAD", M.AREAS["mech"][0], ["cadsmith-text-to-cad", "query2cad-freecad", "parametric-part-cad", "sketch-to-cad", "drawing-gdt-review", "linkage-synthesis", "rocketsmith", "llm-mechanical-designer", "machine-element-sizing"]),
           ("Analysis &amp; simulation", M.AREAS["analysis"][0], ["cfd-simulation-setup", "stress-field-surrogate", "lattice-inverse-design", "equation-discovery", "quick-fea", "tolerance-stackup", "thermal-fluids-calc", "material-selection", "design-review-package", "engineering-calc-report", "worked-problem-generator", "mechanics-visuals"]),
-          ("Manufacturing", M.AREAS["dfm"][0], ["agentscad-fdm-dfam", "dfm-review", "image2gcode", "lpbf-defect-prediction", "am-alloy-screening", "sls-process-optimization", "meltpool-geometry", "llm-3d-print-monitor", "thermal-porosity", "lpbf-superres", "am-literature-rag"])]
+          ("Manufacturing", M.AREAS["dfm"][0], ["agentscad-fdm-dfam", "dfm-review", "mechanical-teardown", "image2gcode", "lpbf-defect-prediction", "am-alloy-screening", "sls-process-optimization", "meltpool-geometry", "llm-3d-print-monitor", "thermal-porosity", "lpbf-superres", "am-literature-rag"])]
 cx = [400, 674, 948]
 cw = 252
 size, gap = 56, 6
@@ -98,7 +98,7 @@ for (title, col, sk), x0 in zip(groups, cx):
         icon(s, gx + c * (size + gap), 308 + r * (size + gap), size)
     # connector hub -> card
     add(f'<path d="M800,210 C800,232 {x0+cw/2},232 {x0+cw/2},252" stroke="{col}" stroke-width="3" fill="none"/>')
-text(800, 560, "32 skills · 19 package Barati Farimani Lab papers", 20, "bold", "#334155", "middle")
+text(800, 560, "33 skills · 19 package Barati Farimani Lab papers", 20, "bold", "#334155", "middle")
 # anatomy strip
 pills = [("SKILL.md", "when &amp; how to use"), ("scripts/", "tested tools compute"), ("tests/ + notes", "checks &amp; provenance")]
 for i, (a, b) in enumerate(pills):

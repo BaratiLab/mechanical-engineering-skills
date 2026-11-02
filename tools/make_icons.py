@@ -132,6 +132,13 @@ G = {
         <circle cx="60" cy="36" r="14" {S}/>
         <path {S} d="M70,46 L82,58"/>
         <path {T} d="M54,36 l4,4 l8,-8"/>'''),
+    "mechanical-teardown": ("dfm", "Product teardown", f'''
+        <path {S} d="M18,66 H78 V80 H18 Z"/>
+        <path {S} d="M18,14 H78 V24 H18 Z"/>
+        <path {T} d="M50.9,45.6 L50.9,48.4 L47.7,49.1 L46.9,51.0 L48.7,53.7 L46.7,55.7 L44.0,53.9 L42.1,54.7 L41.4,57.9 L38.6,57.9 L37.9,54.7 L36.0,53.9 L33.3,55.7 L31.3,53.7 L33.1,51.0 L32.3,49.1 L29.1,48.4 L29.1,45.6 L32.3,44.9 L33.1,43.0 L31.3,40.3 L33.3,38.3 L36.0,40.1 L37.9,39.3 L38.6,36.1 L41.4,36.1 L42.1,39.3 L44.0,40.1 L46.7,38.3 L48.7,40.3 L46.9,43.0 L47.7,44.9 Z"/><circle cx="40" cy="47" r="3" {F}/>
+        <path {T} d="M62,38 h10 M67,38 V56 M64,42 h6 M64,46 h6 M64,50 h6"/>
+        <path {T} stroke-dasharray="2 4" d="M24,28 V62 M84,40 V60"/>
+        <path {T} d="M84,34 V20 m-4,4 l4,-4 l4,4"/>'''),
     "image2gcode": ("process", "Image → G-code", f'''
         <rect x="14" y="22" width="30" height="26" rx="3" {S}/>
         <path {T} d="M18,44 l8,-10 l6,6 l4,-4 l6,8"/><circle cx="34" cy="30" r="2.5" {F}/>
@@ -211,7 +218,7 @@ def banner(path):
   <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#1e293b"/></linearGradient></defs>
   <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
   <text x="40" y="78" font-family="Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#fff">Mechanical Engineering Skills</text>
-  <text x="40" y="118" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#cbd5e1">32 agent skills for design, analysis and manufacturing · 19 from Barati Farimani Lab papers</text>
+  <text x="40" y="118" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#cbd5e1">33 agent skills for design, analysis and manufacturing · 19 from Barati Farimani Lab papers</text>
   <rect x="40" y="142" width="660" height="44" rx="10" fill="#111827" stroke="#334155"/>
   <text x="58" y="171" font-family="Menlo,Consolas,monospace" font-size="19" fill="#7dd3fc">$ npx skills add BaratiLab/mechanical-engineering-skills</text>
   <text x="1160" y="171" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="16" fill="#94a3b8">Claude Code · Claude.ai · Codex · Cursor · Gemini CLI</text>

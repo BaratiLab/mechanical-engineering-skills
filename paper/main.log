@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 14:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -884,7 +884,7 @@ c}]
 
 pdfTeX warning: pdflatex (file ./figures/icons/cadsmith-text-to-cad.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/cadsmith-text-to-cad.pdf, id=291, 72.27pt x 72.27pt>
+<figures/icons/cadsmith-text-to-cad.pdf, id=292, 72.27pt x 72.27pt>
 File: figures/icons/cadsmith-text-to-cad.pdf Graphic file (type pdf)
 <use figures/icons/cadsmith-text-to-cad.pdf>
 Package pdftex.def Info: figures/icons/cadsmith-text-to-cad.pdf  used on input 
@@ -894,7 +894,7 @@ line 277.
 
 pdfTeX warning: pdflatex (file ./figures/icons/query2cad-freecad.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/query2cad-freecad.pdf, id=293, 72.27pt x 72.27pt>
+<figures/icons/query2cad-freecad.pdf, id=294, 72.27pt x 72.27pt>
 File: figures/icons/query2cad-freecad.pdf Graphic file (type pdf)
 <use figures/icons/query2cad-freecad.pdf>
 Package pdftex.def Info: figures/icons/query2cad-freecad.pdf  used on input lin
@@ -904,7 +904,7 @@ e 278.
 
 pdfTeX warning: pdflatex (file ./figures/icons/parametric-part-cad.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/parametric-part-cad.pdf, id=295, 72.27pt x 72.27pt>
+<figures/icons/parametric-part-cad.pdf, id=296, 72.27pt x 72.27pt>
 File: figures/icons/parametric-part-cad.pdf Graphic file (type pdf)
 <use figures/icons/parametric-part-cad.pdf>
 Package pdftex.def Info: figures/icons/parametric-part-cad.pdf  used on input l
@@ -914,7 +914,7 @@ ine 279.
 
 pdfTeX warning: pdflatex (file ./figures/icons/sketch-to-cad.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/sketch-to-cad.pdf, id=296, 72.27pt x 72.27pt>
+<figures/icons/sketch-to-cad.pdf, id=297, 72.27pt x 72.27pt>
 File: figures/icons/sketch-to-cad.pdf Graphic file (type pdf)
 <use figures/icons/sketch-to-cad.pdf>
 Package pdftex.def Info: figures/icons/sketch-to-cad.pdf  used on input line 28
@@ -924,7 +924,7 @@ Package pdftex.def Info: figures/icons/sketch-to-cad.pdf  used on input line 28
 
 pdfTeX warning: pdflatex (file ./figures/icons/drawing-gdt-review.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/drawing-gdt-review.pdf, id=297, 72.27pt x 72.27pt>
+<figures/icons/drawing-gdt-review.pdf, id=298, 72.27pt x 72.27pt>
 File: figures/icons/drawing-gdt-review.pdf Graphic file (type pdf)
 <use figures/icons/drawing-gdt-review.pdf>
 Package pdftex.def Info: figures/icons/drawing-gdt-review.pdf  used on input li
@@ -934,7 +934,7 @@ ne 281.
 
 pdfTeX warning: pdflatex (file ./figures/icons/linkage-synthesis.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/linkage-synthesis.pdf, id=298, 72.27pt x 72.27pt>
+<figures/icons/linkage-synthesis.pdf, id=299, 72.27pt x 72.27pt>
 File: figures/icons/linkage-synthesis.pdf Graphic file (type pdf)
 <use figures/icons/linkage-synthesis.pdf>
 Package pdftex.def Info: figures/icons/linkage-synthesis.pdf  used on input lin
@@ -944,7 +944,7 @@ e 282.
 
 pdfTeX warning: pdflatex (file ./figures/icons/rocketsmith.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/rocketsmith.pdf, id=300, 72.27pt x 72.27pt>
+<figures/icons/rocketsmith.pdf, id=301, 72.27pt x 72.27pt>
 File: figures/icons/rocketsmith.pdf Graphic file (type pdf)
 <use figures/icons/rocketsmith.pdf>
 Package pdftex.def Info: figures/icons/rocketsmith.pdf  used on input line 283.
@@ -954,7 +954,7 @@ Package pdftex.def Info: figures/icons/rocketsmith.pdf  used on input line 283.
 
 pdfTeX warning: pdflatex (file ./figures/icons/llm-mechanical-designer.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/llm-mechanical-designer.pdf, id=302, 72.27pt x 72.27pt>
+<figures/icons/llm-mechanical-designer.pdf, id=303, 72.27pt x 72.27pt>
 File: figures/icons/llm-mechanical-designer.pdf Graphic file (type pdf)
 <use figures/icons/llm-mechanical-designer.pdf>
 Package pdftex.def Info: figures/icons/llm-mechanical-designer.pdf  used on inp
@@ -964,7 +964,7 @@ ut line 284.
 
 pdfTeX warning: pdflatex (file ./figures/icons/machine-element-sizing.pdf): PDF
  inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/machine-element-sizing.pdf, id=304, 72.27pt x 72.27pt>
+<figures/icons/machine-element-sizing.pdf, id=305, 72.27pt x 72.27pt>
 File: figures/icons/machine-element-sizing.pdf Graphic file (type pdf)
 <use figures/icons/machine-element-sizing.pdf>
 Package pdftex.def Info: figures/icons/machine-element-sizing.pdf  used on inpu
@@ -974,7 +974,7 @@ t line 285.
 
 pdfTeX warning: pdflatex (file ./figures/icons/cfd-simulation-setup.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/cfd-simulation-setup.pdf, id=305, 72.27pt x 72.27pt>
+<figures/icons/cfd-simulation-setup.pdf, id=306, 72.27pt x 72.27pt>
 File: figures/icons/cfd-simulation-setup.pdf Graphic file (type pdf)
 <use figures/icons/cfd-simulation-setup.pdf>
 Package pdftex.def Info: figures/icons/cfd-simulation-setup.pdf  used on input 
@@ -984,7 +984,7 @@ line 287.
 
 pdfTeX warning: pdflatex (file ./figures/icons/stress-field-surrogate.pdf): PDF
  inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/stress-field-surrogate.pdf, id=307, 72.27pt x 72.27pt>
+<figures/icons/stress-field-surrogate.pdf, id=308, 72.27pt x 72.27pt>
 File: figures/icons/stress-field-surrogate.pdf Graphic file (type pdf)
 <use figures/icons/stress-field-surrogate.pdf>
 Package pdftex.def Info: figures/icons/stress-field-surrogate.pdf  used on inpu
@@ -994,7 +994,7 @@ t line 288.
 
 pdfTeX warning: pdflatex (file ./figures/icons/lattice-inverse-design.pdf): PDF
  inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/lattice-inverse-design.pdf, id=309, 72.27pt x 72.27pt>
+<figures/icons/lattice-inverse-design.pdf, id=310, 72.27pt x 72.27pt>
 File: figures/icons/lattice-inverse-design.pdf Graphic file (type pdf)
 <use figures/icons/lattice-inverse-design.pdf>
 Package pdftex.def Info: figures/icons/lattice-inverse-design.pdf  used on inpu
@@ -1004,7 +1004,7 @@ t line 289.
 
 pdfTeX warning: pdflatex (file ./figures/icons/equation-discovery.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/equation-discovery.pdf, id=311, 72.27pt x 72.27pt>
+<figures/icons/equation-discovery.pdf, id=312, 72.27pt x 72.27pt>
 File: figures/icons/equation-discovery.pdf Graphic file (type pdf)
 <use figures/icons/equation-discovery.pdf>
 Package pdftex.def Info: figures/icons/equation-discovery.pdf  used on input li
@@ -1014,7 +1014,7 @@ ne 290.
 
 pdfTeX warning: pdflatex (file ./figures/icons/quick-fea.pdf): PDF inclusion: f
 ound PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/quick-fea.pdf, id=313, 72.27pt x 72.27pt>
+<figures/icons/quick-fea.pdf, id=314, 72.27pt x 72.27pt>
 File: figures/icons/quick-fea.pdf Graphic file (type pdf)
 <use figures/icons/quick-fea.pdf>
 Package pdftex.def Info: figures/icons/quick-fea.pdf  used on input line 291.
@@ -1023,7 +1023,7 @@ Package pdftex.def Info: figures/icons/quick-fea.pdf  used on input line 291.
 
 pdfTeX warning: pdflatex (file ./figures/icons/tolerance-stackup.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/tolerance-stackup.pdf, id=314, 72.27pt x 72.27pt>
+<figures/icons/tolerance-stackup.pdf, id=315, 72.27pt x 72.27pt>
 File: figures/icons/tolerance-stackup.pdf Graphic file (type pdf)
 <use figures/icons/tolerance-stackup.pdf>
 Package pdftex.def Info: figures/icons/tolerance-stackup.pdf  used on input lin
@@ -1033,7 +1033,7 @@ e 292.
 
 pdfTeX warning: pdflatex (file ./figures/icons/thermal-fluids-calc.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/thermal-fluids-calc.pdf, id=315, 72.27pt x 72.27pt>
+<figures/icons/thermal-fluids-calc.pdf, id=316, 72.27pt x 72.27pt>
 File: figures/icons/thermal-fluids-calc.pdf Graphic file (type pdf)
 <use figures/icons/thermal-fluids-calc.pdf>
 Package pdftex.def Info: figures/icons/thermal-fluids-calc.pdf  used on input l
@@ -1043,7 +1043,7 @@ ine 293.
 
 pdfTeX warning: pdflatex (file ./figures/icons/material-selection.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/material-selection.pdf, id=316, 72.27pt x 72.27pt>
+<figures/icons/material-selection.pdf, id=317, 72.27pt x 72.27pt>
 File: figures/icons/material-selection.pdf Graphic file (type pdf)
 <use figures/icons/material-selection.pdf>
 Package pdftex.def Info: figures/icons/material-selection.pdf  used on input li
@@ -1053,7 +1053,7 @@ ne 294.
 
 pdfTeX warning: pdflatex (file ./figures/icons/design-review-package.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/design-review-package.pdf, id=317, 72.27pt x 72.27pt>
+<figures/icons/design-review-package.pdf, id=318, 72.27pt x 72.27pt>
 File: figures/icons/design-review-package.pdf Graphic file (type pdf)
 <use figures/icons/design-review-package.pdf>
 Package pdftex.def Info: figures/icons/design-review-package.pdf  used on input
@@ -1063,7 +1063,7 @@ Package pdftex.def Info: figures/icons/design-review-package.pdf  used on input
 
 pdfTeX warning: pdflatex (file ./figures/icons/engineering-calc-report.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/engineering-calc-report.pdf, id=318, 72.27pt x 72.27pt>
+<figures/icons/engineering-calc-report.pdf, id=319, 72.27pt x 72.27pt>
 File: figures/icons/engineering-calc-report.pdf Graphic file (type pdf)
 <use figures/icons/engineering-calc-report.pdf>
 Package pdftex.def Info: figures/icons/engineering-calc-report.pdf  used on inp
@@ -1073,7 +1073,7 @@ ut line 296.
 
 pdfTeX warning: pdflatex (file ./figures/icons/agentscad-fdm-dfam.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/agentscad-fdm-dfam.pdf, id=319, 72.27pt x 72.27pt>
+<figures/icons/agentscad-fdm-dfam.pdf, id=320, 72.27pt x 72.27pt>
 File: figures/icons/agentscad-fdm-dfam.pdf Graphic file (type pdf)
 <use figures/icons/agentscad-fdm-dfam.pdf>
 Package pdftex.def Info: figures/icons/agentscad-fdm-dfam.pdf  used on input li
@@ -1083,120 +1083,130 @@ ne 298.
 
 pdfTeX warning: pdflatex (file ./figures/icons/dfm-review.pdf): PDF inclusion: 
 found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/dfm-review.pdf, id=321, 72.27pt x 72.27pt>
+<figures/icons/dfm-review.pdf, id=322, 72.27pt x 72.27pt>
 File: figures/icons/dfm-review.pdf Graphic file (type pdf)
 <use figures/icons/dfm-review.pdf>
 Package pdftex.def Info: figures/icons/dfm-review.pdf  used on input line 299.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
+pdfTeX warning: pdflatex (file ./figures/icons/mechanical-teardown.pdf): PDF in
+clusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/icons/mechanical-teardown.pdf, id=323, 72.27pt x 72.27pt>
+File: figures/icons/mechanical-teardown.pdf Graphic file (type pdf)
+<use figures/icons/mechanical-teardown.pdf>
+Package pdftex.def Info: figures/icons/mechanical-teardown.pdf  used on input l
+ine 300.
+(pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
+
+
 pdfTeX warning: pdflatex (file ./figures/icons/image2gcode.pdf): PDF inclusion:
  found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/image2gcode.pdf, id=322, 72.27pt x 72.27pt>
+<figures/icons/image2gcode.pdf, id=324, 72.27pt x 72.27pt>
 File: figures/icons/image2gcode.pdf Graphic file (type pdf)
 <use figures/icons/image2gcode.pdf>
-Package pdftex.def Info: figures/icons/image2gcode.pdf  used on input line 300.
+Package pdftex.def Info: figures/icons/image2gcode.pdf  used on input line 301.
 
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/lpbf-defect-prediction.pdf): PDF
  inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/lpbf-defect-prediction.pdf, id=324, 72.27pt x 72.27pt>
+<figures/icons/lpbf-defect-prediction.pdf, id=326, 72.27pt x 72.27pt>
 File: figures/icons/lpbf-defect-prediction.pdf Graphic file (type pdf)
 <use figures/icons/lpbf-defect-prediction.pdf>
 Package pdftex.def Info: figures/icons/lpbf-defect-prediction.pdf  used on inpu
-t line 301.
+t line 302.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/am-alloy-screening.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/am-alloy-screening.pdf, id=326, 72.27pt x 72.27pt>
+<figures/icons/am-alloy-screening.pdf, id=328, 72.27pt x 72.27pt>
 File: figures/icons/am-alloy-screening.pdf Graphic file (type pdf)
 <use figures/icons/am-alloy-screening.pdf>
 Package pdftex.def Info: figures/icons/am-alloy-screening.pdf  used on input li
-ne 302.
+ne 303.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/sls-process-optimization.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/sls-process-optimization.pdf, id=328, 72.27pt x 72.27pt>
+<figures/icons/sls-process-optimization.pdf, id=330, 72.27pt x 72.27pt>
 File: figures/icons/sls-process-optimization.pdf Graphic file (type pdf)
 <use figures/icons/sls-process-optimization.pdf>
 Package pdftex.def Info: figures/icons/sls-process-optimization.pdf  used on in
-put line 303.
+put line 304.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/meltpool-geometry.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/meltpool-geometry.pdf, id=330, 72.27pt x 72.27pt>
+<figures/icons/meltpool-geometry.pdf, id=332, 72.27pt x 72.27pt>
 File: figures/icons/meltpool-geometry.pdf Graphic file (type pdf)
 <use figures/icons/meltpool-geometry.pdf>
 Package pdftex.def Info: figures/icons/meltpool-geometry.pdf  used on input lin
-e 304.
+e 305.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/llm-3d-print-monitor.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/llm-3d-print-monitor.pdf, id=332, 72.27pt x 72.27pt>
+<figures/icons/llm-3d-print-monitor.pdf, id=334, 72.27pt x 72.27pt>
 File: figures/icons/llm-3d-print-monitor.pdf Graphic file (type pdf)
 <use figures/icons/llm-3d-print-monitor.pdf>
 Package pdftex.def Info: figures/icons/llm-3d-print-monitor.pdf  used on input 
-line 305.
+line 306.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/thermal-porosity.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/thermal-porosity.pdf, id=334, 72.27pt x 72.27pt>
+<figures/icons/thermal-porosity.pdf, id=336, 72.27pt x 72.27pt>
 File: figures/icons/thermal-porosity.pdf Graphic file (type pdf)
 <use figures/icons/thermal-porosity.pdf>
 Package pdftex.def Info: figures/icons/thermal-porosity.pdf  used on input line
- 306.
+ 307.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/lpbf-superres.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/lpbf-superres.pdf, id=336, 72.27pt x 72.27pt>
+<figures/icons/lpbf-superres.pdf, id=338, 72.27pt x 72.27pt>
 File: figures/icons/lpbf-superres.pdf Graphic file (type pdf)
 <use figures/icons/lpbf-superres.pdf>
 Package pdftex.def Info: figures/icons/lpbf-superres.pdf  used on input line 30
-7.
+8.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/am-literature-rag.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/am-literature-rag.pdf, id=338, 72.27pt x 72.27pt>
+<figures/icons/am-literature-rag.pdf, id=340, 72.27pt x 72.27pt>
 File: figures/icons/am-literature-rag.pdf Graphic file (type pdf)
 <use figures/icons/am-literature-rag.pdf>
 Package pdftex.def Info: figures/icons/am-literature-rag.pdf  used on input lin
-e 308.
+e 309.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/worked-problem-generator.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/worked-problem-generator.pdf, id=340, 72.27pt x 72.27pt>
+<figures/icons/worked-problem-generator.pdf, id=342, 72.27pt x 72.27pt>
 File: figures/icons/worked-problem-generator.pdf Graphic file (type pdf)
 <use figures/icons/worked-problem-generator.pdf>
 Package pdftex.def Info: figures/icons/worked-problem-generator.pdf  used on in
-put line 310.
+put line 311.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 
 
 pdfTeX warning: pdflatex (file ./figures/icons/mechanics-visuals.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/icons/mechanics-visuals.pdf, id=341, 72.27pt x 72.27pt>
+<figures/icons/mechanics-visuals.pdf, id=343, 72.27pt x 72.27pt>
 File: figures/icons/mechanics-visuals.pdf Graphic file (type pdf)
 <use figures/icons/mechanics-visuals.pdf>
 Package pdftex.def Info: figures/icons/mechanics-visuals.pdf  used on input lin
-e 311.
+e 312.
 (pdftex.def)             Requested size: 28.45274pt x 28.45204pt.
 [5 <./figures/icons/cadsmith-text-to-cad.pdf> <./figures/icons/query2cad-freeca
 d.pdf
@@ -1275,6 +1285,10 @@ lusion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./figures/icons/dfm-review.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
+> <./figures/icons/mechanical-teardown.pdf
+
+pdfTeX warning: pdflatex (file ./figures/icons/mechanical-teardown.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 > <./figures/icons/image2gcode.pdf
 
 pdfTeX warning: pdflatex (file ./figures/icons/image2gcode.pdf): PDF inclusion:
@@ -1311,10 +1325,6 @@ n: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./figures/icons/am-literature-rag.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
-> <./figures/icons/worked-problem-generator.pdf
-
-pdfTeX warning: pdflatex (file ./figures/icons/worked-problem-generator.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
 >]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/8'.
@@ -1322,109 +1332,114 @@ Package microtype Info: Character `029' is missing
 File: figures/icons/machine-element-sizing.pdf Graphic file (type pdf)
 <use figures/icons/machine-element-sizing.pdf>
 Package pdftex.def Info: figures/icons/machine-element-sizing.pdf  used on inpu
-t line 376.
+t line 377.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/cadsmith-text-to-cad.pdf Graphic file (type pdf)
 <use figures/icons/cadsmith-text-to-cad.pdf>
 Package pdftex.def Info: figures/icons/cadsmith-text-to-cad.pdf  used on input 
-line 378.
+line 379.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/agentscad-fdm-dfam.pdf Graphic file (type pdf)
 <use figures/icons/agentscad-fdm-dfam.pdf>
 Package pdftex.def Info: figures/icons/agentscad-fdm-dfam.pdf  used on input li
-ne 378.
+ne 379.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/quick-fea.pdf Graphic file (type pdf)
 <use figures/icons/quick-fea.pdf>
-Package pdftex.def Info: figures/icons/quick-fea.pdf  used on input line 380.
+Package pdftex.def Info: figures/icons/quick-fea.pdf  used on input line 381.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/cfd-simulation-setup.pdf Graphic file (type pdf)
 <use figures/icons/cfd-simulation-setup.pdf>
 Package pdftex.def Info: figures/icons/cfd-simulation-setup.pdf  used on input 
-line 382.
+line 383.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/thermal-fluids-calc.pdf Graphic file (type pdf)
 <use figures/icons/thermal-fluids-calc.pdf>
 Package pdftex.def Info: figures/icons/thermal-fluids-calc.pdf  used on input l
-ine 382.
+ine 383.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/lattice-inverse-design.pdf Graphic file (type pdf)
 <use figures/icons/lattice-inverse-design.pdf>
 Package pdftex.def Info: figures/icons/lattice-inverse-design.pdf  used on inpu
-t line 384.
+t line 385.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/rocketsmith.pdf Graphic file (type pdf)
 <use figures/icons/rocketsmith.pdf>
-Package pdftex.def Info: figures/icons/rocketsmith.pdf  used on input line 386.
+Package pdftex.def Info: figures/icons/rocketsmith.pdf  used on input line 387.
 
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/lpbf-defect-prediction.pdf Graphic file (type pdf)
 <use figures/icons/lpbf-defect-prediction.pdf>
 Package pdftex.def Info: figures/icons/lpbf-defect-prediction.pdf  used on inpu
-t line 388.
+t line 389.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/meltpool-geometry.pdf Graphic file (type pdf)
 <use figures/icons/meltpool-geometry.pdf>
 Package pdftex.def Info: figures/icons/meltpool-geometry.pdf  used on input lin
-e 388.
+e 389.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/llm-3d-print-monitor.pdf Graphic file (type pdf)
 <use figures/icons/llm-3d-print-monitor.pdf>
 Package pdftex.def Info: figures/icons/llm-3d-print-monitor.pdf  used on input 
-line 390.
+line 391.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/thermal-porosity.pdf Graphic file (type pdf)
 <use figures/icons/thermal-porosity.pdf>
 Package pdftex.def Info: figures/icons/thermal-porosity.pdf  used on input line
- 392.
+ 393.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/sls-process-optimization.pdf Graphic file (type pdf)
 <use figures/icons/sls-process-optimization.pdf>
 Package pdftex.def Info: figures/icons/sls-process-optimization.pdf  used on in
-put line 394.
+put line 395.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/equation-discovery.pdf Graphic file (type pdf)
 <use figures/icons/equation-discovery.pdf>
 Package pdftex.def Info: figures/icons/equation-discovery.pdf  used on input li
-ne 396.
+ne 397.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/worked-problem-generator.pdf Graphic file (type pdf)
 <use figures/icons/worked-problem-generator.pdf>
 Package pdftex.def Info: figures/icons/worked-problem-generator.pdf  used on in
-put line 398.
+put line 399.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
 File: figures/icons/mechanics-visuals.pdf Graphic file (type pdf)
 <use figures/icons/mechanics-visuals.pdf>
 Package pdftex.def Info: figures/icons/mechanics-visuals.pdf  used on input lin
-e 398.
+e 399.
 (pdftex.def)             Requested size: 17.63957pt x 17.64056pt.
-[7 <./figures/icons/mechanics-visuals.pdf>] [8]
+[7 <./figures/icons/worked-problem-generator.pdf> <./figures/icons/mechanics-vi
+suals.pdf
+
+pdfTeX warning: pdflatex (file ./figures/icons/mechanics-visuals.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>] [8]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 414.
+(Font)              <10.95> on input line 415.
 [9] [10{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fon
 ts/enc/dvips/lm/lm-mathsy.enc}]
-<figures/glu3d_compare.png, id=517, 722.7pt x 289.08pt>
+<figures/glu3d_compare.png, id=522, 722.7pt x 289.08pt>
 File: figures/glu3d_compare.png Graphic file (type png)
 <use figures/glu3d_compare.png>
-Package pdftex.def Info: figures/glu3d_compare.png  used on input line 485.
+Package pdftex.def Info: figures/glu3d_compare.png  used on input line 486.
 (pdftex.def)             Requested size: 263.06166pt x 105.2244pt.
-<figures/glu3d_search.png, id=519, 650.43pt x 224.037pt>
+<figures/glu3d_search.png, id=524, 650.43pt x 224.037pt>
 File: figures/glu3d_search.png Graphic file (type png)
 <use figures/glu3d_search.png>
-Package pdftex.def Info: figures/glu3d_search.png  used on input line 488.
+Package pdftex.def Info: figures/glu3d_search.png  used on input line 489.
 (pdftex.def)             Requested size: 197.29623pt x 67.95685pt.
-<figures/rocketsmith_hp1_flight.png, id=524, 650.43pt x 252.945pt>
+<figures/rocketsmith_hp1_flight.png, id=529, 650.43pt x 252.945pt>
 File: figures/rocketsmith_hp1_flight.png Graphic file (type png)
 <use figures/rocketsmith_hp1_flight.png>
 Package pdftex.def Info: figures/rocketsmith_hp1_flight.png  used on input line
- 516.
+ 517.
 (pdftex.def)             Requested size: 291.2458pt x 113.26454pt.
 [11 <./figures/glu3d_compare.png> <./figures/glu3d_search.png> <./figures/rocke
 tsmith_hp1_flight.png>]
-<figures/thermopore_layer.png, id=538, 1084.05pt x 274.626pt>
+<figures/thermopore_layer.png, id=543, 1084.05pt x 274.626pt>
 File: figures/thermopore_layer.png Graphic file (type png)
 <use figures/thermopore_layer.png>
-Package pdftex.def Info: figures/thermopore_layer.png  used on input line 546.
+Package pdftex.def Info: figures/thermopore_layer.png  used on input line 547.
 (pdftex.def)             Requested size: 469.75502pt x 119.00458pt.
 [12 <./figures/thermopore_layer.png>] [13] (./main.bbl [14]
 Underfull \hbox (badness 2302) in paragraph at lines 69--74
@@ -1447,10 +1462,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 642F3B3DEC2858F0374978A78FEA8BAD;2594.
  ) 
 Here is how much of TeX's memory you used:
- 27160 strings out of 476106
- 508537 string characters out of 5793932
- 1963975 words of memory out of 5000000
- 48341 multiletter control sequences out of 15000+600000
+ 27167 strings out of 476106
+ 508868 string characters out of 5793932
+ 1964975 words of memory out of 5000000
+ 48348 multiletter control sequences out of 15000+600000
  654668 words of font info for 234 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  84i,10n,87p,1001b,995s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1466,10 +1481,10 @@ b></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type
 hare/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publi
 c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmtt8.pfb>
-Output written on main.pdf (18 pages, 972275 bytes).
+Output written on main.pdf (18 pages, 973556 bytes).
 PDF statistics:
- 707 PDF objects out of 1000 (max. 8388607)
- 579 compressed objects within 6 object streams
+ 712 PDF objects out of 1000 (max. 8388607)
+ 583 compressed objects within 6 object streams
  104 named destinations out of 1000 (max. 500000)
- 50990 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 50995 words of extra memory for PDF output out of 51595 (max. 10000000)
 

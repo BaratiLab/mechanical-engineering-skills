@@ -45,6 +45,9 @@ Nineteen skills in this library package Barati Farimani Lab papers as agent work
 - Machining, molding, sheet metal → `dfm-review`.
 - Stress or stiffness → `quick-fea`. Flow → `cfd-simulation-setup`.
 
+**"I have someone else's product and want to know how it is made."**
+- Tear it down: BOM, DFA index, should-cost, repairability, failure modes, redesign ideas → `mechanical-teardown`. Then `dfm-review` on the parts it flags, or `material-selection` for alternatives.
+
 **"I need a structure or layout designed."**
 - Truss or frame topology with discrete sections → `llm-mechanical-designer`.
 - Material choice → `material-selection`; component sizing → `machine-element-sizing`.
@@ -91,7 +94,8 @@ Nineteen skills in this library package Barati Farimani Lab papers as agent work
 6. **Print with a watcher.** `agentscad-fdm-dfam` → slice → `add_layer_pauses.py` → `llm-3d-print-monitor` corrects the print layer by layer and leaves an audit log.
 7. **Metal part qualification plan.** `lpbf-defect-prediction` map → choose the robust point → design a density-cube DOE around it → `engineering-calc-report`.
 8. **Metal AM process development loop.** `am-literature-rag` (what has been tried for this alloy) → `meltpool-geometry` + `lpbf-defect-prediction` (window) → single tracks to calibrate (`--extra`) → build with pyrometry and a webcam → `thermal-porosity` + `lpbf-superres` flag layers → targeted CT.
-9. **Course module on agentic engineering.** Use the tutorials in order (Query2CAD → CADSmith → AgentsCAD → CFD Forge) to show how verification gets stricter: a VLM score, then kernel metrics with an independent judge, then rule-based geometry checks, then registered physics contracts.
+9. **Competitor teardown → cost-down.** Photos and masses from a disassembled rival → `mechanical-teardown` (DFA index, should-cost, elimination candidates) → `dfm-review` on the top cost parts → `design-review-package` for your own next version. *Example: "Here are photos of a cordless drill I took apart. What does it cost to make and where would you take cost out?"*
+10. **Course module on agentic engineering.** Use the tutorials in order (Query2CAD → CADSmith → AgentsCAD → CFD Forge) to show how verification gets stricter: a VLM score, then kernel metrics with an independent judge, then rule-based geometry checks, then registered physics contracts.
 
 ## A pattern shared across the papers
 The model proposes; something deterministic checks. The check takes a different form in each paper:

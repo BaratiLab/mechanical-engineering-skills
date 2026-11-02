@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <defs><linearGradient id="g-mechanical-teardown" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f97316"/><stop offset="1" stop-color="#9a3412"/></linearGradient></defs>
+  <rect width="96" height="96" rx="22" fill="url(#g-mechanical-teardown)"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M18,66 H78 V80 H18 Z"/>
+        <path stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M18,14 H78 V24 H18 Z"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M50.9,45.6 L50.9,48.4 L47.7,49.1 L46.9,51.0 L48.7,53.7 L46.7,55.7 L44.0,53.9 L42.1,54.7 L41.4,57.9 L38.6,57.9 L37.9,54.7 L36.0,53.9 L33.3,55.7 L31.3,53.7 L33.1,51.0 L32.3,49.1 L29.1,48.4 L29.1,45.6 L32.3,44.9 L33.1,43.0 L31.3,40.3 L33.3,38.3 L36.0,40.1 L37.9,39.3 L38.6,36.1 L41.4,36.1 L42.1,39.3 L44.0,40.1 L46.7,38.3 L48.7,40.3 L46.9,43.0 L47.7,44.9 Z"/><circle cx="40" cy="47" r="3" fill="#fff"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M62,38 h10 M67,38 V56 M64,42 h6 M64,46 h6 M64,50 h6"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="2 4" d="M24,28 V62 M84,40 V60"/>
+        <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M84,34 V20 m-4,4 l4,-4 l4,4"/>
+</svg>

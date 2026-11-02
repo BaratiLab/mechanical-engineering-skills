@@ -1,8 +1,8 @@
-<p align="center"><img src="docs/img/banner.svg" alt="Mechanical Engineering Skills: 32 agent skills for design, analysis and manufacturing" width="100%"></p>
+<p align="center"><img src="docs/img/banner.svg" alt="Mechanical Engineering Skills: 33 agent skills for design, analysis and manufacturing" width="100%"></p>
 
 <table>
 <tr>
-<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_launch.gif" alt="60-second tour of the 32 skills"></a><br><b>▶ 60-second tour of the library</b></td>
+<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_launch.gif" alt="60-second tour of the skills"></a><br><b>▶ 60-second tour of the library</b></td>
 <td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_cartoon.gif" alt="Cartoon: six tasks before lunch by voice and text"></a><br><b>▶ Six tasks before lunch, by voice and text</b></td>
 </tr>
 </table>
@@ -29,7 +29,7 @@ Each skill is a folder with instructions the agent follows and **tested scripts 
 numbers**. The agent orchestrates, the tools compute, and every result comes with the check that
 backs it.
 
-**19 of the 32 skills (🔬)** package peer-reviewed or preprint research from the
+**19 of the 33 skills (🔬)** package peer-reviewed or preprint research from the
 [Barati Farimani Lab](https://github.com/BaratiLab)
 at Carnegie Mellon University. Each comes with a step-by-step tutorial that reproduces the paper's
 key results. The skills work with Claude Code, Claude.ai, Cursor, Codex, Gemini CLI and any agent
@@ -42,7 +42,7 @@ that reads the open [Agent Skills](https://skills.sh) format.
 
 ## What's inside
 
-32 skills; 🔬 marks the 19 that package a Barati Farimani Lab paper (each with a tested workflow and a step-by-step tutorial). Not sure which one you need? See **[docs/use-cases.md](docs/use-cases.md)**, or just describe the job to your agent.
+33 skills; 🔬 marks the 19 that package a Barati Farimani Lab paper (each with a tested workflow and a step-by-step tutorial). Not sure which one you need? See **[docs/use-cases.md](docs/use-cases.md)**, or just describe the job to your agent.
 
 ### Design & CAD
 
@@ -81,6 +81,7 @@ that reads the open [Agent Skills](https://skills.sh) format.
 <tr><th width="96"></th><th align="left">Skill</th><th align="left">What you can ask for</th><th align="left">Paper · Tutorial</th></tr>
 <tr><td><img src="docs/icons/agentscad-fdm-dfam.svg" width="80" alt=""></td><td><a href="skills/agentscad-fdm-dfam"><b><code>agentscad-fdm-dfam</code></b></a> 🔬</td><td>Make a STEP part printable by FDM: reorientation, teardrop holes and chamfers, with verified geometry.</td><td><a href="https://arxiv.org/abs/2607.02448">AgentsCAD</a> · <a href="docs/tutorials/agentscad-fdm-dfam.md">tutorial</a></td></tr>
 <tr><td><img src="docs/icons/dfm-review.svg" width="80" alt=""></td><td><a href="skills/dfm-review"><b><code>dfm-review</code></b></a></td><td>Design-for-manufacture review for machining, sheet metal, molding and additive manufacturing.</td><td></td></tr>
+<tr><td><img src="docs/icons/mechanical-teardown.svg" width="80" alt=""></td><td><a href="skills/mechanical-teardown"><b><code>mechanical-teardown</code></b></a></td><td>Product teardown: costed BOM, DFA index, should-cost, repairability and FMEA in an HTML report.</td><td><a href="https://baratilab.github.io/mechanical-engineering-skills/examples/mechanical-teardown-drill.html">example report</a></td></tr>
 <tr><td><img src="docs/icons/image2gcode.svg" width="80" alt=""></td><td><a href="skills/image2gcode"><b><code>image2gcode</code></b></a> 🔬</td><td>Photo or sketch to printer-ready G-code for 2D and 2.5D parts.</td><td><a href="https://doi.org/10.1016/j.addlet.2026.100374">Image2Gcode</a> · <a href="docs/tutorials/image2gcode.md">tutorial</a></td></tr>
 <tr><td><img src="docs/icons/lpbf-defect-prediction.svg" width="80" alt=""></td><td><a href="skills/lpbf-defect-prediction"><b><code>lpbf-defect-prediction</code></b></a> 🔬</td><td>Laser power and speed to keyholing, lack of fusion or balling, with process maps.</td><td><a href="https://doi.org/10.1016/j.addlet.2025.100292">AdditiveLLM</a> · <a href="docs/tutorials/lpbf-defect-prediction.md">tutorial</a></td></tr>
 <tr><td><img src="docs/icons/am-alloy-screening.svg" width="80" alt=""></td><td><a href="skills/am-alloy-screening"><b><code>am-alloy-screening</code></b></a> 🔬</td><td>Known or new alloy to properties, a lack-of-fusion process map and a printability ranking.</td><td><a href="https://doi.org/10.1016/j.addlet.2026.100355">Agentic alloy evaluation</a> · <a href="docs/tutorials/am-alloy-screening.md">tutorial</a></td></tr>
@@ -124,7 +125,7 @@ npx skills add BaratiLab/mechanical-engineering-skills --list
 
 Install a whole group by naming its skills, for example manufacturing:
 ```bash
-npx skills add BaratiLab/mechanical-engineering-skills --skill agentscad-fdm-dfam --skill dfm-review --skill image2gcode \
+npx skills add BaratiLab/mechanical-engineering-skills --skill agentscad-fdm-dfam --skill dfm-review --skill mechanical-teardown --skill image2gcode \
     --skill lpbf-defect-prediction --skill meltpool-geometry --skill am-alloy-screening --skill sls-process-optimization \
     --skill llm-3d-print-monitor --skill thermal-porosity --skill lpbf-superres --skill am-literature-rag
 ```

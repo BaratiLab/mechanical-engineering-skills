@@ -1,0 +1,95 @@
+{
+  "product": {
+    "name": "18 V cordless drill/driver (generic, brushed)",
+    "category": "Power tool",
+    "maker": "Unbranded mid-range example",
+    "model": "illustrative",
+    "price_usd": 79.0,
+    "annual_volume": 300000,
+    "lifetime_years": 3,
+    "labor_usd_h": 8.0,
+    "pitch": "A clamshell tool that turns battery energy into controlled torque at the chuck: motor, two-speed planetary gearbox, slip clutch, keyless chuck, trigger speed control.",
+    "evidence": [
+      "Illustrative worked example assembled from typical mid-range 18 V drill/driver construction; masses and costs are engineering estimates, not measurements of a specific product.",
+      "Replace with your own teardown: photos of each layer, kitchen-scale masses, and calipers on the gears."
+    ],
+    "repair": {"standard_tools": false, "spares_available": true, "manual_available": false}
+  },
+  "requirements": [
+    {"need": "Drive 75 mm wood screws without stalling", "metric": "Max torque >= 40 N m (low gear)", "how_met": "550-size motor x two-stage planetary (about 1:50) x clutch at max setting"},
+    {"need": "Do not strip small screws", "metric": "Clutch slips at 1-10 N m over 20 settings", "how_met": "Spring-loaded balls on the ring-gear face; clutch collar compresses the spring"},
+    {"need": "Drill holes fast", "metric": "High gear no-load speed 1500 rpm", "how_met": "Shift ring locks the second-stage carrier to the ring gear (direct drive)"},
+    {"need": "Survive a 2 m drop onto concrete", "metric": "No housing crack, gearbox still aligned", "how_met": "PA6-GF30 housing halves with ribbed bosses; TPE overmold on the grip"},
+    {"need": "All-day use", "metric": "Mass <= 1.4 kg without battery", "how_met": "Plastic ring gears and housing, aluminum is avoided"}
+  ],
+  "functions": [
+    {"function": "Store and switch energy", "parts": ["P01", "P02", "P15"], "subfunctions": [
+      {"function": "Accept battery pack", "parts": ["P01", "P14"]},
+      {"function": "Vary speed and direction", "parts": ["P02", "P03"]}]},
+    {"function": "Convert to torque at the bit", "parts": [], "subfunctions": [
+      {"function": "Electrical to mechanical", "parts": ["P04"]},
+      {"function": "Reduce speed, raise torque (two speeds)", "parts": ["P05", "P06", "P07", "P08", "P09"]},
+      {"function": "Limit torque", "parts": ["P10", "P11", "P12"]},
+      {"function": "Hold the bit", "parts": ["P13"]}]},
+    {"function": "Hold, protect and cool", "parts": ["P01", "P16", "P17"], "subfunctions": [
+      {"function": "Light the work", "parts": ["P18"]}]}
+  ],
+  "parts": [
+    {"id": "P01", "name": "Housing half, left (clamshell)", "qty": 1, "subassembly": "Housing", "kind": "part", "material": "PA6-GF30", "process": "injection_molding", "mass_g": 120, "cycle_s": 40, "tooling_usd": 90000, "handling": "easy", "insertion": "drop_in", "separate_for_service": true, "notes": "Base part; everything lays into it"},
+    {"id": "P16", "name": "Housing half, right (clamshell)", "qty": 1, "subassembly": "Housing", "kind": "part", "material": "PA6-GF30", "process": "injection_molding", "mass_g": 118, "cycle_s": 40, "tooling_usd": 90000, "handling": "easy", "insertion": "align", "separate_for_service": true},
+    {"id": "P17", "name": "Grip overmold (on both halves)", "qty": 1, "subassembly": "Housing", "kind": "part", "material": "TPE", "process": "overmolding", "mass_g": 22, "cycle_s": 35, "tooling_usd": 60000, "handling": "easy", "insertion": "drop_in", "necessary": false, "notes": "Molded on, no assembly step of its own; time is a placeholder"},
+    {"id": "P02", "name": "Trigger switch module with FWD/REV and PWM board", "qty": 1, "subassembly": "Electrics", "kind": "part", "material": "PA66", "process": "purchased", "cost_usd": 3.80, "mass_g": 45, "handling": "orient", "insertion": "hold_down", "moves": true, "wear_part": true, "depth": 2},
+    {"id": "P03", "name": "Direction slider", "qty": 1, "subassembly": "Electrics", "kind": "part", "material": "POM", "process": "injection_molding", "mass_g": 3, "cycle_s": 15, "cavities": 4, "tooling_usd": 12000, "handling": "small", "insertion": "align", "moves": true},
+    {"id": "P14", "name": "Battery terminal block", "qty": 1, "subassembly": "Electrics", "kind": "part", "material": "brass", "process": "purchased", "cost_usd": 0.70, "mass_g": 14, "handling": "orient", "insertion": "align", "different_material": true},
+    {"id": "P15", "name": "Wire harness (motor, switch, terminals, LED)", "qty": 1, "subassembly": "Electrics", "kind": "part", "material": "copper", "process": "purchased", "cost_usd": 0.60, "mass_g": 18, "handling": "flexible", "insertion": "wire_route", "necessary": false, "notes": "Routing in the clamshell channels is the longest single step"},
+    {"id": "S01", "name": "Solder joints, motor and switch leads", "qty": 4, "subassembly": "Motor", "kind": "fastener", "material": "tin", "process": "purchased", "cost_usd": 0.01, "mass_g": 0.2, "handling": "easy", "insertion": "solder", "notes": "Motor tabs are soldered, not plugged"},
+    {"id": "P18", "name": "LED work light on flex", "qty": 1, "subassembly": "Electrics", "kind": "part", "material": "copper", "process": "purchased", "cost_usd": 0.25, "mass_g": 2, "handling": "flexible", "insertion": "snap", "different_material": true},
+    {"id": "P04", "name": "550-size brushed DC motor with fan", "qty": 1, "subassembly": "Motor", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 6.50, "mass_g": 230, "handling": "easy", "insertion": "align", "moves": true, "wear_part": true, "depth": 2, "notes": "Brushes are the wear item; motor sold as a spare"},
+    {"id": "P05", "name": "Gearbox housing / ring gear, stage 1", "qty": 1, "subassembly": "Gearbox", "kind": "part", "material": "PA66-GF30", "process": "injection_molding", "mass_g": 38, "cycle_s": 35, "tooling_usd": 40000, "handling": "orient", "insertion": "align", "separate_for_service": true},
+    {"id": "P06", "name": "Planet gears, stage 1", "qty": 3, "subassembly": "Gearbox", "kind": "part", "material": "POM", "process": "injection_molding", "mass_g": 2.5, "cycle_s": 18, "cavities": 8, "tooling_usd": 15000, "handling": "small", "insertion": "drop_in", "moves": true, "wear_part": true, "depth": 4},
+    {"id": "P07", "name": "Planet carrier with sun, stage 1 to 2", "qty": 1, "subassembly": "Gearbox", "kind": "part", "material": "sintered steel", "process": "powder_metallurgy", "mass_g": 22, "cycle_s": 12, "tooling_usd": 25000, "handling": "orient", "insertion": "align", "moves": true},
+    {"id": "P08", "name": "Planet gears, stage 2", "qty": 3, "subassembly": "Gearbox", "kind": "part", "material": "sintered steel", "process": "powder_metallurgy", "mass_g": 6, "cycle_s": 8, "tooling_usd": 18000, "handling": "small", "insertion": "drop_in", "moves": true, "wear_part": true, "depth": 4},
+    {"id": "P09", "name": "Shift ring (speed selector) with wire spring", "qty": 1, "subassembly": "Gearbox", "kind": "part", "material": "PA66", "process": "injection_molding", "mass_g": 9, "cycle_s": 22, "cavities": 2, "tooling_usd": 20000, "handling": "orient", "insertion": "hold_down", "moves": true},
+    {"id": "P20", "name": "Spindle with carrier, stage 2", "qty": 1, "subassembly": "Gearbox", "kind": "part", "material": "alloy steel", "process": "cnc_turning", "mass_g": 55, "cycle_s": 70, "handling": "orient", "insertion": "press", "moves": true},
+    {"id": "P21", "name": "Spindle ball bearing", "qty": 1, "subassembly": "Gearbox", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 0.35, "mass_g": 12, "handling": "easy", "insertion": "press", "moves": true},
+    {"id": "P22", "name": "Thrust washers", "qty": 3, "subassembly": "Gearbox", "kind": "part", "material": "steel", "process": "stamping", "mass_g": 1.5, "cycle_s": 0.6, "tooling_usd": 3000, "handling": "small", "insertion": "drop_in", "necessary": false, "notes": "Could be a molded shoulder on the carrier"},
+    {"id": "P10", "name": "Clutch balls", "qty": 6, "subassembly": "Clutch", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 0.01, "mass_g": 1.0, "handling": "small", "insertion": "drop_in", "moves": true, "wear_part": true, "depth": 5},
+    {"id": "P11", "name": "Clutch spring", "qty": 1, "subassembly": "Clutch", "kind": "part", "material": "spring steel", "process": "wire_forming", "mass_g": 6, "cycle_s": 3, "tooling_usd": 1500, "handling": "flexible", "insertion": "hold_down", "moves": true},
+    {"id": "P12", "name": "Clutch collar with detent", "qty": 1, "subassembly": "Clutch", "kind": "part", "material": "PA66", "process": "injection_molding", "mass_g": 16, "cycle_s": 25, "tooling_usd": 22000, "handling": "orient", "insertion": "snap", "moves": true},
+    {"id": "P13", "name": "Keyless chuck, 13 mm", "qty": 1, "subassembly": "Chuck", "kind": "part", "material": "steel", "process": "purchased", "cost_usd": 2.90, "mass_g": 160, "handling": "easy", "insertion": "screw", "moves": true, "wear_part": true, "depth": 0},
+    {"id": "F01", "name": "Chuck retaining screw (left-hand thread)", "qty": 1, "subassembly": "Chuck", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.02, "mass_g": 2, "handling": "small", "insertion": "screw"},
+    {"id": "F02", "name": "Gearbox to motor screws", "qty": 2, "subassembly": "Gearbox", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.015, "mass_g": 1.5, "handling": "small", "insertion": "screw"},
+    {"id": "F03", "name": "Clamshell screws, Torx T10 security", "qty": 9, "subassembly": "Housing", "kind": "fastener", "material": "steel", "process": "purchased", "cost_usd": 0.02, "mass_g": 1.5, "handling": "small", "insertion": "screw", "notes": "Security Torx is why standard_tools is false"},
+    {"id": "P19", "name": "Belt clip with screw", "qty": 1, "subassembly": "Housing", "kind": "part", "material": "spring steel", "process": "stamping", "mass_g": 20, "cycle_s": 1.5, "tooling_usd": 6000, "handling": "orient", "insertion": "screw", "separate_for_service": true},
+    {"id": "L01", "name": "Rating label", "qty": 1, "subassembly": "Housing", "kind": "label", "material": "PP", "process": "purchased", "cost_usd": 0.03, "mass_g": 1, "handling": "easy", "insertion": "adhesive"}
+  ],
+  "fmea": [
+    {"item": "Stage-1 planet gears (POM)", "mode": "Teeth shear under stall", "effect": "Tool spins but no output", "cause": "Repeated stalls at max clutch setting heat the plastic", "S": 7, "O": 4, "D": 6, "action": "PA66-GF or sintered stage-1 planets on the high-torque SKU; thermal derating in firmware"},
+    {"item": "Motor brushes", "mode": "Wear-out", "effect": "Loss of power, sparking", "cause": "Commutator wear over about 60 h duty", "S": 6, "O": 6, "D": 4, "action": "Brushless upgrade path; or brush access door"},
+    {"item": "Trigger switch", "mode": "Contact welding", "effect": "Tool runs without trigger", "cause": "Inrush at stall with a fresh battery", "S": 9, "O": 2, "D": 7, "action": "MOSFET switching with the mechanical contact only as a signal"},
+    {"item": "Clutch spring", "mode": "Set (loss of preload)", "effect": "Clutch slips early, settings drift", "cause": "Spring stressed near yield at max setting", "S": 4, "O": 4, "D": 5, "action": "Re-check spring index and max shear stress; shot peen"},
+    {"item": "Housing boss at front", "mode": "Crack on drop", "effect": "Gearbox misaligns, noise", "cause": "Thin boss wall at screw F03-1", "S": 6, "O": 3, "D": 4, "action": "Add gussets; core out to uniform 2.2 mm wall"}
+  ],
+  "design_signals": [
+    {"title": "Clamshell with lay-in architecture", "evidence": "Every internal module drops into the left half; the right half closes it all with 9 screws.", "why": "Assembly is top-down in one fixture with no flipping. The cost is that every repair starts by opening the whole tool."},
+    {"title": "Mixed-material gear train", "evidence": "Plastic ring gear and stage-1 planets, sintered steel stage 2.", "why": "Plastic where speed is high and torque is low; steel where torque is high. Noise drops too."},
+    {"title": "Clutch built into the ring gear", "evidence": "The stage-2 ring gear face carries the ball ramps; the collar only loads the spring.", "why": "No separate clutch housing, so fewer parts and a shorter nose."},
+    {"title": "Shift by locking the carrier", "evidence": "The shift ring slides to lock stage 2 to the housing (low) or to the carrier (high).", "why": "Two speeds from one extra part instead of a second gear set."}
+  ],
+  "benchmark": {
+    "dimensions": ["Motor", "Max torque", "Mass (no battery)", "Clamshell screws", "Gearbox stages"],
+    "products": [
+      {"name": "This tool", "values": ["Brushed 550", "~40 N m", "~1.1 kg", "9 (security Torx)", "2 planetary"]},
+      {"name": "Typical brushless mid-range", "values": ["Brushless outrunner", "~60 N m", "~1.0 kg", "6-8 (Torx)", "2 planetary"]},
+      {"name": "Typical budget 12 V", "values": ["Brushed 380", "~25 N m", "~0.8 kg", "7 (Phillips)", "1-2 planetary"]}
+    ]
+  },
+  "opportunities": [
+    {"title": "Plug the motor in", "change": "Replace the 4 solder joints with a keyed 2-pin connector on the motor end cap", "impact": "Cuts about 30 s of assembly, makes the motor a 2-minute swap", "effort": "low", "savings_usd": 0.05},
+    {"title": "Mold the thrust washers away", "change": "Add a bearing shoulder on the stage-1 carrier and a molded thrust face on the ring gear", "impact": "Removes 3 small parts that fall out during service", "effort": "low", "savings_usd": 0.03},
+    {"title": "Fewer, standard clamshell screws plus front snap hooks", "change": "Two snap hooks at the nose, 6 screws in place of 9, standard T10", "impact": "Faster close-up, opens with a normal driver", "effort": "med", "savings_usd": 0.04},
+    {"title": "Brushless motor and MOSFET switching", "change": "Brushless motor with the PWM board; the trigger becomes a sensor", "impact": "Removes the top two wear modes and the welded-contact hazard", "effort": "high", "savings_usd": -3.5}
+  ],
+  "verdict": "A well-optimized clamshell: the gearbox and integrated clutch are lean, and plastic is used where it is safe. Assembly is dominated by the harness and the solder joints rather than by the mechanics, and repairability is held back by security screws and by soldered motor leads. Switching to plug-in motor leads and standard screws costs nothing and makes the motor and switch user-replaceable. Brushless is the real next product, not a cost-down.",
+  "images": []
+}

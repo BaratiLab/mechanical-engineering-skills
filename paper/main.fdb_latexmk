@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793646508.69564 "main.aux" "main.bbl" "main" 1793646510.36821 0
-  "./refs.bib" 1793573705.57825 16556 119b7c356a7af632dd406a4b8fcf0020 ""
+["bibtex main"] 1793655857.37506 "main.aux" "main.bbl" "main" 1793655858.58454 0
+  "./refs.bib" 1793655856.00061 16557 004cd836fbc84c160347577a84c4996b ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "main.aux" 1793646510.16162 18446 251194b1b695d67939aa0fb0a49554a5 "pdflatex"
+  "main.aux" 1793655858.39082 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793646508.725 "main.tex" "main.pdf" "main" 1793646510.36844 0
+["pdflatex"] 1793655857.39872 "main.tex" "main.pdf" "main" 1793655858.58476 0
   "/etc/texmf/web2c/texmf.cnf" 1793392505 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -221,7 +221,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1793392508 124420 19feb0458b8681cc7c600be8c493a0f9 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1793392542 6831095 10a45760b633b1812e2b8ea87207c22f ""
-  "figures/concept.pdf" 1793574282.64241 64318 c0383181a32142c510cce2f340d4a44a ""
+  "figures/concept.pdf" 1793655824.30282 64782 324a635f220b58fa6c7fa58854f862d1 ""
   "figures/glu3d_compare.png" 1793567379.78177 86905 1ffda3b982c4048f740da9b90c485b2d ""
   "figures/glu3d_search.png" 1793567379.78183 267303 e4a8b040ce9c3b33a968a113fad6a865 ""
   "figures/icons/agentscad-fdm-dfam.pdf" 1793568635.65342 1657 f423dfd764b5919d82dbde08ebf7a407 ""
@@ -243,6 +243,7 @@
   "figures/icons/lpbf-superres.pdf" 1793568635.67039 1760 5b3c3b34b4ba787e100d2b379ee6a28c ""
   "figures/icons/machine-element-sizing.pdf" 1793568635.6773 1688 0bb55b0723909b0c667a4fec9997e7fd ""
   "figures/icons/material-selection.pdf" 1793568635.63386 1791 b02a041a8b15dd5935832b4f45bfae18 ""
+  "figures/icons/mechanical-teardown.pdf" 1793655838.91082 1850 544fcba55c6dac84cde5702429f9e8d2 ""
   "figures/icons/mechanics-visuals.pdf" 1793568635.68603 1672 3862b48e38a5d77b749068399564b838 ""
   "figures/icons/meltpool-geometry.pdf" 1793568635.68448 1665 1615ec1cbc50fb488753c89278991242 ""
   "figures/icons/parametric-part-cad.pdf" 1793568635.6548 1618 5e046671a42bd73945c37982d9a31a46 ""
@@ -258,10 +259,10 @@
   "figures/icons/worked-problem-generator.pdf" 1793568635.66149 1645 208791c9d24bca1e9a24d0f32c84d313 ""
   "figures/rocketsmith_hp1_flight.png" 1793567379.78192 59941 96f20b9668edd8a37017c71247727aff ""
   "figures/thermopore_layer.png" 1793573626.02425 90449 67bcc4d1ca42a9b326efa5892327c40a ""
-  "main.aux" 1793646510.16162 18446 251194b1b695d67939aa0fb0a49554a5 "pdflatex"
-  "main.bbl" 1793646508.71791 17049 4a6b8a63bd287c8c1e40cf6fc0755505 "bibtex main"
-  "main.out" 1793646510.16562 2594 642f3b3dec2858f0374978a78fea8bad "pdflatex"
-  "main.tex" 1793646490.26814 55394 1005875a328576c92eec0688a464d7df ""
+  "main.aux" 1793655858.39082 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
+  "main.bbl" 1793655857.39296 17049 4a6b8a63bd287c8c1e40cf6fc0755505 "bibtex main"
+  "main.out" 1793655858.39082 2594 642f3b3dec2858f0374978a78fea8bad "pdflatex"
+  "main.tex" 1793655856.00026 55605 c338b84c54b690d3c957a19e718b970a ""
   (generated)
   "main.aux"
   "main.log"

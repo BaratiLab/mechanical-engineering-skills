@@ -42,7 +42,7 @@ Srivathsan Badrinarayanan\textsuperscript{2} \quad Amir Barati Farimani\textsupe
 Mechanical engineers rely on dozens of specialized tools---CAD kernels, finite-element and CFD
 solvers, flight simulators, process maps, thermodynamic databases and research models---each with
 its own interface, installation and learning curve. We present \emph{Mechanical Engineering
-Skills}, an open library of 32 agent skills for design, analysis and manufacturing that makes this
+Skills}, an open library of 33 agent skills for design, analysis and manufacturing that makes this
 breadth available through a single conversation, by text or, in hosts that support it, by voice.
 Each skill packages operating instructions, executable tools and verification procedures: the
 language model understands the request, selects the skill and coordinates the workflow, while
@@ -51,7 +51,7 @@ For the default workflows, users do not need to learn each tool's interface, tra
 a model on their own computer; skills load only when a request needs them and install with one
 command. Nineteen skills adapt published or preprint research from our laboratory, spanning
 text-to-CAD, linkage synthesis, CFD case setup, stress-field and lattice surrogates, equation
-discovery, additive-manufacturing process planning and in-process monitoring; 13 cover core
+discovery, additive-manufacturing process planning and in-process monitoring; 14 cover core
 engineering and teaching tasks. We describe the skill format, the design principles and a procedure
 for translating research into usable workflows. Five case studies, each with an explicit evidence
 scope and an independent rerun, show exact analytical agreement for lattice homogenization, rocket
@@ -91,7 +91,7 @@ installed with a single command. Numerical packages, external solvers and any mo
   \centering
   \includegraphics[width=\textwidth]{figures/concept.pdf}
   \caption{Mechanical Engineering Skills. An engineer states a goal by voice or text.
-  The Claude agent understands the request, selects the relevant skills from a library of 32
+  The Claude agent understands the request, selects the relevant skills from a library of 33
   (design and CAD, analysis and simulation, manufacturing), and orchestrates them. Each skill
   bundles instructions (\texttt{SKILL.md}), tested scripts that do the computation, and checks.
   The results---CAD models, simulations, process plans, designs and reports---come back with the
@@ -101,11 +101,11 @@ installed with a single command. Numerical packages, external solvers and any mo
   \label{fig:concept}
 \end{figure}
 
-This paper presents \emph{Mechanical Engineering Skills}~\cite{mes2026repo}, a library of 32 such
+This paper presents \emph{Mechanical Engineering Skills}~\cite{mes2026repo}, a library of 33 such
 skills (Fig.~\ref{fig:concept}, Table~\ref{tab:library}). Our contributions are:
 \begin{enumerate}[leftmargin=*]
 \item \textbf{A library} covering design, analysis and manufacturing, in which 19 skills package
-      peer-reviewed or preprint research from our laboratory and 13 cover core engineering tasks
+      peer-reviewed or preprint research from our laboratory and 14 cover core engineering tasks
       (machine-element sizing, FEA with hand checks, tolerance stack-ups, material selection,
       design reviews and teaching aids).
 \item \textbf{Design principles} for engineering skills: tools compute and the model orchestrates;
@@ -251,9 +251,9 @@ load cases, minimum wall thickness, certification level---and give defaults for 
 asks a small set of grouped questions instead of many generic ones and asks again only when a new
 ambiguity would change the result.
 
-The library itself is summarized in Table~\ref{tab:library}, which lists all 32 skills, grouped into design and CAD, analysis and simulation,
+The library itself is summarized in Table~\ref{tab:library}, which lists all 33 skills, grouped into design and CAD, analysis and simulation,
 manufacturing, and teaching. Each row gives the skill's icon and name and, in plain language, what
-a user can ask for. Nineteen skills package research from our laboratory; the remaining 13 cover
+a user can ask for. Nineteen skills package research from our laboratory; the remaining 14 cover
 core engineering tasks that every practitioner needs, from machine-element sizing and FEA with hand
 checks to tolerance stack-ups, material selection~\cite{ashby2011} and design reviews, plus two
 skills for teaching.
@@ -297,6 +297,7 @@ the skill's dependencies. A citation marks the 19 skills that package a Barati F
 \multicolumn{4}{@{}l}{\rule{0pt}{14pt}\textbf{\large Manufacturing}}\\[3pt]
 \includegraphics[width=1.0cm]{figures/icons/agentscad-fdm-dfam.pdf} & \texttt{agentscad-fdm-dfam} & Make a STEP part printable by FDM: reorientation, teardrop holes and chamfers, with verified geometry. & \cite{george2026agentscad} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/dfm-review.pdf} & \texttt{dfm-review} & Design-for-manufacture review for machining, sheet metal, molding and additive manufacturing. & -- \\[2pt]
+\includegraphics[width=1.0cm]{figures/icons/mechanical-teardown.pdf} & \texttt{mechanical-teardown} & Product teardown: costed BOM, DFA index, should-cost, repairability and FMEA in an HTML report. & -- \\[2pt]
 \includegraphics[width=1.0cm]{figures/icons/image2gcode.pdf} & \texttt{image2gcode} & Photo or sketch to printer-ready G-code for 2D and 2.5D parts. & \cite{wang2026image2gcode} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/lpbf-defect-prediction.pdf} & \texttt{lpbf-defect-prediction} & Laser power and speed to keyholing, lack of fusion or balling, with process maps. & \cite{pak2025additivellm} \\[1pt]
 \includegraphics[width=1.0cm]{figures/icons/am-alloy-screening.pdf} & \texttt{am-alloy-screening} & Known or new alloy to properties, a lack-of-fusion process map and a printability ranking. & \cite{pak2026alloy} \\[1pt]
@@ -325,7 +326,7 @@ Claude does the rest: it matches the request to a skill's description, loads tha
 instructions, asks for the few inputs that matter, runs the scripts and returns the result with its
 check.
 
-Several properties make this practical. All 32 skills are installed with one command and are
+Several properties make this practical. All 33 skills are installed with one command and are
 available in the same conversation, and because only each skill's one-line description stays in the
 model's context, on the order of a hundred tokens per skill, breadth costs almost nothing until a
 skill is used. Skills compose naturally, so a lattice designed with \skill{lattice-inverse-design}
@@ -660,7 +661,7 @@ inherit the limits of their methods and do not replace an engineer's sign-off on
 decisions.
 
 \section{Conclusion}
-Mechanical Engineering Skills packages 32 engineering capabilities, including 19 adaptations of our
+Mechanical Engineering Skills packages 33 engineering capabilities, including 19 adaptations of our
 research, as instructions, executable tools and verification procedures that a general agent can
 discover, load and use. The central idea is simple: let the model plan and explain, let tested code
 compute, and return every result with its check. Because the interface is natural language, this
