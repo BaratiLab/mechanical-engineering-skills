@@ -444,10 +444,13 @@ def scene_end(f, n):
     t = f / FPS
     b = [f'<rect width="{W}" height="{H}" fill="#0b1220"/>']
     order = list(M.G)
+    per = (len(order) + 1) // 2                      # two rows, the first one icon longer if odd
     for k, sk in enumerate(order):
-        r_, c_ = divmod(k, 16)
+        r_, c_ = divmod(k, per)
+        nrow = min(per, len(order) - r_ * per)
+        x0 = (W - (nrow * 102 - 16)) / 2
         a = c01((f - k * 1.2) / 8)
-        b.append(icon(sk, 160 + c_ * 102, 560 + r_ * 104 + (1 - back(a)) * 40, 86, a))
+        b.append(icon(sk, x0 + c_ * 102, 560 + r_ * 104 + (1 - back(a)) * 40, 86, a))
     b.append(txt(W / 2, 250, "Mechanical Engineering Skills", 92, 800, "#ffffff", "middle", opacity=c01((f - 10) / 14)))
     b.append(txt(W / 2, 330, "Engineering, on demand. Just ask Claude, by voice or text.", 40, 500, "#cbd5e1", "middle", opacity=c01((f - 24) / 14)))
     cmd = "npx skills add BaratiLab/mechanical-engineering-skills"

@@ -42,12 +42,12 @@ RESEARCH = [  # skill, paper chip, tagline, image
 ]
 CORE = ["parametric-part-cad", "sketch-to-cad", "drawing-gdt-review", "machine-element-sizing", "quick-fea",
         "tolerance-stackup", "thermal-fluids-calc", "material-selection", "design-review-package",
-        "engineering-calc-report", "dfm-review", "worked-problem-generator", "mechanics-visuals"]
+        "engineering-calc-report", "dfm-review", "mechanical-teardown", "worked-problem-generator", "mechanics-visuals"]
 CATEGORY = {"design": ("DESIGN & CAD", "mech"), "analysis": ("ANALYSIS & SIMULATION", "analysis"),
             "manufacturing": ("MANUFACTURING", "dfm")}
 CAT_OF = {s: ("design" if i < 5 else "analysis" if i < 9 else "manufacturing") for i, (s, *_ ) in enumerate(RESEARCH)}
 
-# timeline in beats (0.5 s): title 8, voice 10, research 19 x 3, core 15, numbers 12, end 18  -> 120 beats = 60 s
+# timeline in beats (0.5 s): title 8, voice 10, research 19 x 3, core 15 (14 skills), numbers 12, end 18  -> 120 beats = 60 s
 SCENES = [("title", 8), ("voice", 10)] + [(f"skill{i}", 3) for i in range(len(RESEARCH))] + [("core", 15), ("numbers", 12), ("end", 18)]
 
 
@@ -165,10 +165,11 @@ def scene_title(f, n):
     order = list(M.G)
     rng = random.Random(3)
     starts = [(rng.uniform(-200, W + 200), rng.uniform(-200, H + 200)) for _ in order]
-    cols, size, gap = 16, 92, 18
-    x0 = (W - (cols * size + (cols - 1) * gap)) / 2
+    cols, size, gap = (len(order) + 1) // 2, 92, 18
     for i, s in enumerate(order):
         r, c = divmod(i, cols)
+        nrow = min(cols, len(order) - r * cols)
+        x0 = (W - (nrow * size + (nrow - 1) * gap)) / 2
         tx, ty = x0 + c * (size + gap) + size / 2, 640 + r * (size + gap) + size / 2
         p = ease_out((f - i * 0.7) / 34)
         sx, sy = starts[i]
@@ -177,7 +178,7 @@ def scene_title(f, n):
     a = clamp01((f - 22) / 14); dy = (1 - ease_out((f - 22) / 18)) * 40
     put_text(im, "Mechanical Engineering Skills", F("Inter-ExtraBold.otf", 104), W / 2, 270 + dy, alpha=a, anchor="c")
     a2 = clamp01((f - 40) / 14)
-    put_text(im, "32 agent skills for design, analysis and manufacturing", F("Inter-Medium.otf", 42), W / 2, 410,
+    put_text(im, "33 agent skills for design, analysis and manufacturing", F("Inter-Medium.otf", 42), W / 2, 410,
              (203, 213, 225), alpha=a2, anchor="c")
     a3 = clamp01((f - 62) / 14)
     put_text(im, "BARATI FARIMANI LAB  ·  CARNEGIE MELLON UNIVERSITY", F("Inter-SemiBold.otf", 26), W / 2, 490,
@@ -318,8 +319,8 @@ def scene_skill(i):
 def scene_core(f, n):
     t = f / FPS
     im = background(t, "#64748b", 0.5, 0.5)
-    put_text(im, "+ 13 core engineering skills", F("Inter-ExtraBold.otf", 72), W / 2, 90, alpha=clamp01(f / 10), anchor="c")
-    put_text(im, "sizing  ·  FEA  ·  tolerances  ·  thermal-fluids  ·  CAD  ·  DFM  ·  reports  ·  teaching",
+    put_text(im, "+ 14 core engineering skills", F("Inter-ExtraBold.otf", 72), W / 2, 90, alpha=clamp01(f / 10), anchor="c")
+    put_text(im, "sizing  ·  FEA  ·  tolerances  ·  thermal-fluids  ·  CAD  ·  DFM  ·  teardowns  ·  reports  ·  teaching",
              F("Inter-Medium.otf", 32), W / 2, 200, (203, 213, 225), alpha=clamp01((f - 6) / 10), anchor="c")
     rows = [CORE[:7], CORE[7:]]
     size, gapx = 150, 108
@@ -342,7 +343,7 @@ def scene_core(f, n):
 def scene_numbers(f, n):
     t = f / FPS
     im = background(t, "#8b5cf6", 0.5, 0.5)
-    stats = [("32", "skills"), ("19", "research papers"), ("1", "command to install"), ("0", "models to run locally")]
+    stats = [("33", "skills"), ("19", "research papers"), ("1", "command to install"), ("0", "models to run locally")]
     put_text(im, "Engineering, on demand.", F("Inter-ExtraBold.otf", 68), W / 2, 150, alpha=clamp01(f / 10), anchor="c")
     for k, (num, lab) in enumerate(stats):
         st = 12 + k * 18

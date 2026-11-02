@@ -1,13 +1,8 @@
 <p align="center"><img src="docs/img/banner.svg" alt="Mechanical Engineering Skills: 33 agent skills for design, analysis and manufacturing" width="100%"></p>
 
-<table>
-<tr>
-<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_launch.gif" alt="60-second tour of the skills"></a><br><b>▶ 60-second tour of the library</b></td>
-<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_cartoon.gif" alt="Cartoon: six tasks before lunch by voice and text"></a><br><b>▶ Six tasks before lunch, by voice and text</b></td>
-</tr>
-</table>
-<p align="center"><sub>Click a preview to watch the full video with sound, or download the
-<a href="docs/media/mes_launch.mp4">tour</a> and <a href="docs/media/mes_cartoon.mp4">cartoon</a> MP4s.</sub></p>
+<p align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_full.gif" width="100%" alt="Video: an engineer clears six tasks by voice and text, then a tour of the 33 skills"></a></p>
+<p align="center"><b><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html">▶ Watch the 2-minute video</a></b>: an engineer's morning with the skills, then a tour of the library<br>
+<sub>Preview runs at 4× speed. Download the <a href="docs/media/mes_full.mp4">full MP4</a>, or the two parts: the <a href="docs/media/mes_cartoon.mp4">cartoon</a> and the <a href="docs/media/mes_launch.mp4">library tour</a>.</sub></p>
 
 <p align="center">
 <a href="https://baratilab.github.io/mechanical-engineering-skills/"><b>Tutorials & use cases</b></a> ·

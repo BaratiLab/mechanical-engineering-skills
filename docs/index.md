@@ -1,9 +1,9 @@
 <p align="center"><img src="img/banner.svg" alt="Mechanical Engineering Skills" width="100%"></p>
 
 
-<video src="media/mes_launch.mp4" poster="media/poster_launch.jpg" controls playsinline preload="metadata" width="100%"></video>
+<video src="media/mes_full.mp4" poster="media/poster_full.jpg" controls playsinline preload="metadata" width="100%"></video>
 
-**Watch:** [a 60-second tour](videos.md) · [six tasks before lunch, by voice and text](videos.md)
+**Watch:** an engineer's morning with the skills, then a tour of all 33 ([video page](videos.md))
 
 # Mechanical Engineering Skills — Barati Farimani Lab, Carnegie Mellon University
 

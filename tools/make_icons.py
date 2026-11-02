@@ -208,10 +208,11 @@ def tile(skill, size=96):
 def banner(path):
     order = list(G)
     tiles = []
-    n = 16
-    for i, sk in enumerate(order[:n * 2]):
+    n = (len(order) + 1) // 2                      # two rows of tiles, all skills shown
+    pitch = min(70, (1200 - 80 - 58) / (n - 1))
+    for i, sk in enumerate(order):
         r, c = divmod(i, n)
-        x, y = 40 + c * 70, 228 + r * 70
+        x, y = 40 + c * pitch, 228 + r * 70
         inner = tile(sk).split(">", 1)[1].rsplit("</svg>", 1)[0]
         tiles.append(f'<g transform="translate({x},{y}) scale(0.6)">{inner}</g>')
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
