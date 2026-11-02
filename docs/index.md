@@ -1,5 +1,10 @@
 <p align="center"><img src="img/banner.svg" alt="Mechanical Engineering Skills" width="100%"></p>
 
+
+<video src="media/mes_launch.mp4" poster="media/poster_launch.jpg" controls playsinline preload="metadata" width="100%"></video>
+
+**Watch:** [a 60-second tour](videos.md) · [six tasks before lunch, by voice and text](videos.md)
+
 # Mechanical Engineering Skills — Barati Farimani Lab, Carnegie Mellon University
 
 Agent skills for mechanical engineering design, analysis, simulation and manufacturing. Each skill

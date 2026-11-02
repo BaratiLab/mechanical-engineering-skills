@@ -1,7 +1,17 @@
 <p align="center"><img src="docs/img/banner.svg" alt="Mechanical Engineering Skills: 32 agent skills for design, analysis and manufacturing" width="100%"></p>
 
+<table>
+<tr>
+<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_launch.gif" alt="60-second tour of the 32 skills"></a><br><b>▶ 60-second tour of the library</b></td>
+<td width="50%" align="center"><a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html"><img src="docs/media/preview_cartoon.gif" alt="Cartoon: six tasks before lunch by voice and text"></a><br><b>▶ Six tasks before lunch, by voice and text</b></td>
+</tr>
+</table>
+<p align="center"><sub>Click a preview to watch the full video with sound, or download the
+<a href="docs/media/mes_launch.mp4">tour</a> and <a href="docs/media/mes_cartoon.mp4">cartoon</a> MP4s.</sub></p>
+
 <p align="center">
 <a href="https://baratilab.github.io/mechanical-engineering-skills/"><b>Tutorials & use cases</b></a> ·
+<a href="https://baratilab.github.io/mechanical-engineering-skills/videos.html">Videos</a> ·
 <a href="#install">Install</a> ·
 <a href="#whats-inside">Full skill list</a> ·
 <a href="docs/use-cases.md">Which skill do I need?</a>
