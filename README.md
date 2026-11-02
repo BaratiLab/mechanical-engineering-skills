@@ -172,9 +172,8 @@ If you use this library, please cite:
 ```bibtex
 @misc{chandrasekhar2026mechskills,
   title  = {Mechanical Engineering Skills: An Open Library of Agent Skills for Design, Analysis and Manufacturing},
-  author = {Chandrasekhar, Achuth and Barkley, Jesse and Pak, Peter and Barati Farimani, Amir},
+  author = {Chandrasekhar, Achuth and Barkley, Jesse and Pak, Peter and Loghmani, Rumi and Badrinarayanan, Srivathsan and Barati Farimani, Amir},
   year   = {2026},
-  note   = {Achuth Chandrasekhar, Jesse Barkley and Peter Pak contributed equally},
   url    = {https://github.com/BaratiLab/mechanical-engineering-skills}
 }
 ```
