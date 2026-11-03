@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793655857.37506 "main.aux" "main.bbl" "main" 1793714667.36986 0
+["bibtex main"] 1793655857.37506 "main.aux" "main.bbl" "main" 1793715147.30737 0
   "./refs.bib" 1793655856.00061 16557 004cd836fbc84c160347577a84c4996b ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1233624470 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "main.aux" 1793714667.14031 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
+  "main.aux" 1793715146.97398 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793714665.71469 "main.tex" "main.pdf" "main" 1793714667.37013 0
+["pdflatex"] 1793715145.30488 "main.tex" "main.pdf" "main" 1793715147.30778 0
   "/etc/texmf/web2c/texmf.cnf" 1793392505 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -259,10 +259,10 @@
   "figures/icons/worked-problem-generator.pdf" 1793568635.66149 1645 208791c9d24bca1e9a24d0f32c84d313 ""
   "figures/rocketsmith_hp1_flight.png" 1793567379.78192 59941 96f20b9668edd8a37017c71247727aff ""
   "figures/thermopore_layer.png" 1793573626.02425 90449 67bcc4d1ca42a9b326efa5892327c40a ""
-  "main.aux" 1793714667.14031 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
+  "main.aux" 1793715146.97398 18446 54c14116aa45d50a1aec97c208b43558 "pdflatex"
   "main.bbl" 1793655857.39296 17049 4a6b8a63bd287c8c1e40cf6fc0755505 "bibtex main"
-  "main.out" 1793714667.14431 2594 642f3b3dec2858f0374978a78fea8bad "pdflatex"
-  "main.tex" 1793714664.62149 55641 3661dc1a1f58cd7e71bc2ac54ec5b13c ""
+  "main.out" 1793715146.97398 2594 642f3b3dec2858f0374978a78fea8bad "pdflatex"
+  "main.tex" 1793715144.99648 55641 58b7ade9865d549158e8e4cea1b54f76 ""
   (generated)
   "main.aux"
   "main.log"
